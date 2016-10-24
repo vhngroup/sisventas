@@ -16,16 +16,16 @@
 		@endif
 	</div>
 </div>
-		{!!Form::open(array('url'=>'compras/ingreso','metodo'=>'POST','autocomplete'=>'off'))!!}
-		{{Form::token()}}
+		{!!Form::open(array('url'=>'compras/ingreso','method'=>'POST','autocomplete'=>'off'))!!}
+            {{Form::token()}}
 <div class="row">	
 <div class="col-lg-12 col-md-6 col-dm-12 col-xs-12">
 	<div class="form-group">
-			<label for="proveedor">Proveedor</label>
-			<select name="idproveedor" id="idproveedor" class="form-control selectpicker" data-live-search="true">
-			@foreach($personas as $persona)
-			<option value= "{{$persona->idpersona}}">{{$persona->nombre}}</option>
-			@endforeach
+			  <label for="nombre">Proveedor</label>
+             <select name="idproveedor" id="idproveedor" class="form-control selectpicker" data-live-search="true">
+              @foreach($personas as $persona)
+              <option value="{{$persona->idpersona}}">{{$persona->nombre}}</option>
+              @endforeach
 			</select>
 		</div>
 </div>
@@ -70,9 +70,9 @@
 <div class="col-lg-2 col-md-2 col-dm-12 col-xs-12">
 	<div class="form-group">	
 	<label>Articulo</label>
-	<select name="pidaarticulo" class="form-control selectpicker"  id="pidaarticulo" data-live-search="true">
+	<select name="pidaarticulo" id="pidaarticulo" class="form-control selectpicker"  data-live-search="true">
 		@foreach($articulos as $articulo)
-		<option value="{{$articulo->idArticulo}}">{{$articulo->articulo}}</option>
+		<option value="{{$articulo->idarticulo}}">{{$articulo->articulo}}</option>
 		@endforeach
 	</select>
 	</div>
@@ -109,11 +109,11 @@
 	</div>
 	<div class="col-lg-2 col-md-2 col-dm-12 col-xs-12">
 		<div class="form-group">
-		<button type="button"  id="bt_agregar" class="btn btn-primary" onclick="agregar()">Agregar</button>
+		<button class="btn btn-primary" type="button"  id="bt_agregar" onclick="agregar()">Agregar</button>
 		</div>
 	</div>
 	<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
-		<div class="form-group">
+		  <div class="table-responsive">
 		<table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
 			<thead style="background-color:#caf5a9">
 			<th>Opcciones</th>
@@ -141,15 +141,15 @@
 	</div>
 		<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12" id="guardar">
 					<div class="form-group">
-					<input name"_token" value="{{ csrf_token() }}" type="hidden"></input>
+				<input name="_token" value="{{ csrf_token() }}" type="hidden"></input>
 						<button class="btn btn-primary"  type="submit">Guardar</button>
 						<button class="btn btn-danger" type="reset">Cancelar</button>
 					</div>
 				</div>
 		</div>
-{!!Form::close()!!}
-@push('scripts')
-<script>
+   		{!!Form::close()!!}  
+         @push ('scripts')
+		<script>
 		var total=0;
 		cont=0;
 		total=0;
@@ -164,16 +164,17 @@ function agregar()
 			impuesto=$("#piimpuesto option:selected").val(); 
 			precio_compra=$("#pprecio_compra").val();
 			precio_venta=$("#pprecio_venta").val();
-			if(idarticulo!="" && cantidad!="" && precio_compra!="" && precio_venta!="")
+			  if (idarticulo!="" && cantidad!="" && cantidad>0 && precio_compra!="" && precio_venta!="")
 		{
 		subtotal[cont]=(cantidad*precio_compra);
 		total=total+subtotal[cont];
 		var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"></td><td><input name="impuesto[]" value="'+impuesto+'"></td><td><input type="number" name="precio_compra[]" value="'+precio_compra+'"></td><td><input type="number"name="precio_venta[]" value="'+precio_venta+'"></td><td>'+subtotal[cont]+'</td></tr>';
 		cont++;
-		$("#total").html("$ "+ total);
-		evaluar();
-		$('#detalles').append(fila);
 		limpiar();
+		    $('#total').html("$/ " + total);
+		evaluar();
+		  $('#detalles').append(fila);
+		
 		}
 	else
 	{

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Input;
 use sisventas\Http\Requests\IngresoformRequest;
 use sisventas\ingreso;
 use sisventas\Detalledeingreso;
+
 use DB;
 use Carbon\Carbon;
 use Response;
@@ -26,9 +27,10 @@ class IngresoController extends Controller
     	if($request)
     	{
     		$query=trim($request->GET('searchText'));
-    		$ingreso=DB::table('ingreso as i')
-    		->join('persona as p','i.idproveedor','=','p.idpersona')
-    		->join('detalle_ingreso as di','i.idingreso','=','di.idingreso')
+
+        $ingreso=DB::table('ingreso as i')
+         ->join('persona as p','i.idproveedor','=','p.idpersona')
+        ->join('detalle_ingreso as di','i.idingreso','=','di.idingreso')
     		->select('i.idingreso','i.fecha_hora','p.nombre','i.tipo_comprobante','i.serie_comprobante','i.numero_comprobante','i.impuesto','i.estado',DB::raw('sum(di.cantidad*precio_compra) as total'))
     		->where('i.numero_comprobante','LIKE','%'.$query.'%')
     		->orderBy('i.idingreso','desc')
@@ -43,7 +45,7 @@ class IngresoController extends Controller
     		$impuestos=DB::table('impuesto')->where('Estado','=','A')->get();
             $personas=DB::table('persona')->where('tipo_persona','=','proveedor')->get();
     		$articulos=DB::table('articulo as art')
-            ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'art.idArticulo')
+            ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'art.idarticulo')
             ->where('art.estado','=','Activo')
     		->get();
 			return view('compras.ingreso.create',["personas"=>$personas,"articulos"=>$articulos,"impuestos"=>$impuestos]);
@@ -53,17 +55,18 @@ class IngresoController extends Controller
     	{
     		try{
     			DB::beginTransaction();
-    			$ingreso=new ingreso;
+    			$ingreso=new ingreso();
     			$ingreso->idproveedor=$request->get('idproveedor');
     			$ingreso->tipo_comprobante=$request->get('tipo_comprobante');
     			$ingreso->serie_comprobante=$request->get('serie_comprobante');
     			$ingreso->numero_comprobante=$request->get('numero_comprobante');
     			$mytime = Carbon::now('America/Bogota');
     			$ingreso->fecha_hora=$mytime->toDateTimeString();
-    			$ingreso->impuesto=$request->get('impuesto');//16%
+    			//$ingreso->impuesto='16';//$request->get('impuesto');//16%
+                $ingreso->impuesto=(float)$request->get('impuesto');//16%
+                $ingreso->estado='A';
                 $ingreso->anticipo=$request->get('anticipo');
-    			$ingreso->estado='A';
-    			$ingreso->save;
+    			$ingreso->save();
 
     			$idarticulo=$request->get('idarticulo');
     			$cantidad=$request->get('cantidad');
@@ -84,11 +87,11 @@ class IngresoController extends Controller
     			DB::commit();
     		}
     catch(\Exception $e)
-    	{
+    {
 
 			DB::rollback();
    		}
-            return Redirect::to('compras/ingreso');
+          return Redirect::to('compras/ingreso');
     	}
 
     	public function show($id)

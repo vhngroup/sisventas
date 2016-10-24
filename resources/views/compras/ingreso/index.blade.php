@@ -3,7 +3,7 @@
 @section ('contenido')
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-dm-8 col-xs-12">
-	<h3> Listado de ingresos <a href="ingreso/create"><button class="btn btn-success">Nuevo</button></a></h3>
+	<h3> Listado de ingreso <a href="ingreso/create"><button class="btn btn-success">Nuevo</button></a></h3>
 	@include('compras.ingreso.search')
 	</div>
 </div>
