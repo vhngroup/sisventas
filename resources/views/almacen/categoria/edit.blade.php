@@ -1,3 +1,4 @@
+
 @extends ('layouts.admin')
 @section ('contenido')
 <div class="row">
@@ -14,7 +15,7 @@
 			</ul>
 		</div>
 		@endif
-		{!! Form::model($categoria,['method'=>'PATCH','route'=>['categoria.update',$categoria->idCategoria]]) !!}
+		{!! Form::model($categoria,['method'=>'PATCH','route'=>['categoria.update',$categoria->idcategoria]]) !!}
 		{{Form::token()}}
 		<div class="form-group">
 			<label for="Nombre">Nombre</label>

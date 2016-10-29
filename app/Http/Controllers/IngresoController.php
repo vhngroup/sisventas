@@ -11,7 +11,7 @@ use sisventas\ingreso;
 use sisventas\Detalledeingreso;
 
 use DB;
-use Carbon\Carbon;
+use Carbon\Carbon; 
 use Response;
 use Illuminate\Support\Collection;
 

@@ -200,6 +200,7 @@
     <!--<script src="{{asset('js/table.js')}}"></script>-->
     <!-- Bootstrap 3.3.5 -->
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
+     <script src="{{asset('js/numeral.js')}}"></script>
     <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
     <script src="{{asset('js/app.min.js')}}"></script>      
 

@@ -13,7 +13,7 @@ use sisventas\DetalledeVenta;
 use DB;
 use Carbon\Carbon;
 use Response;
-use Illuminate\Support\Collection;
+use Illuminate\Support\Collection; 
 
 class VentaController extends Controller
 {
@@ -45,8 +45,8 @@ class VentaController extends Controller
     		$impuestos=DB::table('impuesto')->where('Estado','=','A')->get(); 
             $personas=DB::table('persona')->where('tipo_persona','=','cliente')->get(); //si el provedor tambien es cliente, retirara el where
             $articulos=DB::table('articulo as art')
-            ->join('detalledeventa as dv','art.idarticulo','=','dv.articulo')
-            ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'art.idarticulo','art.stock', DB::raw('avg(di.precio_venta as precio_promedio)')) //esta consulta extrae el promdio del valor de venta del producto
+            ->join('detalle_ingreso as di','art.idarticulo','=','di.idarticulo')
+            ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'art.idarticulo','art.stock', DB::raw('avg(di.precio_venta) as precio_promedio')) //esta consulta extrae el promdio del valor de venta del producto
             ->where('art.estado','=','Activo')
             ->where('art.stock','>','0') // solo muestra articulos con stock en positivo
             ->groupBy('articulo','art.idarticulo','art.stock')

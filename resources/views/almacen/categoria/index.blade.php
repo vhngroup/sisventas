@@ -18,12 +18,12 @@
 	</thead>
 	@foreach ($categorias as $cat)
 	<tr>
-		<td>{{$cat->idCategoria}}</td>
+		<td>{{$cat->idcategoria}}</td>
 		<td>{{$cat->Nombre}}</td>
 		<td>{{$cat->Descripccion}}</td>
 		<td>
-			<a href="{{URL::action('CategoriaController@edit',$cat->idCategoria)}}"><button class="btn btn-info">Editar </button></a>
-			<a href="" data-target="#modal-delete-{{$cat->idCategoria}}" data-toggle="modal"><button class="btn btn-danger">Eliminar </button></a>
+			<a href="{{URL::action('CategoriaController@edit',$cat->idcategoria)}}"><button class="btn btn-info">Editar </button></a>
+			<a href="" data-target="#modal-delete-{{$cat->idcategoria}}" data-toggle="modal"><button class="btn btn-danger">Eliminar </button></a>
 		</td>
 	</tr>
 	@include('almacen.categoria.modal')

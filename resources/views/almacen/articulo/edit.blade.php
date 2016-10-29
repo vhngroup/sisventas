@@ -16,7 +16,7 @@
 		@endif
 		</div>
 </div>
-{!! Form::model($articulo,['method'=>'PATCH','route'=>['articulo.update',$articulo->idArticulo],'files'=>'true']) !!}
+{!! Form::model($articulo,['method'=>'PATCH','route'=>['articulo.update',$articulo->idarticulo],'files'=>'true']) !!}
 {{Form::token()}}
 <div class="row">	
 <div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
