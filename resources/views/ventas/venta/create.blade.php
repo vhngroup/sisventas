@@ -102,7 +102,7 @@
 	<div class="col-lg-2 col-md-2 col-dm-12 col-xs-12">
 		<div class="form-group">
 		<label for="precio_venta">Precio de venta</label>
-		<input type="number" min="0.01" step="0.01" max="2500" disabled name="pprecio_venta" id="pprecio_venta" class="form-control" placeholder="precio de venta">
+		<input type="number" disabled name="pprecio_venta" id="pprecio_venta" class="form-control" placeholder="precio de venta">
 		</div>
 	</div>
 
@@ -178,7 +178,8 @@
 
 function agregar()
 		{
-			idarticulo=$("#pidarticulo").val();
+			datosArticulo=document.getElementById('pidarticulo').value.split('_');
+			idarticulo=datosArticulo[0];
 			articulo=$("#pidarticulo option:selected").text();
 			cantidad=$("#pcantidad").val();
 			impuesto=$("#piimpuesto option:selected").val(); 

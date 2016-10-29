@@ -8,12 +8,12 @@ class Articulo extends Model
 {
   protected $table = 'articulo';
 
-    protected $primaryKey = 'idArticulo';
+    protected $primaryKey = 'idarticulo';
 
     public $timestamps=false;
 
     protected $fillable =[
-	'idCategoria',
+	'idcategoria',
 	'codigo',
 	'nombre',
 	'stock',

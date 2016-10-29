@@ -28,12 +28,12 @@
 <div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
 			<label>Categoria</label>
-			<select name="idCategoria" class="form-control">
+			<select name="idcategoria" class="form-control">
 			@foreach($categoria as $cat)
-				@if ($cat->idCategoria==$articulo->idCategoria)
-				<option value="{{$cat->idCategoria}}"selected> {{$cat->Nombre}} </option>
+				@if ($cat->idcategoria==$articulo->idcategoria)
+				<option value="{{$cat->idcategoria}}"selected> {{$cat->Nombre}} </option>
 				@else
-				<option value="{{$cat->idCategoria}}"> {{$cat->Nombre}} </option>
+				<option value="{{$cat->idcategoria}}"> {{$cat->Nombre}} </option>
 				@endif
 			@endforeach
 			</select>

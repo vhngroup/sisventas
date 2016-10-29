@@ -24,11 +24,11 @@ class ArticuloController extends Controller
     	{
     		$query=trim($request->get('searchText'));
     		$articulos=DB::table('articulo as a')
-    		->join ('categoria as c','a.idCategoria','=','c.idCategoria')
-			->select('a.idArticulo','a.nombre', 'a.codigo', 'a.stock', 'c.nombre as categoria','a.descripccion', 'a.imagen', 'a.estado')
+    		->join ('categoria as c','a.idcategoria','=','c.idcategoria')
+			->select('a.idarticulo','a.nombre', 'a.codigo', 'a.stock', 'c.nombre as categoria','a.descripccion', 'a.imagen', 'a.estado')
     		->where('a.nombre','LIKE','%'.$query.'%')
     		->orwhere('a.codigo','LIKE','%'.$query.'%')
-    		->orderBy('a.idArticulo','desc')
+    		->orderBy('a.idarticulo','desc')
     		->paginate(7);
     		return view('almacen.articulo.index',["articulos"=>$articulos,"searchText"=>$query]);
     	}
@@ -43,7 +43,7 @@ class ArticuloController extends Controller
     public function store (ArticuloFormRequest $request)
     {
 		$articulo=new Articulo;
-		$articulo->idcategoria=$request->get('idCategoria');
+		$articulo->idcategoria=$request->get('idcategoria');
 		$articulo->codigo=$request->get('codigo');
 		$articulo->nombre=$request->get('nombre');
 		$articulo->stock=$request->get('stock');
@@ -74,7 +74,7 @@ class ArticuloController extends Controller
 	public function update(ArticuloFormRequest $request, $id)
 	{
 		$articulo =Articulo::findOrFail($id);
-		$articulo->idcategoria=$request->get('idCategoria');
+		$articulo->idcategoria=$request->get('idcategoria');
 		$articulo->codigo=$request->get('codigo');
 		$articulo->nombre=$request->get('nombre');
 		$articulo->stock=$request->get('stock');
