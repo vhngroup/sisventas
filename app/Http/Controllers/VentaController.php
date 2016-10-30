@@ -7,8 +7,8 @@ use sisventas\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use sisventas\Http\Requests\VentaFormRequest;
-use sisventas\Venta;
-use sisventas\DetalledeVenta;
+use sisventas\venta;
+use sisventas\detalledeventa; 
 
 use DB;
 use Carbon\Carbon;
@@ -71,16 +71,16 @@ class VentaController extends Controller
                 $venta->estado='A';
                 $venta->anticipo=$request->get('anticipo');
                 //$venta->idproyecto=$request->get('idproyecto');
-    			$venta->save();
-
+    		       $venta->save();
     			$idarticulo=$request->get('idarticulo');
     			$cantidad=$request->get('cantidad');
     			$descuento=$request->get('descuento');
     			$precio_venta=$request->get('precio_venta');
-
     			$cont=0;
-    			While($cont < count($idarticulo)){
-    				$detalles=new DetalledeVenta();
+                   
+    			While($cont < count($idarticulo))
+                {
+    				$detalles=new detalledeventa();
     				$detalles->idventa=$venta->idventa;
     				$detalles->idarticulo=$idarticulo[$cont];
     				$detalles ->cantidad=$cantidad[$cont];
@@ -90,14 +90,14 @@ class VentaController extends Controller
     				$cont=$cont+1;
     			}
     			DB::commit();
-    		}
-    catch(\Exception $e)
-    {
+        		}
+                catch(\Exception $e)
+                {
 
-			DB::rollback();
-   		}
-          return Redirect::to('ventas/venta');
-    	}
+			    DB::rollback();
+                }   
+                return Redirect::to('ventas/venta');
+    	      }
 
     	public function show($id)
     	{
@@ -110,7 +110,7 @@ class VentaController extends Controller
 
     		$detalles=DB::table('detalledeventa as dv')
     		->join('articulo as a','dv.idarticulo','=','a.idarticulo')
-    		->select('a.nombre as articulo','d.cantidad','dv.descuento','dv.precio_venta')
+    		->select('a.nombre as articulo','dv.cantidad','dv.descuento','dv.precio_venta')
 			->where('dv.idventa',$id)
 			->get();
 		return view('ventas.venta.show',["venta"=>$venta,"detalles"=>$detalles]);

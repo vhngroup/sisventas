@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class DetalledeVenta extends Model
 {
-    protected $table = '';
+    protected $table = 'detalledeventa';
 
-    protected $primaryKey = 'detalledeventa';
+    protected $primaryKey = 'iddetalledeventa';
 
     public $timestamps=false;
 

@@ -8,7 +8,7 @@ class Venta extends Model
 {
      protected $table = 'venta';
 
-    protected $primaryKey = 'idiventa';
+    protected $primaryKey = 'idventa';
 
     public $timestamps=false;
 
@@ -16,14 +16,13 @@ class Venta extends Model
 	'idcliente',
 	'tipo_comprobante',
 	'serie_comprobante',
-	'numero_comprobante',
+	'num_comprobante',
 	'fecha_hora',
 	'impuesto',
 	'total_venta',
 	'estado',
 	'idproyecto',
 	'anticipo'
-
 	];
 
     protected $guarded = [
