@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 Route::resource('almacen/categoria','CategoriaController');
@@ -22,3 +22,7 @@ Route::resource('ventas/venta','VentaController');
 Route::resource('banco','CuentaController');
 Route::resource('compras/proveedor','ProveedorController');
 Route::resource('compras/ingreso','IngresoController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');
