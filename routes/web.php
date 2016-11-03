@@ -22,6 +22,8 @@ Route::resource('ventas/venta','VentaController');
 Route::resource('banco','CuentaController');
 Route::resource('compras/proveedor','ProveedorController');
 Route::resource('compras/ingreso','IngresoController');
+Route::resource('seguridad/usuario','UsuarioController');
+Route::get('/logout', 'Auth\LoginController@logout');
 
 Auth::routes();
 

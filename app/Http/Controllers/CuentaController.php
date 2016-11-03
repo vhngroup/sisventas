@@ -14,6 +14,7 @@ class CuentaController extends Controller
     public function __construct()
     {
 
+		$this->middleware('auth');
     }
 
     public function index(Request $request)
@@ -36,7 +37,7 @@ class CuentaController extends Controller
 
     public function store (CuentaFormRequest $request)
     {
-		$cuenta =new Cuenta;
+		$cuenta =new cuenta;
 		$cuenta ->idbanco=$request->get('nombre');
 		$cuenta ->idtipodecuenta=$request->get('tipo_documento');
 		$cuenta ->numerodecuenta=$request->get('num_documento');
