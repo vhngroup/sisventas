@@ -4,11 +4,11 @@ namespace sisventas;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Venta extends Model
+class Cotizacion extends Model
 {
-     protected $table = 'venta';
+    protected $table = 'cotizacion';
 
-    protected $primaryKey = 'idventa';
+    protected $primaryKey = 'idcotizacion';
 
     public $timestamps=false;
 
@@ -22,15 +22,10 @@ class Venta extends Model
 	'total_venta',
 	'estado',
 	'idproyecto',
-	'anticipo'
-	];
-
-    protected $guarded = [
+	'anticipo',
+	'descripccion',
     ];
 
-public function venta()
-{
-	//return $this->hasMany('sisventas\DetalledeVenta', 'idarticulo', 'cantidad','descuento','precio_venta');
-}
-
+    protected $guarded = [
+    ]; 
 }

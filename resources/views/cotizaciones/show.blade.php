@@ -4,38 +4,24 @@
 	<div class="col-lg-12 col-md-6 col-dm-12 col-xs-12">
 		<div class="form-group">
 			  <label for="nombre">Cliente</label>
-            <p>{{$venta->nombre}}</p>
+            <p>{{$cotizacion->nombre}}</p>
 			</select>
 		</div>
 	</div>
-
-	<div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
-		<div class="form-group">
-			<label>Tipo de Comprobante</label>
-			<p>{{$venta->tipo_comprobante}}</p>
-		</div>
-	</div>
-
 	<div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
 		<div class="form-group">
 				<label for="serie_comprobante">Serie Comprobante</label>
-				<p>{{$venta->serie_comprobante}}</p>
+				<p>{{$cotizacion->serie_comprobante}}</p>
 		</div>
 	</div>
 
 	<div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
 		<div class="form-group">
 				<label for="numero_comprobante">Numero de Comprobante</label>
-				<p>{{$venta->num_comprobante}}</p>
+				<p>{{$cotizacion->num_comprobante}}</p>
 		</div>
 	</div>	
 
-	<div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
-		<div class="form-group">
-				<label for="anticipo">Anticipo</label>
-				<p>{{$venta->anticipo}}</p>
-		</div>
-	</div>
 </div>	
 
 <div class="row">
@@ -48,7 +34,7 @@
 				<thead style="background-color:#caf5a9">
 					<th>Articulo</th>
 					<th>Cantidad</th>
-					<th>Precio Venta</th>
+					<th>Precio cotizacion</th>
 					<th>descuento</th>
 					<th>Subtotal</th>
 				</thead>
@@ -58,7 +44,7 @@
 					<th></th>
 					<th></th>
 					<th></th>
-					<th><h4 id="total">{{$venta->total_venta}}</h4></th>
+					<th><h4 id="total">{{$cotizacion->total_venta}}</h4></th>
 			</tfoot>
 		<tbody>
 			@foreach($detalles as $det)
@@ -73,7 +59,7 @@
 		</tbody>
 		</table>
 		</div>
-		 <a href="{{URL::action('VentaController@show',$venta->idventa)}}"><button class="btn btn-primary">Imprimir</button></a>
+		 <a href="{{URL::action('CotizacionController@reporte',$cotizacion->idcotizacion)}}"><button class="btn btn-primary">Imprimir</button></a>
 	</div>
 	</div>
 	</div>

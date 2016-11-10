@@ -12,7 +12,7 @@ use sisventas\Articulo;
 use DB;
 
 class ArticuloController extends Controller
-{
+{ 
    public function __construct()
     {
 	$this->middleware('auth');
@@ -25,7 +25,7 @@ class ArticuloController extends Controller
     		$query=trim($request->get('searchText'));
     		$articulos=DB::table('articulo as a')
     		->join ('categoria as c','a.idcategoria','=','c.idcategoria')
-			->select('a.idarticulo','a.nombre', 'a.codigo', 'a.stock', 'c.nombre as categoria','a.descripccion', 'a.imagen', 'a.estado')
+			->select('a.idarticulo','a.nombre', 'a.codigo', 'a.stock', 'c.nombre as categoria','a.descripccion', 'a.imagen', 'a.estado', 'a.impuesto' )
     		->where('a.nombre','LIKE','%'.$query.'%')
     		->orwhere('a.codigo','LIKE','%'.$query.'%')
     		->orderBy('a.idarticulo','desc')
@@ -36,8 +36,9 @@ class ArticuloController extends Controller
     }
     public function create()
     {
+    	$impuestos=DB::table('impuesto')->where('Estado','=','A')->get();
 		$categorias=DB::table('categoria')->where('condicion','=','1')->get();
-		return view("almacen.articulo.create",["categorias"=>$categorias]);
+		return view("almacen.articulo.create",["categorias"=>$categorias, "impuestos"=>$impuestos]);
     }
 
     public function store (ArticuloFormRequest $request)
@@ -47,6 +48,7 @@ class ArticuloController extends Controller
 		$articulo->codigo=$request->get('codigo');
 		$articulo->nombre=$request->get('nombre');
 		$articulo->stock=$request->get('stock');
+		$articulo->impuesto=(float)$request->get('impuesto');
 		$articulo->descripccion=$request->get('descripccion');
 		$articulo->estado='Activo';
 
@@ -66,9 +68,10 @@ class ArticuloController extends Controller
 
 	public function edit($id)
 	{
+	$impuestos=DB::table('impuesto')->where('Estado','=','A')->get();	
 	$articulo = Articulo::findOrFail($id);
 	$categorias=DB::table('categoria')->where('condicion','=','1')->get();
-	return view("almacen.articulo.edit",["articulo"=>$articulo,"categoria"=>$categorias]);
+	return view("almacen.articulo.edit",["articulo"=>$articulo,"categoria"=>$categorias,"impuestos"=>$impuestos]);
 	}
 
 	public function update(ArticuloFormRequest $request, $id)
@@ -77,6 +80,7 @@ class ArticuloController extends Controller
 		$articulo->idcategoria=$request->get('idcategoria');
 		$articulo->codigo=$request->get('codigo');
 		$articulo->nombre=$request->get('nombre');
+		$articulo->impuesto=(float)$request->get('impuesto');
 		$articulo->stock=$request->get('stock');
 		$articulo->descripccion=$request->get('descripccion');
 		if(Input::hasFile('imagen'))

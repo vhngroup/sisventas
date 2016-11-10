@@ -26,7 +26,7 @@
       <header class="main-header">
 
         <!-- Logo -->
-        <a href="index2.html" class="logo">
+        <a href={{'almacen/categoria'}} class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>VH</b>V</span>
           <!-- logo for regular state and mobile devices -->
@@ -92,8 +92,8 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="almacen/articulo"><i class="fa fa-circle-o"></i> Artículos</a></li>
-                <li><a href="almacen/categoria"><i class="fa fa-circle-o"></i> Categorías</a></li>
+                <li><a href="{{URL::to('almacen/articulo')}}"><i class="fa fa-circle-o"></i> Artículos</a></li>
+                <li><a href="{{URL::to('almacen/categoria')}}"><i class="fa fa-circle-o"></i> Categorías</a></li>
               </ul>
             </li>
             
@@ -104,8 +104,18 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="compras/ingreso"><i class="fa fa-circle-o"></i> Ingresos</a></li>
-                <li><a href="compras/proveedor"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+                <li><a href="{{URL::to('compras/ingreso')}}"><i class="fa fa-circle-o"></i> Ingresos</a></li>
+                <li><a href="{{URL::to('compras/proveedor')}}"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-th"></i>
+                <span>Cotizaciones</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{URL::to('cotizaciones')}}"><i class="fa fa-circle-o"></i>Cotizaciones</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -115,8 +125,8 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="ventas/venta"><i class="fa fa-circle-o"></i> Ventas</a></li>
-                <li><a href="ventas/cliente"><i class="fa fa-circle-o"></i> Clientes</a></li>
+                <li><a href="{{URL::to('ventas/venta')}}"><i class="fa fa-circle-o"></i> Ventas</a></li>
+                <li><a href="{{URL::to('ventas/cliente')}}"><i class="fa fa-circle-o"></i> Clientes</a></li>
               </ul>
             </li>
                        
@@ -126,8 +136,19 @@
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="configuracion/usuario"><i class="fa fa-circle-o"></i> Usuarios</a></li>
+                <li><a href="{{URL::to('seguridad/usuario')}}"><i class="fa fa-circle-o"></i> Usuarios</a></li>
                 
+              </ul>
+            </li>
+             <li class="treeview">
+              <a href="#">
+                <i class="fa fa-th"></i>
+                <span>Reportes Generales</span>
+                 <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li> <a href="{{URL::to('pdf')}}"> <i class="fa fa-circle-o"></i> Reporte de Ventas</a></li>
+                <li class ="active"> <a href="javascript:void(0);" onclick="cargarlistado(3,1);"> 
               </ul>
             </li>
              <li>
@@ -147,11 +168,6 @@
         </section>
         <!-- /.sidebar -->
       </aside>
-
-
-
-
-
        <!--Contenido-->
       <!-- Content Wrapper. Contains page content -->
       <div class="content-wrapper">

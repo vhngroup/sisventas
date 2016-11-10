@@ -21,18 +21,10 @@
 <div class="row">	
 <div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
-			<label for="nombre">Nombre</label>
+			<label for="nombre">Nombre de la empresa</label>
 			<input type="text" name="nombre" required value="{{old('nombre')}}" class="form-control" placeholder="Nombre...">
 		</div>
 </div>
-
-<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
-	<div class="form-group">
-			<label for="nombre">Dirección</label>
-			<input type="text" name="direccion" value="{{old('direccion')}}" class="form-control" placeholder="Dirección...">
-		</div>
-</div>
-
 
 <div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
@@ -52,6 +44,13 @@
 			<input type="text" name="num_documento" value="{{old('num_documento')}}" class="form-control" placeholder="Numero de identificacion...">
 		</div>
 </div>
+
+<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+	<div class="form-group">
+			<label for="nombrecontacto">Nombre del Asesor</label>
+			<input type="text" name="nombrecontacto" value="{{old('nombrecontacto')}}" class="form-control" placeholder="nombre del contacto...">
+		</div>
+</div>
 <div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
 			<label for="telefono">Telefono</label>
@@ -60,10 +59,23 @@
 </div>
 <div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
+			<label for="nombre">Dirección</label>
+			<input type="text" name="direccion" value="{{old('direccion')}}" class="form-control" placeholder="Dirección...">
+		</div>
+</div>
+<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+	<div class="form-group">
 			<label for="email">Email</label>
 			<input type="email" name="email" value="{{old('email')}}" class="form-control" placeholder="email...">
 		</div>
 </div>
+<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+	<div class="form-group">
+			<label for="notas">Notas</label>
+			<input type="notas" name="email" value="{{old('notas')}}" class="form-control" placeholder="notas...">
+		</div>
+</div>
+
 <div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
 			<button class="btn btn-primary" type="submit">Guardar</button>

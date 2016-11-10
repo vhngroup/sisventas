@@ -3,8 +3,8 @@
 @section ('contenido')
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-dm-8 col-xs-12">
-	<h3> Listado de ventas <a href="venta/create"><button class="btn btn-success">Nuevo</button></a></h3>
-	@include('ventas.venta.search')
+	<h3> Listado de cotizaciones <a href="cotizaciones/create"><button class="btn btn-success">Nuevo</button></a></h3>
+	@include('cotizaciones.search')
 	</div>
 </div>
 <div class="row">
@@ -20,25 +20,25 @@
 		<th>Estado</th>
 		<th>Opcciones</th>
 	</thead>
-	@foreach($ventas as $ven)
+	@foreach($cotizacion as $ven)
 	<tr>
 		<td>{{$ven->fecha_hora}}</td>
 		<td>{{$ven->nombre}}</td>
-		<td>{{$ven->tipo_comprobante.': '.$ven->serie_comprobante.'-'.$ven->num_comprobante}}</td>
+		<td>{{$ven->serie_comprobante.'-'.$ven->num_comprobante}}</td>
 		<td>{{$ven->impuesto}}</td>
 		<td>{{$ven->total_venta}}</td>
 		<td>{{$ven->estado}}</td>
 		<td>
-			<a href="{{URL::action('VentaController@show',$ven->idventa)}}"><button class="btn btn-primary">Detalles</button></a>
-			<a href="" data-target="#modal-delete-{{$ven->idventa}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a> 
-		    <a href="{{URL::action('VentaController@show',$ven->idventa)}}"><button class="btn btn-primary">Imprimir</button></a>
+			<a href="{{URL::action('CotizacionController@show',$ven->idcotizacion)}}"><button class="btn btn-primary">Detalles</button></a>
+			<a href="" data-target="#modal-delete-{{$ven->idcotizacion}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a>
+		   	<a href="{{URL::action('CotizacionController@reporte',$ven->idcotizacion)}}"><button class="btn btn-primary">Imprimir</button></a>
 		</td>
 	</tr>
-	@include('ventas.venta.modal')	
+	@include('cotizaciones.modal')		
 	@endforeach
 	</table>
 	</div>
-	{{$ventas->render()}}
+	{{$cotizacion->render()}}
 	</div>	
 </div>
 @endsection

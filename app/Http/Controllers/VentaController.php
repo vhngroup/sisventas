@@ -43,6 +43,9 @@ class VentaController extends Controller
 
     	public function create()
     	{
+            
+            $idventa=DB::table('venta')->max('idventa')+1; //as incredible
+
     		$impuestos=DB::table('impuesto')->where('Estado','=','A')->get(); 
             $personas=DB::table('persona')->where('tipo_persona','=','cliente')->get(); //si el provedor tambien es cliente, retirara el where
             $articulos=DB::table('articulo as art')
@@ -52,7 +55,7 @@ class VentaController extends Controller
             ->where('art.stock','>','0') // solo muestra articulos con stock en positivo
             ->groupBy('articulo','art.idarticulo','art.stock')
     		->get();
-			return view('ventas.venta.create',["personas"=>$personas,"articulos"=>$articulos,"impuestos"=>$impuestos]);
+			return view('ventas.venta.create',["personas"=>$personas,"articulos"=>$articulos,"impuestos"=>$impuestos, "idventa"=>$idventa]);
        	}
 
        		public function store(VentaFormRequest $request)

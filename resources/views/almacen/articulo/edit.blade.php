@@ -39,23 +39,33 @@
 			</select>
 		</div>
 </div>
-<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+<div class="col-lg-4 col-md-4 col-dm-4 col-xs-12">
 	<div class="form-group">
 			<label for="codigo">codigo</label>
 			<input type="text" name="codigo" required value="{{$articulo->codigo}}" class="form-control">
 	</div>
 </div>
 
-<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+<div class="col-lg-4 col-md-4 col-dm-4 col-xs-12">
 	<div class="form-group">
 			<label for="stock">Stock</label>
 			<input type="text" name="stock" required value="{{$articulo->stock}}" class="form-control">
 		</div>
 </div>
-<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+<div class="col-lg-4 col-md-4 col-dm-4 col-xs-12">
+	<div class="form-group">
+			<label for="impuesto">impuesto</label>
+			<select name="impuesto" id="impuesto" class="form-control">
+			@foreach($impuestos as $impuesto)
+			<option selected="{{$articulo->impuesto}}" value="{{$impuesto->porcentaje}}">{{$impuesto->descripccion}}</option>
+			@endforeach
+			</select>
+		</div>
+</div>
+<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
 	<div class="form-group">
 			<label for="descripccion">Descripcción</label>
-			<input type="text" name="descripccion" value="{{$articulo->descripccion}}" class="form-control" placeholder="Descripccion del articulo">
+			<textarea type="text" id="descripccion" name="descripccion" class="form-control" placeholder="Descripccion del articulo" rows="2">{{$articulo->descripccion}}</textarea>
 		</div>
 </div>
 <div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
@@ -73,6 +83,8 @@
 			<button class="btn btn-danger" type="reset">Cancelar</button>
 	</div>
 </div>	
+
+
 </div>		
 {!!Form::close()!!}
 @endsection

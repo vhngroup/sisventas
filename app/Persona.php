@@ -21,6 +21,7 @@ class Persona extends Model
 	'telefono',
 	'email',
 	'telefono',
+	'Notas',
     ];
 
     protected $guarded = [

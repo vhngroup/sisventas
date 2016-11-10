@@ -26,9 +26,13 @@ class ProveedorController extends Controller
     		$personas=DB::table('persona')
     		->where('nombre','LIKE','%'.$query.'%')
     		->where('tipo_persona','=','Proveedor')
+    		->orwhere('nombrecontacto','LIKE','%'.$query.'%')
+    		->where('tipo_persona','=','Proveedor')
     		->orwhere('num_documento','LIKE','%'.$query.'%')
     		->where('tipo_persona','=','Proveedor')
     		->orwhere('telefono','LIKE','%'.$query.'%')
+    		->where('tipo_persona','=','Proveedor')
+    		->orwhere('Notas','LIKE','%'.$query.'%')
     		->where('tipo_persona','=','Proveedor')
     		->orderBy('idPersona','desc')
     		->paginate(7);
@@ -52,6 +56,7 @@ class ProveedorController extends Controller
 		$persona ->telefono=$request->get('telefono');
 		$persona ->email=$request->get('email');
 		$persona ->cuenta='No';
+		$persona ->notas=$request->get('notas');
 		$persona ->save();
 		return Redirect::to('compras/proveedor');
     }
@@ -75,6 +80,7 @@ class ProveedorController extends Controller
 		$persona ->direccion=$request->get('direccion');
 		$persona ->telefono=$request->get('telefono');
 		$persona ->email=$request->get('email');
+		$persona ->notas=$request->get('notas');
 		$persona ->update();
 		return Redirect::to('compras/proveedor');
 	}

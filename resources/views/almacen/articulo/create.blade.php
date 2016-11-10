@@ -35,26 +35,38 @@
 			</select>
 		</div>
 </div>
-<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+<div class="col-lg-4 col-md-4 col-dm-4 col-xs-12">
 	<div class="form-group">
 			<label for="codigo">codigo</label>
 			<input type="text" name="codigo" required value="{{old('codigo')}}" class="form-control" placeholder="Codigo del articulo...">
 		</div>
 </div>
-<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+<div class="col-lg-4 col-md-4 col-dm-4 col-xs-12">
 	<div class="form-group">
 			<label for="stock">Stock</label>
 			<input type="text" name="stock" required value="{{old('stock')}}" class="form-control" placeholder="Stok del articulo...">
 		</div>
 </div>
-<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+
+<div class="col-lg-4 col-md-4 col-dm-4 col-xs-12">
 	<div class="form-group">
-			<label for="descripccion">Descripcción</label>
-			<input type="text" name="descripccion" value="{{old('descripccion')}}" class="form-control" placeholder="Descripccion del articulo...">
+		<label for="impuesto">impuesto</label>
+			<select name="impuesto" id="impuesto" class="form-control">
+			@foreach($impuestos as $impuesto)
+			<option value= "{{$impuesto->porcentaje}}">{{$impuesto->descripccion}}</option>
+			@endforeach
+			</select>
 		</div>
+	</div>
+<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
+	<div class="form-group"> 
+			<label for="descripccion">Descripcción</label>
+			<textarea type="text" name="descripccion" value="{{old('descripccion')}}" class="form-control" placeholder="Descripccion del articulo..."></textarea>
+		</div>
+		
 </div>
 
-<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
 	<div class="form-group">
 			<label for="imagen">Imagen</label>
 			<input type="file" name="imagen"  class="form-control">

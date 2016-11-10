@@ -44,18 +44,19 @@
 <div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
 	<div class="form-group">
 			<label for="serie_comprobante">Serie Comprobante</label>
-			<input type="text" name="serie_comprobante" value="{{old('serie_comprobante')}}" class="form-control" placeholder="Serie de comprobante...">
+			<input type="text" name="serie_comprobante" readonly value="<?php echo date("Y-m-d");?>" class="form-control" placeholder="Serie de comprobante...">
 	</div>
 </div>
 
 	<div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
 		<div class="form-group">
 				<label for="num_comprobante">Numero de Comprobante</label>
-				<input type="text" name="num_comprobante" required value="{{old('num_comprobante')}}" class="form-control" placeholder="Numero de comprobante...">
+				<input type="text" name="num_comprobante" required readonly value= "{{$idventa}}" class="form-control" placeholder="Numero de comprobante...">
 		</div>
 	</div>	
 
 <div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
+
 		<div class="form-group">
 				<label for="anticipo">Anticipo</label>
 				<input type="text" name="anticipo" required value="{{old('anticipo')}}" class="form-control" placeholder="Valor anticipo...">
@@ -86,7 +87,7 @@
 	<div class="col-lg-2 col-md-2 col-dm-12 col-xs-12">
 		<div class="form-group">
 		<label for="pstock">Stock</label>
-		<input type="number" disabled name="pstock" id="pstock" class="form-control" placeholder="Stock">
+		<input type="number" readonly name="pstock" id="pstock" class="form-control" placeholder="Stock">
 		</div>
 	</div>
 	<div class="col-lg-2 col-md-2 col-dm-12 col-xs-12">
@@ -102,7 +103,7 @@
 	<div class="col-lg-2 col-md-2 col-dm-12 col-xs-12">
 		<div class="form-group">
 		<label for="precio_venta">Precio de venta</label>
-		<input type="number" disabled name="pprecio_venta" id="pprecio_venta" class="form-control" placeholder="precio de venta">
+		<input type="number" readonly name="pprecio_venta" id="pprecio_venta" class="form-control" placeholder="precio de venta">
 		</div>
 	</div>
 
@@ -167,7 +168,7 @@
 
 		$(document).on('ready',function(){
 		$('select[name=pidarticulo]').val(1);
-			$('.selectpicker').selectpicker('refresh')
+		$('.selectpicker').selectpicker('refresh')
 			mostrarValores();
 		});
 		
@@ -241,7 +242,7 @@ function evaluar()
 		}	
 	}
 	function eliminar(index){
-	total=total+subtotal[index];
+	total=total-subtotal[index];
 	$('#total').html("$/. "+total);
 	$('#total_venta').val(total);
 	$('#fila'+index).remove();
@@ -250,4 +251,6 @@ function evaluar()
 </script>
 @endpush
 @endsection
+
+
 

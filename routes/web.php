@@ -23,8 +23,14 @@ Route::resource('banco','CuentaController');
 Route::resource('compras/proveedor','ProveedorController');
 Route::resource('compras/ingreso','IngresoController');
 Route::resource('seguridad/usuario','UsuarioController');
+Route::resource('cotizaciones','CotizacionController');
+Route::get('cotizaciones/reporte/{id}', 'CotizacionController@reporte');
 Route::get('/logout', 'Auth\LoginController@logout');
+Route::resource('/pdf','PdfController@index');
+Route::get('crear_reporte_porventa/{tipo}','PdfController@crear_reporte_porventa');
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/{slug?}', 'HomeController@index');

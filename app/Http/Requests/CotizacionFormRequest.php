@@ -4,7 +4,7 @@ namespace sisventas\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ArticuloFormRequest extends FormRequest
+class CotizacionFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,16 @@ class ArticuloFormRequest extends FormRequest
     public function rules()
     {
         return [
-             'idcategoria' =>'required',
-             'impuesto' =>'required',
-             'codigo' =>'required |max:50',
-             'nombre'=>'required |max:200',
-             'stock'=>'required |numeric',
-             'descripccion'=>'max:500',
-             'imagen'=>'mimes:jpeg,jpg,bmp,png'
+    'idcliente'=>'required',
+    'tipo_comprobante'=>'required|max:20',
+    'serie_comprobante' =>'max:7',
+    'num_comprobante' =>'required|max:10',
+    'idarticulo'=>'required',
+    'cantidad'=>'required',
+    'precio_venta'=>'required',
+    'descuento'=>'required',
+    'total_venta'=>'required',  
+    'descripccion'=>'required',  
         ];
     }
 }
