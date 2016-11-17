@@ -28,4 +28,9 @@ class Cotizacion extends Model
 
     protected $guarded = [
     ]; 
+
+     //public function cotizaciones()
+    //{
+      //  return $this->hasMany('App\User', detallecotizacion, idcotizacion);
+    //}
 }

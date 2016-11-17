@@ -1,157 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Reporte Por Pais</title>
-<style>
- 
- .col-md-12 {
-    width: 100%;
-} 
-
-.box {
-    position: relative;
-    border-radius: 3px;
-    background: #ffffff;
-    border-top: 3px solid #d2d6de;
-    margin-bottom: 20px;
-    width: 100%;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-    background-color: #ECF0F5;
-}
-
-.box-header {
-    color: #444;
-    display: block;
-    padding: 10px;
-    position: relative;
-}
-
-.box-header.with-border {
-    border-bottom: 1px solid #f4f4f4;
-}
-
-
-.box-header .box-title {
-    display: inline-block;
-    font-size: 18px;
-    margin: 0;
-    line-height: 1;
-}
-
-.box-body {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    padding: 10px;
-
-}
-
-
-.box-footer {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    border-top: 1px solid #f4f4f4;
-    padding: 10px;
-    background-color: #fff;
-}
-
-
-.table-bordered {
-    border: 1px solid #f4f4f4;
-}
-
-
-.table {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 20px;
-}
-
-table {
-    background-color: transparent;
-}
-
- .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
-    border: 1px solid #f4f4f4;
-}
-
-
-.badge {
-    display: inline-block;
-    min-width: 10px;
-    padding: 3px 7px;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    background-color: #777;
-    border-radius: 10px;
-}
-
-.bg-red {
-    background-color: #dd4b39 !important;
-}
-
-
-</style>
-    
-</head>
-<body>
-
-<div class="col-md-12">
-              <div class="box">
-                <div class="box-header with-border">
-                  <h3 class="box-title">Cotización Numero- <?=  $date; ?></h3>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <table class="table table-bordered">
-                  <thead>
-                     <tr>
-                      <th style="width: 40px">Cotización #</th>
-                      <th style="width: 40px">Fecha</th>
-                      <th style="width: 40px">Cliente</th>
-                      <th style="width: 40px">Nit</th>
-                      <th style="width: 40px">Telefono</th>
-                      <th style="width: 40px">Persona de Contacto</th>
-                      <th style="width: 40px">Estado</th>
-                      <th style="width: 40px">Valor</th>
-                    </tr>
-                  </thead>
-                    <tbody>
-                  <?php foreach($cotizacion as $c){ ?>
-                      <tr>
-                      <td style="width: 10px" ><?= $c->idventa; ?></td>
-                      <td style="width: 10px" ><?= $c-> tipo_comprobante; ?></td>
-                      <td style="width: 10px" ><?= $c-> fecha_hora; ?></td>
-                      <td style="width: 10px" ><?= $c-> idcliente; ?></td>
-                      <td style="width: 10px" ><?= $c-> estado; ?></td>
-                      <td style="width: 10px" ><?= $c-> total_venta; ?></td>
-                    </tr>
-                    
-                    <?php  } ?>
-                    
-                  </tbody>
-
-                  </table>
-                </div><!-- /.box-body -->
-                <div class="box-footer clearfix">
-                  
-                </div>
-              </div><!-- /.box -->
-
-              
-            </div>
-
-
-  
+  <head>
+    <meta charset="utf-8">
+    <title>Propuesta de cotización # $cotizacion->idcotizacion</title>
+    <link rel="stylesheet" href="css\style.css" media="all" />  
+  </head>
+  <body>
+    <header class="clearfix">
+      <div id="logo">
+        <img src="imagenes\logo.png">
+      </div>
+      <h1>Cotizacion # {{$cotizacion->num_comprobante}}{{$cotizacion->serie_comprobante}}-{{$cotizacion->idcotizacion}}</h1>
+     </header>
+    <main>  
+<table>
+   <thead>
+       <tr>
+            <th class="service">SERVICE</th>
+            <th class="desc">DESCRIPTION</th>
+            <th>PRICE</th>
+            <th>QTY</th>
+            <th>TOTAL</th>
+          </tr>
+        </thead>
+   <tbody>
+@foreach($detalle as $det)
+      <tr>
+        <td class="service">{{$det->codigo}}</td>
+        <td> <img src="imagenes\articulos\{{$det->imagen}}"> </td>
+        <td class="service">{{$det->descripccion}}</td>
+        <td class="unit">{{$det->precio_venta}}</td>
+        <td class="qty">{{$det->cantidad}}</td>
+        <td class="total">{{($det->cantidad*$det->precio_venta)}}</td>
+      </tr>
+         @endforeach
+      <tr>
+            <td colspan="5">SUBTOTAL</td>
+            <td class="total">$5,200.00</td>
+          </tr>
+          <tr>
+            <td colspan="5">Impuestos</td>
+            <td class="total">$1,300.00</td>
+          </tr>
+          <tr>
+            <td colspan="5" class="grand total">GRAND TOTAL</td>
+            <td class="grand total">0</td>
+      </tr>
+     </tbody>
+</table>
+<div id="notices">
+        <div>NOTICE:</div>
+        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+      </div>
+    </main>
+    <footer>
+      Invoice was created on a computer and is valid without the signature and seal.
+    </footer>
 </body>
 </html>
 
+
+
+  
 

@@ -55,9 +55,9 @@
 <div class="col-lg-4 col-md-4 col-dm-4 col-xs-12">
 	<div class="form-group">
 			<label for="impuesto">impuesto</label>
-			<select name="impuesto" id="impuesto" class="form-control">
+			<select name="impuesto" id="impuesto" selected="{{$articulo->impuesto}}" class="form-control">
 			@foreach($impuestos as $impuesto)
-			<option selected="{{$articulo->impuesto}}" value="{{$impuesto->porcentaje}}">{{$impuesto->descripccion}}</option>
+			<option value="{{$articulo->impuesto}}">{{$impuesto->porcentaje}}</option>
 			@endforeach
 			</select>
 		</div>

@@ -6,7 +6,7 @@
 	@if(count($errors)>0)
 		<div class="alert alert-danger">
 			<ul>
-				@foreach ($errors-> all() as $error)
+				@foreach ($errors-> all() as $error) 
 					<li>
 					{{$error}}
 					</li>
@@ -44,14 +44,14 @@
 <div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
 	<div class="form-group">
 			<label for="serie_comprobante">Serie Comprobante</label>
-			<input type="text" name="serie_comprobante" value="{{old('serie_comprobante')}}" class="form-control" placeholder="Serie de comprobante...">
+			<input type="text" name="serie_comprobante" readonly value="<?php echo date("Y-m-d");?>" class="form-control" placeholder="Serie de comprobante...">
 	</div>
 </div>
 
 	<div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
 		<div class="form-group">
 				<label for="numero_comprobante">Numero de Comprobante</label>
-				<input type="text" name="numero_comprobante" required value="{{old('numero_comprobante')}}" class="form-control" placeholder="Numero de comprobante...">
+				<input type="text" name="numero_comprobante" required readonly value= "{{$iingreso}}" class="form-control" placeholder="Numero de comprobante...">
 		</div>
 	</div>	
 

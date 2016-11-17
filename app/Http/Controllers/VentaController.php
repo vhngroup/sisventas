@@ -108,7 +108,7 @@ class VentaController extends Controller
     		$venta=DB::table('venta as v')
     		->join('persona as p','v.idcliente','=','p.idpersona')
     		->join('detalledeventa as dv','v.idventa','=','dv.idventa')
-    		->select('v.idventa','v.fecha_hora','p.nombre','v.tipo_comprobante','v.serie_comprobante','v.num_comprobante','v.impuesto','v.anticipo','v.estado','v.total_venta')
+    		->select('v.idventa','v.fecha_hora','p.nombre','v.tipo_comprobante','v.serie_comprobante','v.num_comprobante','v.impuesto','v.anticipo','v.estado','v.total_venta','v.condiciones')
     		->where('v.idventa','=',$id)
             ->first();    
 
@@ -119,6 +119,27 @@ class VentaController extends Controller
 			->get();
 		return view('ventas.venta.show',["venta"=>$venta,"detalles"=>$detalles]);
     	}
+
+        public function crear_pdf($id)
+     {
+            $venta=DB::table('venta as v')
+            ->join('persona as p','v.idcliente','=','p.idpersona')
+            ->join('detalledeventa as dv','v.idventa','=','dv.idventa')
+            ->select('v.idventa','v.fecha_hora','p.nombre','v.serie_comprobante','v.num_comprobante','v.descripccion','v.estado','v.total_venta','v.condiciones')
+            ->where('v.idventa','=',$id)
+            ->first(); 
+
+            $detalle=DB::table('detalledeventa as dv')
+            ->join('articulo as a','dv.idarticulo','=','a.idarticulo')
+            ->select('a.nombre as articulo','a.codigo','a.imagen', 'a.descripccion','dv.cantidad','dv.descuento','dv.precio_venta')
+            ->where('idventa',$id)
+            ->get();
+
+             $date = date('Y-m-d');
+             $pdf=  \PDF::loadview('ventas.venta.reporte',["detalle"=>$detalle, "venta"=>$venta]) ->setPaper('letter', 'portrait');
+           return $pdf->stream('reporte.pdf');
+    }
+    
 
     	public function destroy($id)
     	{

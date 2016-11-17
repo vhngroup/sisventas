@@ -30,7 +30,7 @@ class IngresoFormRequest extends FormRequest
     'precio_venta'=>'required',
     'idproveedor'=>'required',
     'tipo_comprobante'=>'required|max:20',
-    'serie_comprobante' =>'required|max:7',
+    'serie_comprobante' =>'required|max:12',
     'numero_comprobante' =>'required|max:10',
     'anticipo' =>'required'
         ];

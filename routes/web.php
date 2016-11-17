@@ -24,12 +24,11 @@ Route::resource('compras/proveedor','ProveedorController');
 Route::resource('compras/ingreso','IngresoController');
 Route::resource('seguridad/usuario','UsuarioController');
 Route::resource('cotizaciones','CotizacionController');
-Route::get('cotizaciones/reporte/{id}', 'CotizacionController@reporte');
 Route::get('/logout', 'Auth\LoginController@logout');
-Route::resource('/pdf','PdfController@index');
-Route::get('crear_reporte_porventa/{tipo}','PdfController@crear_reporte_porventa');
-
-
+Route::resource('/pdf','PdfController@index'); 
+Route::get('crear_reporte_porventa/{tipo}','PdfController@crear_reporte_porventa'); 
+Route::get('/cotizacion/reporte/{id}', 'CotizacionController@crear_pdf');
+Route::get('/ventas/venta/reporte/{id}', 'VentaController@crear_pdf');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');

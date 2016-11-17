@@ -68,8 +68,8 @@ class ArticuloController extends Controller
 
 	public function edit($id)
 	{
-	$impuestos=DB::table('impuesto')->where('Estado','=','A')->get();	
 	$articulo = Articulo::findOrFail($id);
+	$impuestos=DB::table('impuesto')->where('Estado','=','A')->get();
 	$categorias=DB::table('categoria')->where('condicion','=','1')->get();
 	return view("almacen.articulo.edit",["articulo"=>$articulo,"categoria"=>$categorias,"impuestos"=>$impuestos]);
 	}
@@ -80,7 +80,7 @@ class ArticuloController extends Controller
 		$articulo->idcategoria=$request->get('idcategoria');
 		$articulo->codigo=$request->get('codigo');
 		$articulo->nombre=$request->get('nombre');
-		$articulo->impuesto=(float)$request->get('impuesto');
+		$articulo->impuesto=(float)$request->get('impuesto'); 
 		$articulo->stock=$request->get('stock');
 		$articulo->descripccion=$request->get('descripccion');
 		if(Input::hasFile('imagen'))

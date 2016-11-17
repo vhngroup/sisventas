@@ -29,7 +29,6 @@
                       <td>Reporte de ventas</td>
                       <td><a href="crear_reporte_porventa/1" target="_blank" ><button class="btn btn-block btn-primary btn-xs">Ver</button></a></td>
                       <td><a href="crear_reporte_porventa/2" target="_blank" ><button class="btn btn-block btn-success btn-xs">Descargar</button></a></td>
-                    
                     </tr>
                    
                   </tbody></table>
@@ -40,10 +39,6 @@
 
  {!!Form::close()!!}  
     @push ('scripts')
-    <script>
-    function cargarlistado(Listado) {
-      if(listado==1){var url="reporte";}
-    }
-    </script>
+   
     @endpush
     @endsection

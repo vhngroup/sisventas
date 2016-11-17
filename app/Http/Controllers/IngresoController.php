@@ -42,14 +42,14 @@ class IngresoController extends Controller
     }
 
         public function create()
-        {
+        {   $iingreso=DB::table('ingreso')->max('idingreso')+1;
             $impuestos=DB::table('impuesto')->where('Estado','=','A')->get();
             $personas=DB::table('persona')->where('tipo_persona','=','proveedor')->get();
             $articulos=DB::table('articulo as art')
             ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'art.idarticulo')
             ->where('art.estado','=','Activo')
             ->get();
-            return view('compras.ingreso.create',["personas"=>$personas,"articulos"=>$articulos,"impuestos"=>$impuestos]);
+            return view('compras.ingreso.create',["personas"=>$personas,"articulos"=>$articulos,"impuestos"=>$impuestos, "iingreso"=>$iingreso]);
         }
 
             public function store(IngresoFormRequest $request)
@@ -114,7 +114,7 @@ class IngresoController extends Controller
 
         public function destroy($id)
         {
-            $ingreso=Ingreso::findOrFail($id);
+            $ingreso=ingreso::findOrFail($id);
             $ingreso->Estado='C';
             $ingreso>update();
             return Redirect::to('compras/ingreso');

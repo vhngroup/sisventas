@@ -101,7 +101,7 @@
               <a href="#">
                 <i class="fa fa-th"></i>
                 <span>Compras</span>
-                 <i class="fa fa-angle-left pull-right"></i>
+                 <i class="fa fa-angle-left pull-right"></i> 
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{URL::to('compras/ingreso')}}"><i class="fa fa-circle-o"></i> Ingresos</a></li>

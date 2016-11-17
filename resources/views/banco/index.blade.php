@@ -18,7 +18,7 @@
 	</thead>
 	@foreach ($categorias as $cat)
 	<tr>
-		<td>{{$cat->idCategoria}}</td>
+		<td>{{$cat->idcategoria}}</td>
 		<td>{{$cat->Nombre}}</td>
 		<td>{{$cat->Descripccion}}</td>
 		<td>

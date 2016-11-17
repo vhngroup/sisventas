@@ -114,8 +114,7 @@
 			</div>
 	</div>
 
-	
-	<div class="col-lg-2 col-md-2 col-dm-12 col-xs-12">
+	<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
 		<div class="form-group">
 		<button class="btn btn-primary" type="button"  id="bt_agregar" onclick="agregar()">Agregar</button>
 		</div>
@@ -142,20 +141,27 @@
 				<th><h4 id="total">$/. 0.00</h4> <input type="hidden" name="total_venta" id="total_venta">
 				</th>
 			</tfoot>
-		<tbody></tbody>
+		<tbody>
+		</tbody>
 		</table>
 		</div>
 	</div>
 	</div>
 	</div>
-		<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12" id="guardar">
-					<div class="form-group">
-				<input name="_token" value="{{ csrf_token() }}" type="hidden"></input>
-						<button class="btn btn-primary"  type="submit">Guardar</button>
-						<button class="btn btn-danger" type="reset">Cancelar</button>
-					</div>
-				</div>
+<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
+		<div class="form-group">
+		<label for="condiciones">Condiciones del Servicio</label>
+		<textarea type="text" name="condiciones" id="condiciones" class="form-control" placeholder="condiciones"></textarea>
+	</div>
+</div>
+<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12" id="guardar">
+	<div class="form-group">
+	<input name="_token" value="{{ csrf_token() }}" type="hidden"></input>
+		<button class="btn btn-primary"  type="submit">Guardar</button>
+					<button class="btn btn-danger" type="reset">Cancelar</button>
+			</div>
 		</div>
+	</div>
    		{!!Form::close()!!}  
          @push ('scripts')
 		<script>

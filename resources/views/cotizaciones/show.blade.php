@@ -59,7 +59,7 @@
 		</tbody>
 		</table>
 		</div>
-		 <a href="{{URL::action('CotizacionController@reporte',$cotizacion->idcotizacion)}}"><button class="btn btn-primary">Imprimir</button></a>
+		 <a href="{{URL::action('CotizacionController@crear_pdf',$cotizacion->idcotizacion)}}"><button class="btn btn-primary">Imprimir</button></a>
 	</div>
 	</div>
 	</div>

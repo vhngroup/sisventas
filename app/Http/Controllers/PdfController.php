@@ -20,13 +20,13 @@ class PdfController extends Controller
     {
         return view("pdf.index");
     } 
+
+
       public function crearPDF($datos,$vistaurl,$tipo)
     {
-
         $data = $datos;
         $ventas=DB::table('venta as v')
          ->join('persona as p','v.idcliente','=','p.idpersona');
-         
 
         $date = date('Y-m-d');
         $view =  \View::make($vistaurl, compact('data', 'date', 'ventas'))->render();
@@ -36,13 +36,12 @@ class PdfController extends Controller
         if($tipo==2){return $pdf->download('reporte.pdf'); }
     }
 
-
     public function crear_reporte_porventa($tipo){
      //$persona->idventa=$venta->idventa;
      $vistaurl="pdf.reporte_por_venta";
      $venta=venta::all();
      return $this->crearPDF($venta, $vistaurl,$tipo);
-
+//venta = datos;
     }
     /**
      * Show the form for creating a new resource.

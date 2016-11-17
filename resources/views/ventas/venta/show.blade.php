@@ -73,10 +73,16 @@
 		</tbody>
 		</table>
 		</div>
-		 <a href="{{URL::action('VentaController@show',$venta->idventa)}}"><button class="btn btn-primary">Imprimir</button></a>
+		 </div>
 	</div>
 	</div>
+	<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
+		<div class="form-group">
+				<label for="condiciones">Condiciones del Servicio</label>
+				<p>{{$venta->condiciones}}</p>
+		</div>
 	</div>
+	<a href="{{URL::action('VentaController@show',$venta->idventa)}}"><button class="btn btn-primary">Imprimir</button></a>
 </div>
 @endsection
 

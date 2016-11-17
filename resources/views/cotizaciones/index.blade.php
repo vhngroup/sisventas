@@ -1,4 +1,3 @@
-
 @extends ('layouts.admin')
 @section ('contenido')
 <div class="row">
@@ -14,8 +13,8 @@
 	<thead>
 		<th>Fecha</th>
 		<th>Cliente</th>
+		<th>Alcance</th>
 		<th>Comprobante</th>
-		<th>Impuesto</th>
 		<th>Total</th>
 		<th>Estado</th>
 		<th>Opcciones</th>
@@ -24,14 +23,14 @@
 	<tr>
 		<td>{{$ven->fecha_hora}}</td>
 		<td>{{$ven->nombre}}</td>
+		<td>{{$ven->descripccion}}</td>
 		<td>{{$ven->serie_comprobante.'-'.$ven->num_comprobante}}</td>
-		<td>{{$ven->impuesto}}</td>
 		<td>{{$ven->total_venta}}</td>
 		<td>{{$ven->estado}}</td>
 		<td>
 			<a href="{{URL::action('CotizacionController@show',$ven->idcotizacion)}}"><button class="btn btn-primary">Detalles</button></a>
 			<a href="" data-target="#modal-delete-{{$ven->idcotizacion}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a>
-		   	<a href="{{URL::action('CotizacionController@reporte',$ven->idcotizacion)}}"><button class="btn btn-primary">Imprimir</button></a>
+		   	<a href="{{URL::action('CotizacionController@crear_pdf',$ven->idcotizacion)}}" target=newtab "><button class="btn btn-primary">Imprimir</button></a>
 		</td>
 	</tr>
 	@include('cotizaciones.modal')		
@@ -41,4 +40,5 @@
 	{{$cotizacion->render()}}
 	</div>	
 </div>
+ {!!Form::close()!!}  
 @endsection

@@ -19,7 +19,15 @@
 		{!!Form::open(array('url'=>'cotizaciones','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}
 <div class="row">	
-<div class="col-lg-12 col-md-6 col-dm-12 col-xs-12">
+<div class="col-lg-6 col-md-6 col-dm-12 col-xs-12">
+	<div class="form-group">
+			  <label for="nombre">Descripcción del servicio</label>
+             <input type="text" name="descripccion" id="descripccion" class="form-control" placeholder="Descripcción">
+			</select>
+		</div>
+	</div>
+
+<div class="col-lg-6 col-md-6 col-dm-12 col-xs-12">
 	<div class="form-group">
 			  <label for="nombre">Cliente</label>
              <select name="idcliente" id="idcliente" class="form-control selectpicker" data-live-search="true">
@@ -29,7 +37,6 @@
 			</select>
 		</div>
 </div>
-
 <div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
 	<div class="form-group">
 			<label for="serie_comprobante">Serie Comprobante</label>
@@ -43,15 +50,7 @@
 				<input type="text" name="num_comprobante" required readonly value= "{{$icotizacion}}" class="form-control" placeholder="Numero de comprobante...">
 		</div>
 	</div>	
-
-<div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
-		<div class="form-group">
-				<label for="anticipo">Anticipo</label>
-				<input type="text" name="anticipo" required value="{{old('anticipo')}}" class="form-control" placeholder="Valor anticipo...">
-		</div>
-	</div>
-</div>	
-
+	</div>	
 <div class="row">
 <div class="panel panel-primary">
 <div class="panel-body">
