@@ -21,7 +21,7 @@
 <div class="row">	
 <div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
-			<label for="nombre">Nombre</label>
+			<label for="nombre">Empresa</label>
 			<input type="text" name="nombre" value="{{$persona->nombre}}" class="form-control" placeholder="Nombre...">
 		</div>
 </div>
@@ -59,6 +59,14 @@
 	<div class="form-group">
 			<label for="num_documento">Numero de documento</label>
 			<input type="text" name="num_documento" value="{{$persona->num_documento}}" class="form-control" placeholder="Numero de identificacion...">
+		</div>
+</div>
+
+
+<div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
+	<div class="form-group">
+			<label for="nombrecontacto">Representante</label>
+			<input type="text" name="nombrecontacto" value="{{$persona->nombrecontacto}}" class="form-control" placeholder="Representante">
 		</div>
 </div>
 <div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">

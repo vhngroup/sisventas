@@ -50,6 +50,7 @@ class ProveedorController extends Controller
 		$persona =new Persona;
 		$persona ->tipo_persona='Proveedor';
 		$persona ->nombre=$request->get('nombre');
+		$persona ->nombrecontacto=$request->get('nombrecontacto');
 		$persona ->tipo_documento=$request->get('tipo_documento');
 		$persona ->num_documento=$request->get('num_documento');
 		$persona ->direccion=$request->get('direccion');
@@ -79,6 +80,7 @@ class ProveedorController extends Controller
 		$persona ->nombre=$request->get('nombre');
 		$persona ->tipo_documento=$request->get('tipo_documento');
 		$persona ->num_documento=$request->get('num_documento');
+		$persona ->nombrecontacto=$request->get('nombrecontacto');
 		$persona ->direccion=$request->get('direccion');
 		$persona ->telefono=$request->get('telefono');
 		$persona ->email=$request->get('email');

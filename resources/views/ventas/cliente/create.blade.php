@@ -20,7 +20,6 @@
 		{{Form::token()}}
 <div class="row">	
 <div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
-
 	<div class="form-group">
 			<label for="nombre">Empresa</label>
 			<input type="text" name="nombre" required value="{{old('nombre')}}" class="form-control" placeholder="Nombre...">

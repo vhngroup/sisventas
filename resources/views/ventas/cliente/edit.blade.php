@@ -21,18 +21,10 @@
 <div class="row">	
 <div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
-			<label for="nombre">Nombre</label>
+			<label for="nombre">Empresa</label>
 			<input type="text" name="nombre" value="{{$persona->nombre}}" class="form-control" placeholder="Nombre...">
 		</div>
 </div>
-
-<div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
-	<div class="form-group">
-			<label for="nombre">Dirección</label>
-			<input type="text" name="direccion" value="{{$persona->direccion}}" class="form-control" placeholder="Dirección...">
-		</div>
-</div>
-
 
 <div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
@@ -69,16 +61,32 @@
 			<input type="text" name="num_documento" value="{{$persona->num_documento}}" class="form-control" placeholder="Numero de identificacion...">
 		</div>
 </div>
+
+<div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
+	<div class="form-group">
+			<label for="nombrecontacto">Representante</label>
+			<input type="text" name="nombrecontacto" value="{{$persona->nombrecontacto}}" class="form-control" placeholder="Persona de contacto">
+		</div>
+</div>
+
 <div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
 			<label for="telefono">Telefono</label>
 			<input type="text" name="telefono" value="{{$persona->telefono}}" class="form-control" placeholder="telefono...">
 		</div>
 </div>
+
 <div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
 			<label for="email">Email</label>
 			<input type="email" name="email" value="{{$persona->email}}" class="form-control" placeholder="email...">
+		</div>
+</div>
+
+<div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
+	<div class="form-group">
+			<label for="nombre">Dirección</label>
+			<input type="text" name="direccion" value="{{$persona->direccion}}" class="form-control" placeholder="Dirección...">
 		</div>
 </div>
 

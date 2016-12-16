@@ -3,8 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Propuesta de cotización # $cotizacion->idcotizacion</title>
-    <link rel="stylesheet" href="css\style.css" media="all" />  
-   <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.0/numeral.min.js"></script> 
+    <link rel="stylesheet" href="css\style.css" media="all" />
   </head>
   <body>
     <header class="clearfix">
