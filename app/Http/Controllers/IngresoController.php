@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use sisventas\Http\Requests\IngresoformRequest;
 use sisventas\ingreso;
-use sisventas\Detalledeingreso;
+use sisventas\Detalledeingreso; 
 
 use DB;
 use Carbon\Carbon; 
@@ -44,7 +44,7 @@ class IngresoController extends Controller
         public function create()
         {   $iingreso=DB::table('ingreso')->max('idingreso')+1;
             $impuestos=DB::table('impuesto')->where('Estado','=','A')->get();
-            $personas=DB::table('persona')->where('tipo_persona','=','proveedor')->get();
+            $personas=DB::table('persona')->where('tipo_persona','!=','Cliente')->get();
             $articulos=DB::table('articulo as art')
             ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'art.idarticulo')
             ->where('art.estado','=','Activo')

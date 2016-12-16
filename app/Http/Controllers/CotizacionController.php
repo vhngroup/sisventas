@@ -31,11 +31,11 @@ class CotizacionController extends Controller
         $cotizacion=DB::table('cotizacion as c')
          ->join('persona as p','c.idcliente','=','p.idpersona')
         ->join('detallecotizacion as dc','c.idcotizacion','=','dc.idcotizacion')
-    		->select('c.idcotizacion','c.fecha_hora','p.nombre','c.serie_comprobante','c.num_comprobante','c.descripccion','c.estado','c.total_venta')
+    		->select('c.idcotizacion','c.fecha_hora','p.nombre','c.serie_comprobante','c.num_comprobante','c.descripccion','c.estado','c.total_venta','c.condiciones')
     		->where('c.num_comprobante','LIKE','%'.$query.'%')
     		->orderBy('c.idcotizacion','desc')
     		->groupBy('c.idcotizacion','c.fecha_hora','p.nombre','c.serie_comprobante','c.num_comprobante','c.estado')
-    		->paginate(7);
+    		->paginate(10);
     		return view('cotizaciones.index',["cotizacion"=>$cotizacion,"searchText"=>$query]);
     	}
     }
@@ -44,12 +44,11 @@ class CotizacionController extends Controller
     	{
             $icotizacion=DB::table('cotizacion')->max('idcotizacion')+1; //as incredible
             $impuestos=DB::table('impuesto')->where('Estado','=','A')->get(); 
-            $personas=DB::table('persona')->where('tipo_persona','=','cliente')->get(); //si el provedor tambien es cliente, retirara el where
+            $personas=DB::table('persona')->where('tipo_persona','!=','Proveedor')->get(); //si el provedor tambien es cliente, retirara el where
             $articulos=DB::table('articulo as art')
             ->join('detalle_ingreso as di','art.idarticulo','=','di.idarticulo')
             ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'art.idarticulo','art.stock','art.impuesto', DB::raw('avg(di.precio_venta) as precio_promedio')) //esta consulta extrae el promdio del valor de cotizacion del producto
             ->where('art.estado','=','Activo')
-            ->where('art.stock','>','0') // solo muestra articulos con stock en positivo
             ->groupBy('articulo','art.idarticulo','art.stock')
     		->get();
 			return view('cotizaciones.create',["personas"=>$personas,"articulos"=>$articulos,"impuestos"=>$impuestos, "icotizacion"=>$icotizacion]);
@@ -68,9 +67,9 @@ class CotizacionController extends Controller
     			$mytime = Carbon::now('America/Bogota');
     			$cotizacion->fecha_hora=$mytime->toDateTimeString();
     			//$ingreso->impuesto='16';//$request->get('impuesto');//16%
-                
                 $cotizacion->impuesto=(float)$request->get('impuesto');//16%
                 $cotizacion->estado='A';
+                $cotizacion->condiciones=$request->get('condiciones');
                 //$cotizacion->anticipo=$request->get('anticipo');
                 //$cotizacion->idproyecto=$request->get('idproyecto');
     		   $cotizacion->save();
@@ -106,7 +105,7 @@ class CotizacionController extends Controller
     		$cotizacion=DB::table('cotizacion as c')
     		->join('persona as p','c.idcliente','=','p.idpersona')
     		->join('detallecotizacion as dc','c.idcotizacion','=','dc.idcotizacion')
-    		->select('c.idcotizacion','c.fecha_hora','p.nombre','c.serie_comprobante','c.num_comprobante','c.descripccion','c.estado','c.total_venta')
+    		->select('c.idcotizacion','c.fecha_hora','c.descripccion','c.fecha_hora','p.nombre','c.serie_comprobante','c.num_comprobante','c.descripccion','c.estado','c.total_venta')
     		->where('c.idcotizacion','=',$id)
             ->first();    
 
@@ -119,19 +118,20 @@ class CotizacionController extends Controller
 		return view('cotizaciones.show',["cotizacion"=>$cotizacion,"detalles"=>$detalles]);
     	}
 
-    public function crear_pdf($id)
+    public function crear_pdf($id) 
      {
             $cotizacion=DB::table('cotizacion as c')
             ->join('persona as p','c.idcliente','=','p.idpersona')
             ->join('detallecotizacion as dc','c.idcotizacion','=','dc.idcotizacion')
-            ->select('c.idcotizacion','c.fecha_hora','p.nombre','c.serie_comprobante','c.num_comprobante','c.descripccion','c.estado','c.total_venta')
-            ->where('c.idcotizacion','=',$id)
+            ->select('c.idcotizacion','c.fecha_hora','p.nombre','p.tipo_documento','p.nombrecontacto','p.num_documento','p.telefono','p.email','p.direccion','c.serie_comprobante','c.num_comprobante','c.descripccion','c.estado','c.total_venta','c.condiciones')
+            ->where('c.idcotizacion','=', $id)
             ->first(); 
 
             $detalle=DB::table('detallecotizacion as dc')
             ->join('articulo as a','dc.idarticulo','=','a.idarticulo')
-            ->select('a.nombre as articulo','a.codigo','a.imagen', 'a.descripccion','dc.cantidad','dc.descuento','dc.precio_venta')
-            ->where('idcotizacion',$id)
+            ->select('a.nombre as articulo','a.codigo','a.imagen', 'a.descripccion','dc.cantidad','dc.precio_venta')
+
+            ->where('idcotizacion','=', $id)
             ->get();
 
              $date = date('Y-m-d');

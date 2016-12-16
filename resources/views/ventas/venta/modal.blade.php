@@ -11,6 +11,7 @@
 		<div class="modal-body">
 			<p>Corfirme si desea cancelar la venta {{$ven->idventa}}</p>
 		</div>
+		<div class="row">
 		<div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
 			<button type="submit" class="btn btn-primary">Confirmar</button>

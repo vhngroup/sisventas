@@ -45,12 +45,15 @@ class clienteController extends Controller
 		$persona =new Persona;
 		$persona ->tipo_persona='Cliente';
 		$persona ->nombre=$request->get('nombre');
+		$persona ->nombrecontacto=$request->get('nombrecontacto');
 		$persona ->tipo_documento=$request->get('tipo_documento');
 		$persona ->num_documento=$request->get('num_documento');
 		$persona ->direccion=$request->get('direccion');
 		$persona ->telefono=$request->get('telefono');
 		$persona ->email=$request->get('email');
-		$persona ->cuenta='No';
+		$persona ->tipocuenta=$request->get('tipocuenta');;
+		$persona ->banco=$request->get('banco');;
+		$persona ->numerodecuenta=$request->get('numerodecuenta');;
 		$persona ->save();
 		return Redirect::to('ventas/cliente');
     }
@@ -69,11 +72,15 @@ class clienteController extends Controller
 	{
 		$persona =Persona::findOrFail($id);
 		$persona ->nombre=$request->get('nombre');
+		$persona ->nombrecontacto=$request->get('nombrecontacto');
 		$persona ->tipo_documento=$request->get('tipo_documento');
 		$persona ->num_documento=$request->get('num_documento');
 		$persona ->direccion=$request->get('direccion');
 		$persona ->telefono=$request->get('telefono');
 		$persona ->email=$request->get('email');
+		$persona ->tipocuenta=$request->get('tipocuenta');;
+		$persona ->banco=$request->get('banco');;
+		$persona ->numerodecuenta=$request->get('numerodecuenta');;
 		$persona ->update();
 		return Redirect::to('ventas/cliente');
 	}

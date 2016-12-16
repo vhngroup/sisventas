@@ -4,10 +4,10 @@ namespace sisventas\Http\Controllers;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Validator;
 //use sisventas\Http\Requests;
 use Illuminate\Http\Request;
 use sisventas\Http\Requests;
-
 use Illuminate\Support\Facades\Redirect;
 use sisventas\Http\Requests\UsuarioFormRequest;
 use sisventas\User;

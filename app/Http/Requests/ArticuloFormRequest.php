@@ -27,7 +27,7 @@ class ArticuloFormRequest extends FormRequest
              'idcategoria' =>'required',
              'impuesto' =>'required',
              'codigo' =>'required |max:50',
-             'nombre'=>'required |max:200',
+             'nombre'=>'required |max:60',
              'stock'=>'required |numeric',
              'descripccion'=>'max:500',
              'imagen'=>'mimes:jpeg,jpg,bmp,png'

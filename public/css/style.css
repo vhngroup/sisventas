@@ -17,7 +17,7 @@ body {
   color: #001028;
   background: #FFFFFF; 
   font-family: Arial, sans-serif; 
-  font-size: 12px; 
+  font-size: 10px; 
   font-family: Arial;
 }
 
@@ -28,11 +28,12 @@ header {
 
 #logo {
   text-align: left;
-  margin-bottom: 5px;
+  margin-bottom: 5px; /*margen debajo del logo*/
+  font-size: 1.3em;
 }
 
 #logo img {
-  width: 700px; height: 130px;
+  width: 700px; height: 110px;
   /*float:left; ubica la imagen, con texto al rededor*/
 }
 
@@ -40,12 +41,19 @@ h1 {
   border-top: 1px solid  #5D6975;
   border-bottom: 1px solid  #5D6975;
   color: #5D6975;
-  font-size: 2.4em;
-  line-height: 1.4em;
+  font-size: 2.0em;
+  line-height: 1.0em;
   font-weight: normal;
   text-align: center;
-  margin: 0 0 20px 0;
+  margin: 0 0 10px 0;
   background: url(\imagenes\dimension.png);
+}
+h3 {
+  border-top: 1px solid  #5D6975;
+  border-bottom: 1px solid  #5D6975;
+  color: #5D6975;
+  font-size: 2.4em;
+  line-height: 1.4em;
 }
 
 #project {
@@ -75,12 +83,12 @@ table {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
-table tr:nth-child(2n-1) td {
+/*table tr:nth-child(2n-1) td {
   background: #F5F5F5;
-}
+}-->*/
 
 table th,
 table td {
@@ -88,7 +96,7 @@ table td {
 }
 
 table img {
-  width: 50px; height: 50px;
+  width: 40px; height: 40px;
 }
 
 table th {
@@ -102,11 +110,11 @@ table th {
 table .service,
 table .desc {
   text-align:  justify;
-  font-size: 11px; 
+  font-size: 9px; 
 }
 
 table td {
-  padding: 20px;
+  padding: 10px;
   text-align: right;
 }
 
@@ -115,14 +123,28 @@ table td.desc {
   vertical-align: top;
 }
 
+table td.descripccion
+{
+ font-size: 11px; 
+   text-align:  right;
+}
+
+table td.cliente
+{
+ font-size: 10px; 
+   text-align:  left;
+}
+
 table td.unit,
 table td.qty,
 table td.total {
- font-size: 11px; 
+ font-size: 10px; 
+text-align:  center;
 }
 
 table td.grand {
-  border-top: 1px solid #5D6975;;
+  border-top: 1px solid #C1CED9;
+  
 }
 
 #notices .notice {

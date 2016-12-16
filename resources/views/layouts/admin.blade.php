@@ -26,7 +26,7 @@
       <header class="main-header">
 
         <!-- Logo -->
-        <a href={{'almacen/categoria'}} class="logo">
+        <a href={{'/ventas/venta'}} class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>VH</b>V</span>
           <!-- logo for regular state and mobile devices -->
@@ -110,21 +110,12 @@
             </li>
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-th"></i>
-                <span>Cotizaciones</span>
+                <i class="fa fa-shopping-cart"></i>
+                <span>Cotización - Ventas</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
                 <li><a href="{{URL::to('cotizaciones')}}"><i class="fa fa-circle-o"></i>Cotizaciones</a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-shopping-cart"></i>
-                <span>Ventas</span>
-                 <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
                 <li><a href="{{URL::to('ventas/venta')}}"><i class="fa fa-circle-o"></i> Ventas</a></li>
                 <li><a href="{{URL::to('ventas/cliente')}}"><i class="fa fa-circle-o"></i> Clientes</a></li>
               </ul>
@@ -215,6 +206,7 @@
         @stack('scripts')
     <!--<script src="{{asset('js/table.js')}}"></script>-->
     <!-- Bootstrap 3.3.5 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
      <script src="{{asset('js/numeral.js')}}"></script>
     <script src="{{asset('js/bootstrap-select.min.js')}}"></script>

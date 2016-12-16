@@ -1,0 +1,765 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"art",
+				"articulo"
+			],
+			[
+				"a",
+				"articulo"
+			],
+			[
+				"ar",
+				"articulos"
+			],
+			[
+				"nue",
+				"nueva_cantidad"
+			],
+			[
+				"id",
+				"idarticulo"
+			],
+			[
+				"s",
+				"stock"
+			],
+			[
+				"co",
+				"consulta"
+			],
+			[
+				"idve",
+				"idventa"
+			],
+			[
+				"for",
+				"form\tTag"
+			],
+			[
+				"ve",
+				"venta"
+			],
+			[
+				"des",
+				"destroy"
+			],
+			[
+				"idventa",
+				"iddetalledeventa"
+			],
+			[
+				"idven",
+				"iddetalledeventa"
+			],
+			[
+				"el",
+				"eliminar"
+			],
+			[
+				"fi",
+				"filas"
+			],
+			[
+				"td",
+				"tdescuento"
+			],
+			[
+				"tprec",
+				"tprecio_venta"
+			],
+			[
+				"ts",
+				"tsubtotal"
+			],
+			[
+				"va",
+				"val"
+			],
+			[
+				"bt",
+				"btn-danger"
+			],
+			[
+				"detalle",
+				"detalledeventa"
+			],
+			[
+				"al",
+				"alert"
+			],
+			[
+				"sele",
+				"selected"
+			],
+			[
+				"desc",
+				"descripccion"
+			],
+			[
+				"d",
+				"descripccion"
+			],
+			[
+				"arra",
+				"array\t$… = array (…)"
+			],
+			[
+				"cotizaci",
+				"cotizacion"
+			],
+			[
+				"ima",
+				"imagenes"
+			],
+			[
+				"cot",
+				"cotizaciones"
+			],
+			[
+				"de",
+				"detalle"
+			],
+			[
+				"deta",
+				"detallecotizacion"
+			],
+			[
+				"detal",
+				"detalles"
+			],
+			[
+				"lo",
+				"Logo"
+			],
+			[
+				"coti",
+				"cotizacion"
+			],
+			[
+				"w",
+				"wrapper"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"ti",
+				"tipo"
+			],
+			[
+				"impuest",
+				"impuesto"
+			],
+			[
+				"im",
+				"impuesto"
+			],
+			[
+				"cotiza",
+				"cotizaciones"
+			],
+			[
+				"b",
+				"button"
+			],
+			[
+				"in",
+				"input\tTag"
+			],
+			[
+				"pers",
+				"personas"
+			],
+			[
+				"Pero",
+				"persona"
+			],
+			[
+				"pu",
+				"public"
+			],
+			[
+				"re",
+				"redirect"
+			],
+			[
+				"S",
+				"stock"
+			],
+			[
+				"SEL",
+				"selected"
+			],
+			[
+				"SE",
+				"selected"
+			],
+			[
+				"val",
+				"val"
+			],
+			[
+				"ven",
+				"ventas"
+			],
+			[
+				"D",
+				"DB"
+			],
+			[
+				"ca",
+				"cantidad"
+			],
+			[
+				"onc",
+				"onclick\tAttr"
+			],
+			[
+				"li",
+				"limpiar"
+			],
+			[
+				"p",
+				"precio_compra"
+			],
+			[
+				"pre",
+				"pprecio_compra"
+			],
+			[
+				"num",
+				"number"
+			],
+			[
+				"idar",
+				"idarticulo"
+			],
+			[
+				"btn",
+				"btn-primary"
+			],
+			[
+				"su",
+				"subtotal"
+			],
+			[
+				"sub",
+				"Subtotal"
+			],
+			[
+				"ppre",
+				"pprecioventa"
+			],
+			[
+				"pp",
+				"ppreciocompra"
+			],
+			[
+				"prec",
+				"precio_compra"
+			],
+			[
+				"impuesto",
+				"impuestos"
+			],
+			[
+				"date",
+				"detalle"
+			],
+			[
+				"precio",
+				"precio_venta"
+			],
+			[
+				"precio_",
+				"precio_compra"
+			],
+			[
+				"req",
+				"request"
+			],
+			[
+				"Ingr",
+				"IngresoformRequest"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"categ",
+				"categorias"
+			],
+			[
+				"cate",
+				"categoria"
+			],
+			[
+				"di",
+				"div\tTag"
+			],
+			[
+				"con",
+				"condicion"
+			],
+			[
+				"cat",
+				"categoria"
+			],
+			[
+				"Req",
+				"Requests"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 174.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Controllers/VentaController.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/trigger updatestock.txt",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Controllers/clienteController.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Controllers/UsuarioController.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Controllers/CategoriaController.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/routes/Apuntes 09-11-2016",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/cotizaciones/create.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/routes/web.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/ventas/venta/index.blade.php",
+		"/H/direcciones.txt",
+		"/C/Users/VNOGUERA/Desktop/output.txt",
+		"/C/Users/VNOGUERA/Desktop/ReporteWavio.txt",
+		"/C/Users/VNOGUERA/Desktop/ReporteAsistente.txt",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Exceptions/Handler.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Requests/VentaFormRequest.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Categoria.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/ventas/venta/create.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/cotizaciones/edit.blade.php",
+		"/C/Users/VNOGUERA/Desktop/inSSIDer Enterprise 4.2.0.12/_Crack_/!!! Read Me !!!.txt",
+		"/C/Users/VNOGUERA/AppData/Roaming/Acrylic Wi-Fi Professional/Dictionaries/sample.dic",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/ventas/venta/edit.blade.php",
+		"/C/Users/VNOGUERA/Downloads/Tech_Support_Report_Thu_Jan_01_03_09_59_1970.txt",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Controllers/ProveedorController.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/cotizaciones/show.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/ventas/venta/reporte.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Controllers/CotizacionController.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/errors/404.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/errors/503.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/ventas/venta/modal.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Controllers/ArticuloController.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/almacen/categoria/edit.blade.php",
+		"/C/Users/VNOGUERA/AppData/Local/Temp/Rar$DIa0.900/Read Me.txt",
+		"/C/Users/VNOGUERA/Desktop/hosts",
+		"/C/Users/VNOGUERA/AppData/Local/Temp/Rar$DIa0.081/Read Me.txt",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/layouts/admin.blade.php",
+		"/C/Users/VNOGUERA/Desktop/Nacimiento King of Lions",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/cotizaciones/reporte.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/public/css/style.css",
+		"/C/Users/VNOGUERA/Documents/Envio Iphone.txt",
+		"/C/ReporteWavio.txt",
+		"/C/Users/VNOGUERA/Desktop/Nueva carpeta/ReporteWavio.txt",
+		"/C/Users/VNOGUERA/Desktop/newping.bat",
+		"/C/Ping to Wavio.bat",
+		"/C/Users/VNOGUERA/Desktop/Ping to Wavio.bat",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/ventas/cliente/edit.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/ventas/venta/show.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/ventas/cliente/index.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/almacen/articulo/index.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Requests/ArticuloFormRequest.php",
+		"/C/Users/VNOGUERA/Desktop/Escritorio/NUMEROS DE CONTACTO AXURE",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/compras/proveedor/edit.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/compras/proveedor/create.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/compras/proveedor/index.blade.php",
+		"/C/Users/VNOGUERA/Desktop/NUMEROS DE CONTACTO AXURE",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/compras/ingreso/create.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Controllers/IngresoController.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Venta.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Requests/IngresoFormRequest.php",
+		"/C/Users/VNOGUERA/Desktop/Laravel",
+		"/C/Users/VNOGUERA/AppData/Local/Temp/Rar$DIa0.318/reporte_por_pais.php",
+		"/C/Users/VNOGUERA/Desktop/material/example1/index.html",
+		"/C/Users/VNOGUERA/AppData/Local/Temp/Rar$DIa0.041/listado_reportes.php",
+		"/C/Users/VNOGUERA/AppData/Local/Temp/Rar$DIa0.457/home.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/cotizaciones/index.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Cotizacion.php",
+		"/C/Users/VNOGUERA/AppData/Local/Temp/Rar$DIa0.188/reporte_por_pais.php",
+		"/C/Users/VNOGUERA/AppData/Local/Temp/Rar$DIa0.207/listado_reportes.php",
+		"/C/Users/VNOGUERA/AppData/Local/Temp/Rar$DIa0.403/home.php",
+		"/C/Users/VNOGUERA/AppData/Local/Temp/Rar$DIa0.582/sistemalaravel.js",
+		"/C/Users/VNOGUERA/AppData/Local/Temp/Rar$DIa0.367/routes.php",
+		"/C/Users/VNOGUERA/AppData/Local/Temp/Rar$DIa0.396/PdfController.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Controllers/PdfController.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/pdf/reporte_por_venta.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/composer.json",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/pdf/index.blade.php",
+		"/C/Users/VNOGUERA/AppData/Local/Temp/Rar$DIa0.043/PdfController.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/banco/index.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Requests/CotizacionFormRequest.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/almacen/articulo/edit.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/almacen/articulo/create.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/cotizaciones/modal.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Articulo.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Persona.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Requests/PersonaformRequest.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/detalledecotizacion.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/Cotizaciones/modal.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/Cotizaciones/index.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/Cotizaciones/search.blade.php",
+		"/N/Recuperado Asus/Programas/Sony Vegas/Sony.Vegas.PRO.v13.0.453.Multilenguaje.Incl.Keygen-DI/Instrucciones.txt",
+		"/C/Users/VNOGUERA/AppData/Local/Temp/Rar$DIa0.335/reporte_por_pais.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Controllers/Controller.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/config/app.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/bootstrap/app.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/pdf/listado_reportes.php",
+		"/C/Users/VNOGUERA/AppData/Local/Temp/Rar$DIa0.500/PdfController.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/vendor/laravel/framework/src/Illuminate/Container/Container.php",
+		"/D/Dropbox/base64.txt",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/home.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Controllers/Auth/LoginController.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/seguridad/usuario/edit.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Requests/UsuarioFormRequest.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/User.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Controllers/CuentaController.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/seguridad/usuario/create.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/seguridad/usuario/index.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/seguridad/usuario/search.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/seguridad/usuario/modal.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/auth/login.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/auth/passwords/email.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/layouts/app.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Controllers/Auth/ResetPasswordController.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/Http/Controllers/Auth/RegisterController.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/app/DetalledeVenta.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/trigger restar stock.txt",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/almacen/articulo/modal.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/almacen/categoria/index.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/almacen/categoria/modal.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/almacen/categoria/search.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/ventas/venta/search.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/compras/ingreso/index.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/compras/ingreso/modal.blade.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/compras/ingreso/search.blade.php",
+		"/C/Users/VNOGUERA/Desktop/sisventas/app/Http/Controllers/IngresoController.php",
+		"/D/Dropbox/VHNGROUP/vhngroup/Laravel/sisventas/resources/views/compras/ingreso/show.blade.php",
+		"/N/Recuperado Asus/Programas/PDF/Adobe Acrobat Pro DC 2015 (14.07.15) (WIN-MAC)/Adobe.Acrobat.Pro.DC.v2015.006.30060.Multilingual.Incl.Keygen-XFORCE/Crack/Keygen/Adobe CC 2015-X-FORCE/Crack-Windows-DC/install.txt",
+		"/N/Recuperado Asus/Programas/PDF/Adobe Acrobat Pro DC 2015 (14.07.15) (WIN-MAC)/Adobe.Acrobat.Pro.DC.v2015.006.30060.Multilingual.Incl.Keygen-XFORCE/Instrucciones.txt",
+		"/C/Users/VNOGUERA/Desktop/Camtasia.Studio.v8.0.2.918.Keygen.Only-MESMERiZE/Instrucciones.txt",
+		"/C/Users/VNOGUERA/Desktop/Financianión StaurUp"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"token",
+			"')",
+			"\" ",
+			"$var",
+			"        \t <?",
+			"      \t   \n",
+			"();\n",
+			"v.total_venta",
+			"edit",
+			"idventa",
+			"findOrFail",
+			" {{ csrf_field() }}",
+			"form action",
+			"edit",
+			"render",
+			"id",
+			"USER_ID",
+			"user_id",
+			"venta.",
+			"venta",
+			".venta",
+			"ventas.venta",
+			"404",
+			"venta",
+			"fila",
+			"iddetalledeventa",
+			"eliminar",
+			"idart",
+			"documen",
+			"eliminar",
+			"tcantidad",
+			"mitabla",
+			"mitaba",
+			"imprimir",
+			"impri",
+			"}\n",
+			"fila",
+			"index",
+			"mitabla",
+			"tsubtotal",
+			"ttotal",
+			"tsubtotal",
+			"pidarticulo",
+			"piarticulo",
+			"noise",
+			"channel 3",
+			"acs",
+			"agregar",
+			"impuesto",
+			"cantidad",
+			"cont",
+			"venta",
+			"gran",
+			"grand",
+			"idventa",
+			"create",
+			"guar",
+			"store",
+			"venta",
+			"idarticulo",
+			"$cont",
+			"update",
+			"detalledeventa",
+			"ven",
+			"refres",
+			"espe",
+			"tiempo de",
+			"espera",
+			"tiempo de",
+			"idventa",
+			"$venta",
+			"guardar",
+			"$venta",
+			"agregar",
+			"impuesto",
+			"agre",
+			"val",
+			"vali",
+			"idcliente",
+			"/almacen/categoria",
+			"stock",
+			"\").",
+			"HTML",
+			"JAVA",
+			"PHP",
+			"PIIMP",
+			"IMPU",
+			"\t\t\t$(\"#",
+			"arti",
+			"\t\n",
+			"\"",
+			" '\"'",
+			"0",
+			"guardar",
+			"email",
+			"emal",
+			"des",
+			"10px",
+			"qty",
+			"}\n",
+			"cotizacion",
+			"update",
+			"icotizacion",
+			"i",
+			"($",
+			")\n",
+			"coti",
+			"    @",
+			"    }",
+			"\n         ",
+			"         \n",
+			"usuar",
+			"}}</",
+			"}}",
+			"{{",
+			"<",
+			"det",
+			"       \n",
+			"findOrFail",
+			"),",
+			"<",
+			"$idcotizacion",
+			"idcotizacion",
+			"action",
+			"idcotizacion",
+			" font",
+			"style",
+			"media"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"tidarticulo",
+			"idcotizacion",
+			"$cotizacion",
+			"venta",
+			"",
+			"cotizacion",
+			"c.total_venta",
+			"cotizaciones",
+			"c.",
+			"sisventas",
+			"cotizaciones",
+			"cotizacion",
+			"detallecotizacion",
+			"cotizacion",
+			"$venta",
+			"idcategoria",
+			"idarticulo",
+			"idcategoria",
+			"pidarticulo",
+			"idarticulo",
+			"idcategoria",
+			"num_comprobante",
+			"idarticulo",
+			"ingreso",
+			"DB",
+			"",
+			"type",
+			"pprecio_compra",
+			"pprecio_venta",
+			"=DB",
+			"PersonaformRequest",
+			"aplicacioncomer",
+			" h2"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "server.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 185.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

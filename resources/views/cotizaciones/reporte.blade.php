@@ -1,26 +1,47 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Propuesta de cotización # $cotizacion->idcotizacion</title>
     <link rel="stylesheet" href="css\style.css" media="all" />  
+   <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.0/numeral.min.js"></script> 
   </head>
   <body>
     <header class="clearfix">
       <div id="logo">
         <img src="imagenes\logo.png">
       </div>
-      <h1>Cotizacion # {{$cotizacion->num_comprobante}}{{$cotizacion->serie_comprobante}}-{{$cotizacion->idcotizacion}}</h1>
+      <div>
+      <h1>Cotización # {{$cotizacion->num_comprobante}}{{$cotizacion->serie_comprobante}}-{{$cotizacion->idcotizacion}}</h1>
+       <div id="logo">Alcance: {{$cotizacion->descripccion}}</div>
+      <table>
+        <tr>
+        <th class="cliente"></th>
+        <th class="cliente"></th>
+        <th class="cliente"></th>
+        </tr>
+        <tr>
+          <td class="cliente">{{$cotizacion->nombre}}</td>
+          <td class="cliente">{{$cotizacion->tipo_documento}} {{$cotizacion->num_documento}} </td>
+          <td class="cliente">{{$cotizacion->telefono}}</td>
+        </tr>
+        <tr>
+          <td class="cliente">{{$cotizacion->nombrecontacto}}</td>
+          <td class="cliente">{{$cotizacion->email}}</td>
+          <td class="cliente">{{$cotizacion->direccion}}</td>
+        </tr>
+      </table>
+      </div>
      </header>
-    <main>  
 <table>
    <thead>
        <tr>
-            <th class="service">SERVICE</th>
-            <th class="desc">DESCRIPTION</th>
-            <th>PRICE</th>
-            <th>QTY</th>
-            <th>TOTAL</th>
+            <th class="unit">Codigo</th>
+            <th class="unit">Imagen</th>
+            <th class="unit">Descripcción</th>
+            <th class="unit">Cantidad</th>
+            <th class="unit">Precio</th>
+            <th class="unit">Total</th>
           </tr>
         </thead>
    <tbody>
@@ -29,32 +50,41 @@
         <td class="service">{{$det->codigo}}</td>
         <td> <img src="imagenes\articulos\{{$det->imagen}}"> </td>
         <td class="service">{{$det->descripccion}}</td>
-        <td class="unit">{{$det->precio_venta}}</td>
         <td class="qty">{{$det->cantidad}}</td>
+        <td class="unit">{{$det->precio_venta}}</td>
         <td class="total">{{($det->cantidad*$det->precio_venta)}}</td>
       </tr>
          @endforeach
-      <tr>
-            <td colspan="5">SUBTOTAL</td>
-            <td class="total">$5,200.00</td>
+            <tr>
+              <td colspan="6" class="grand"></td>
+            </tr>
+            <tr>
+            <td colspan="5" class="descripccion">Subtotal</td>
+            <td class="descripccion"> ${{$cotizacion->total_venta}}</td>
           </tr>
           <tr>
-            <td colspan="5">Impuestos</td>
-            <td class="total">$1,300.00</td>
+            <td colspan="5" class="descripccion">Impuestos</td>
+            <td class="descripccion">$0</td>
           </tr>
           <tr>
-            <td colspan="5" class="grand total">GRAND TOTAL</td>
-            <td class="grand total">0</td>
+            <td colspan="5" class="descripccion">Descuento</td>
+            <td class="descripccion">$0</td>
+          </tr>
+          <tr>
+            <td colspan="5" class="descripccion">Valor Total</td>
+            <td class="descripccion">${{$cotizacion->total_venta}}</td>
       </tr>
      </tbody>
 </table>
 <div id="notices">
-        <div>NOTICE:</div>
-        <div class="notice">A finance charge of 1.5% will be made on unpaid balances after 30 days.</div>
+        <div>Condiciones del servicio:</div>
+        <div><textarea cols="26" rows="8">{{$cotizacion->condiciones}}</textarea></div>
       </div>
-    </main>
     <footer>
-      Invoice was created on a computer and is valid without the signature and seal.
+      <div>VHNGROUP: Tecnologia Automatizando su Hogar. - Factura creada en fisico y digital por SisventasVHNGroup</div>
+    <div id="footer">
+        <img src="imagenes\footer.png">
+      </div>
     </footer>
 </body>
 </html>

@@ -10,9 +10,13 @@
       <div id="logo">
         <img src="imagenes\logo.png">
       </div>
+      <div>
       <h1>Factura # {{$venta->num_comprobante}}{{$venta->serie_comprobante}}-{{$venta->idventa}}</h1>
+      <p> <b>Nombre del cliente:</b> {{$venta->nombre}} <b>Identificación: </b> {{$venta->tipo_documento}} - {{$venta->num_documento}} <b>Telefono:</b> {{$venta->telefono}}</p> 
+      <p><b>Email:</b> {{$venta->email}} <b>Dirección:</b> {{$venta->direccion}}</p>
+      <h4><b>Alcance:</b> {{$venta->descripccion}}</h4>
+      </div>
      </header>
-    <main>  
 <table>
    <thead>
        <tr>
@@ -51,12 +55,11 @@
 </table>
 <div id="notices">
         <div>Condiciones del servicio:</div>
-        <div class="notice">{{$venta->condiciones}}</div>
+        <div><textarea cols="26" rows="8">{{$venta->condiciones}}</textarea></div>
       </div>
-    </main>
+    
     <footer>
-      Invoice was created on a computer and is valid without the signature and seal.
-      <br>
+      <div>VHNGROUP: Tecnologia Automatizando su Hogar. - Factura creada en fisico y digital por SisventasVHNGroup</div>
     <div id="footer">
         <img src="imagenes\footer.png">
       </div>

@@ -1,7 +1,7 @@
-@extends ('layouts.admin')
+@extends ('layouts.admin') 
 @section ('contenido')
 <div class="row">
-	<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+	<div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
 	<h3>Editar Cliente: {{$persona->nombre}}</h3>
 	@if(count($errors)>0)
 		<div class="alert alert-danger">
@@ -19,14 +19,14 @@
 {!! Form::model($persona,['method'=>'PATCH','route'=>['cliente.update',$persona->idpersona]]) !!}
 {{Form::token()}}
 <div class="row">	
-<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+<div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
 			<label for="nombre">Nombre</label>
 			<input type="text" name="nombre" value="{{$persona->nombre}}" class="form-control" placeholder="Nombre...">
 		</div>
 </div>
 
-<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+<div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
 			<label for="nombre">Dirección</label>
 			<input type="text" name="direccion" value="{{$persona->direccion}}" class="form-control" placeholder="Dirección...">
@@ -34,11 +34,11 @@
 </div>
 
 
-<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+<div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
 			<label>Documentos</label>
 			<select name="tipo_documento" class="form-control">
-			@if($persona->tipo_documento=='DNI')
+			@if($persona->tipo_documento=='Cc')
 				<option value="Cc" selected> Cedula </option>
 				<option value="NIT"> NIT </option>
 				<option value="PASSP"> PASSPORT </option>
@@ -63,28 +63,59 @@
 		</div>
 </div>
 
-<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+<div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
 			<label for="num_documento">Numero de documento</label>
 			<input type="text" name="num_documento" value="{{$persona->num_documento}}" class="form-control" placeholder="Numero de identificacion...">
 		</div>
 </div>
-<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+<div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
 			<label for="telefono">Telefono</label>
 			<input type="text" name="telefono" value="{{$persona->telefono}}" class="form-control" placeholder="telefono...">
 		</div>
 </div>
-<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+<div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
 			<label for="email">Email</label>
 			<input type="email" name="email" value="{{$persona->email}}" class="form-control" placeholder="email...">
 		</div>
 </div>
+
+<div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
+	<div class="form-group">
+			<label>Tipo de cuenta</label>
+			<select name="tipocuenta" class="form-control">
+				<option value="">Seleccione Opcción </option>
+				<option value="Ahorros"> Ahorros </option>
+				<option value="Corriente"> Corriente </option>
+			</select>
+		</div>
+</div>
+
+<div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
+	<div class="form-group">
+			<label for="banco">Banco</label>
+			<input type="banco" name="banco" value="{{$persona->banco}}"  class="form-control" placeholder="banco">
+		</div>
+</div>
+<div class="col-lg-4 col-md-6 col-dm-6 col-xs-12">
+	<div class="form-group">
+			<label for="numerodecuenta">Numero de cuenta</label>
+			<input type="number" name="numerodecuenta" value="{{$persona->numerodecuenta}}"  class="form-control" placeholder="numero de cuenta">
+		</div>
+</div>
+<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
+	<div class="form-group">
+			<label for="notas">Datos relevantes del ciente</label>
+			<input type="notas" name="notas" value="{{old('notas')}}" class="form-control" placeholder="Apuntes">
+		</div>
+</div>
+
 <div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
 			<button class="btn btn-primary" type="submit">Guardar</button>
-			<button class="btn btn-danger" type="reset">Cancelar</button>
+		 <a class="btn btn-default" href="/ventas/cliente" role="button">Cancelar</a>
 	</div>
 </div>
 </div>

@@ -82,7 +82,8 @@
 				<p>{{$venta->condiciones}}</p>
 		</div>
 	</div>
-	<a href="{{URL::action('VentaController@show',$venta->idventa)}}"><button class="btn btn-primary">Imprimir</button></a>
+	<a href="{{URL::action('VentaController@crear_pdf',$venta->idventa)}}" target=newtab "><button class="btn btn-primary">Imprimir</button></a>
+	<a class="btn btn-default" href="/ventas/venta" role="button">Regresar</a>
 </div>
 @endsection
 

@@ -16,9 +16,7 @@
 		<th>Tipo Doc</th>
 		<th>Documento</th>
 		<th>Telefono</th>
-		<th>Direccion</th>
 		<th>Email</th>
-		<th>Banco</th>
 		<th>Opcciones</th>
 	</thead>
 	@foreach($personas as $per)
@@ -28,15 +26,7 @@
 		<td>{{$per->tipo_documento}}</td>
 		<td>{{$per->num_documento}}</td>
 		<td>{{$per->telefono}}</td>
-		<td>{{$per->direccion}}</td>
 		<td>{{$per->email}}</td>
-		</td>
-		<td>
-		@if ($per->cuenta=='Si')
-			<a href=><button class="btn btn-info">Editar</button></a>
-			@else
-			<a href=><button class="btn btn-info">Registrar</button></a>
-		@endif
 		</td>
 		<td>
 			<a href="{{URL::action('ClienteController@edit',$per->idpersona)}}"><button class="btn btn-info">Editar </button></a>

@@ -168,11 +168,11 @@ function agregar()
 		{
 		subtotal[cont]=(cantidad*precio_compra);
 		total=total+subtotal[cont];
-		var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"></td><td><input name="impuesto[]" value="'+impuesto+'"></td><td><input type="number" name="precio_compra[]" value="'+precio_compra+'"></td><td><input type="number"name="precio_venta[]" value="'+precio_venta+'"></td><td>'+subtotal[cont]+'</td></tr>';
+		var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idarticulo[]"  value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" readonly value="'+cantidad+'"></td><td><input name="impuesto[]" readonly value="'+impuesto+'"></td><td><input type="number" name="precio_compra[]" readonly value="'+precio_compra+'"></td><td><input type="number"name="precio_venta[]" readonly value="'+precio_venta+'"></td><td>'+subtotal[cont]+'</td></tr>';
 		cont++;
+		evaluar();
 		limpiar();
 		    $('#total').html("$/ " + total);
-		evaluar();
 		  $('#detalles').append(fila);
 		
 		}
@@ -190,23 +190,34 @@ function agregar()
 				$("#pprecio_venta").val("");
 			 }
 
-function evaluar()
-	{
-		if(total>0)
-		{
-			$("#guardar").show();
-		}
-		else
-		{
-			$("#guardar").hide();
-		}	
-	}
+			function evaluar()
+				{
+				var indice = document.getElementById('idproveedor').selectedIndex
+					if(total>0)
+					{
+						if(indice=0)
+						{
+							alert("Debe seleccionar un cliente")
+						}
+						else
+						{
+							$("#guardar").show();
+						}
+					}
+					else
+					{
+						$("#guardar").hide();
+					}	
+				}
+
 	function eliminar(index){
 	total=total-subtotal[index];
 	$('#total').html("$/. "+total);
 	$('#fila'+index).remove();
 	evaluar();
 		}
+
+
 </script>
 @endpush
 @endsection

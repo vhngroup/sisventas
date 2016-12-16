@@ -4,6 +4,7 @@ namespace sisventas\Http\Controllers;
 
 use Illuminate\Http\Request;
 use sisventas\Http\Requests;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use sisventas\Http\Requests\ArticuloFormRequest;
 use Illuminate\Support\Facades\Redirect;
@@ -29,7 +30,7 @@ class ArticuloController extends Controller
     		->where('a.nombre','LIKE','%'.$query.'%')
     		->orwhere('a.codigo','LIKE','%'.$query.'%')
     		->orderBy('a.idarticulo','desc')
-    		->paginate(7);
+    		->paginate(10);
     		return view('almacen.articulo.index',["articulos"=>$articulos,"searchText"=>$query]);
     	}
 
@@ -43,7 +44,18 @@ class ArticuloController extends Controller
 
     public function store (ArticuloFormRequest $request)
     {
-		$articulo=new Articulo;
+
+		$articulo=new articulo;
+		//$v = \Validator::make($request->all(), [
+          //  'codigo' => 'required|codigo|unique:articulo,codigo',
+            //]);
+		   //if ($v->fails())
+        //{
+          //  return redirect()->back()->withInput()->withErrors($v->errors());
+        //}
+        //else
+        //{
+        
 		$articulo->idcategoria=$request->get('idcategoria');
 		$articulo->codigo=$request->get('codigo');
 		$articulo->nombre=$request->get('nombre');
@@ -59,7 +71,43 @@ class ArticuloController extends Controller
 	}
 		$articulo->save();
 		return Redirect::to('almacen/articulo');
-    }
+	//}	
+}
+
+  public function update(ArticuloFormRequest $request, $id)
+	{
+		$articulo =Articulo::findOrFail($id);
+	
+		$v = \Validator::make($request->all(), [
+            'codigo' => 'required|codigo|unique:articulo,codigo',
+            ]);
+
+            if ($v->fails())
+        {
+            return redirect()->back()->withInput()->withErrors($v->errors());
+        }
+        else
+        {
+
+		$articulo->idcategoria=$request->get('idcategoria');
+		$articulo->codigo=$request->get('codigo');
+		$articulo->nombre=$request->get('nombre');
+		$articulo->impuesto=(float)$request->get('impuesto'); 
+		$articulo->stock=$request->get('stock');
+		$articulo->descripccion=$request->get('descripccion');
+
+		if(Input::hasFile('imagen'))
+		{
+		$file=Input::file('imagen');
+		$file->move(public_path().'/imagenes/articulos/',$file->getClientOriginalName());
+		
+		$articulo->imagen=$file->getClientOriginalName();
+		}
+		$articulo->update();
+		return Redirect::to('almacen/articulo');
+	}
+}
+
 
     public function show($id)
     {
@@ -72,25 +120,6 @@ class ArticuloController extends Controller
 	$impuestos=DB::table('impuesto')->where('Estado','=','A')->get();
 	$categorias=DB::table('categoria')->where('condicion','=','1')->get();
 	return view("almacen.articulo.edit",["articulo"=>$articulo,"categoria"=>$categorias,"impuestos"=>$impuestos]);
-	}
-
-	public function update(ArticuloFormRequest $request, $id)
-	{
-		$articulo =Articulo::findOrFail($id);
-		$articulo->idcategoria=$request->get('idcategoria');
-		$articulo->codigo=$request->get('codigo');
-		$articulo->nombre=$request->get('nombre');
-		$articulo->impuesto=(float)$request->get('impuesto'); 
-		$articulo->stock=$request->get('stock');
-		$articulo->descripccion=$request->get('descripccion');
-		if(Input::hasFile('imagen'))
-		{
-		$file=Input::file('imagen');
-		$file->move(public_patch().'/imagenes/articulos/',$file->getClientOriginalName());
-		$articulo->imagen=$file->getClientOriginalName();
-		}
-		$articulo->update();
-		return Redirect::to('almacen/articulo');
 	}
 
 	public function destroy($id)

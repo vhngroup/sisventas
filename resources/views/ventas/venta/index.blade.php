@@ -3,7 +3,7 @@
 @section ('contenido')
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-dm-8 col-xs-12">
-	<h3> Listado de ventas <a href="venta/create"><button class="btn btn-success">Nuevo</button></a></h3>
+	<h3> Listado de ventas <a href="/ventas/venta/create"><button class="btn btn-success">Nuevo</button></a></h3>
 	@include('ventas.venta.search')
 	</div>
 </div>
@@ -30,7 +30,7 @@
 		<td>{{$ven->estado}}</td>
 		<td>
 			<a href="{{URL::action('VentaController@show',$ven->idventa)}}"><button class="btn btn-primary">Detalles</button></a>
-			<a href="" data-target="#modal-delete-{{$ven->idventa}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a> 
+			<a href="{{URL::action('VentaController@edit',$ven->idventa)}}"><button class="btn btn-danger">Editar</button></a>
 		    <a href="{{URL::action('VentaController@crear_pdf',$ven->idventa)}}" target=newtab "><button class="btn btn-primary">Imprimir</button></a>
 		</td>
 	</tr>

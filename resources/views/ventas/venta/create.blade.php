@@ -7,7 +7,7 @@
 		<div class="alert alert-danger">
 			<ul>
 				@foreach ($errors-> all() as $error)
-					<li>
+					<li>	
 					{{$error}}
 					</li>
 				@endforeach
@@ -18,8 +18,15 @@
 </div>
 		{!!Form::open(array('url'=>'ventas/venta','method'=>'POST','autocomplete'=>'off'))!!}
             {{Form::token()}}
-<div class="row">	
-<div class="col-lg-12 col-md-6 col-dm-12 col-xs-12">
+<div class="row">
+<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
+	<div class="form-group">
+			<label for="descripccion">Alcance del Servicio:</label>
+			<input type="text" name="descripccion" required value="{{old('descripccion')}}" class="form-control" placeholder="Describa el alcance del Servicio">
+	</div>
+</div>
+
+<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
 	<div class="form-group">
 			  <label for="nombre">Cliente</label>
              <select name="idcliente" id="idcliente" class="form-control selectpicker" data-live-search="true">
@@ -41,7 +48,7 @@
 		</div>
 </div>
 
-<div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
+<div class="col-lg-3 col-md-4 col-dm-12 col-xs-12"> 
 	<div class="form-group">
 			<label for="serie_comprobante">Serie Comprobante</label>
 			<input type="text" name="serie_comprobante" readonly value="<?php echo date("Y-m-d");?>" class="form-control" placeholder="Serie de comprobante...">
@@ -73,7 +80,7 @@
 	<label>Articulo</label>
 	<select name="pidarticulo" id="pidarticulo" class="form-control selectpicker"  data-live-search="true">
 		@foreach($articulos as $articulo)
-		<option value="{{$articulo->idarticulo}}_{{$articulo->stock}}_{{$articulo->precio_promedio}}">{{$articulo->articulo}}</option>
+		<option value="{{$articulo->idarticulo}}_{{$articulo->stock}}_{{$articulo->precio_promedio}}_{{$articulo->impuesto}}">{{$articulo->articulo}}</option>
 		@endforeach
 	</select>
 	</div>
@@ -90,20 +97,17 @@
 		<input type="number" readonly name="pstock" id="pstock" class="form-control" placeholder="Stock">
 		</div>
 	</div>
+
 	<div class="col-lg-2 col-md-2 col-dm-12 col-xs-12">
 	<div class="form-group">
-		<label for="impuesto">impuesto</label>
-			<select name="impuesto" id="piimpuesto" class="form-control">
-			@foreach($impuestos as $impuesto)
-			<option value= "{{$impuesto->porcentaje}}">{{$impuesto->descripccion}}</option>
-			@endforeach
-			</select>
-		</div>
+	<label for="impuesto">% impuesto</label>
+	<input type="number"  name="pimpuesto" id="pimpuesto" class="form-control">
+	</div>
 	</div>
 	<div class="col-lg-2 col-md-2 col-dm-12 col-xs-12">
 		<div class="form-group">
 		<label for="precio_venta">Precio de venta</label>
-		<input type="number" readonly name="pprecio_venta" id="pprecio_venta" class="form-control" placeholder="precio de venta">
+		<input type="text" readonly name="pprecio_venta" id="pprecio_venta" class="form-control" placeholder="precio de venta">
 		</div>
 	</div>
 
@@ -111,12 +115,12 @@
 		<div class="form-group">
 		<label for="descuento">Descuento</label>
 		<input type="number" name="pdescuento" id="pdescuento" class="form-control" placeholder="Descuento">
-			</div>
+		</div>
 	</div>
 
 	<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
 		<div class="form-group">
-		<button class="btn btn-primary" type="button"  id="bt_agregar" onclick="agregar()">Agregar</button>
+		<button class="btn btn-primary" type="button"  id="bt_agregar" onclick="agregar() , recargar()" >Agregar</button>
 		</div>
 	</div>
 	<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
@@ -154,11 +158,12 @@
 		<textarea type="text" name="condiciones" id="condiciones" class="form-control" placeholder="condiciones"></textarea>
 	</div>
 </div>
-<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12" id="guardar">
+<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12" id="guardar1">
 	<div class="form-group">
 	<input name="_token" value="{{ csrf_token() }}" type="hidden"></input>
-		<button class="btn btn-primary"  type="submit">Guardar</button>
-					<button class="btn btn-danger" type="reset">Cancelar</button>
+		<button id="guardar" class="btn btn-primary"  type="submit">Guardar</button>
+		<button class="btn btn-danger" type="reset">Restablecer</button>
+		<a class="btn btn-primary" href="/ventas/venta" role="button">Cancelar</a>
 			</div>
 		</div>
 	</div>
@@ -171,19 +176,24 @@
 		subtotal=[];
 		$("#pidarticulo").change(mostrarValores);
 		$("#guardar").hide();
-
 		$(document).on('ready',function(){
 		$('select[name=pidarticulo]').val(1);
 		$('.selectpicker').selectpicker('refresh')
 			mostrarValores();
 		});
+
 		
+		function recargar()
+		{
+		
+			}
+
 		function mostrarValores()
 		{
 			datosArticulo=document.getElementById('pidarticulo').value.split('_');
-			
-			$("#pprecio_venta").val(datosArticulo[2]);
+			$("#pprecio_venta").val(datosArticulo[2])
 			$("#pstock").val(datosArticulo[1]);
+			$("#pimpuesto").val(datosArticulo[3]);
 		}
 
 
@@ -194,7 +204,7 @@ function agregar()
 			articulo=$("#pidarticulo option:selected").text();
 			stock=$("#pstock").val();
 			cantidad=$("#pcantidad").val();
-			impuesto=$("#piimpuesto option:selected").val(); 
+			impuesto=$("#pimpuesto").val(); 
 			descuento=$("#pdescuento").val();
 			precio_venta=$("#pprecio_venta").val();
 			
@@ -227,7 +237,6 @@ function agregar()
 	}
 		}
 
-
 	function limpiar()
 			 {
 			    $("#pcantidad").val("");
@@ -238,15 +247,23 @@ function agregar()
 
 function evaluar()
 	{
+		var indice = document.getElementById('idcliente').selectedIndex
 		if(total>0)
-		{
-			$("#guardar").show();
+	 {		
+		if(indice=0)
+			{
+				alert("Debe seleccionar un cliente")
+			}
+			else
+			{
+				$("#guardar").show();
+			}
 		}
 		else
 		{
 			$("#guardar").hide();
 		}	
-	}
+	}	
 	function eliminar(index){
 	total=total-subtotal[index];
 	$('#total').html("$/. "+total);

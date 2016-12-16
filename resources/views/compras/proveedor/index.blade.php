@@ -2,7 +2,7 @@
 @section ('contenido')
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-dm-8 col-xs-12">
-	<h3> Listado de Proveedores <a href="proveedor/create"><button class="btn btn-success">Nuevo</button></a></h3>
+	<h3> Listado de Proveedores <a href="proveedor/create"><button class="btn btn-success btn-xs">Nuevo</button></a></h3>
 	@include('compras.proveedor.search')
 	</div>
 </div>
@@ -16,9 +16,7 @@
 		<th>Tipo Doc</th>
 		<th>Documento</th>
 		<th>Telefono</th>
-		<th>Direccion</th>
 		<th>Email</th>
-		<th>Banco</th>
 		<th>Opcciones</th>
 	</thead>
 	@foreach($personas as $per)
@@ -28,18 +26,10 @@
 		<td>{{$per->tipo_documento}}</td>
 		<td>{{$per->num_documento}}</td>
 		<td>{{$per->telefono}}</td>
-		<td>{{$per->direccion}}</td>
 		<td>{{$per->email}}</td>
 		<td>
-		@if ($per->cuenta=='Si')
-			<a href=><button class="btn btn-info">Editar</button></a>
-			@else
-			<a href=><button class="btn btn-info">Registrar</button></a>
-		@endif
-		</td>
-		<td>
-			<a href="{{URL::action('ProveedorController@edit',$per->idpersona)}}"><button class="btn btn-info">Editar </button></a>
-			<a href="" data-target="#modal-delete-{{$per->idpersona}}" data-toggle="modal"><button class="btn btn-danger">Eliminar </button></a>
+			<a href="{{URL::action('ProveedorController@edit',$per->idpersona)}}"><button class="btn btn-info btn-xs">Editar </button></a>
+			<a href="" data-target="#modal-delete-{{$per->idpersona}}" data-toggle="modal"><button class="btn btn-danger btn-xs">Eliminar </button></a>
 		</td>
 	</tr>
 	@include('compras.proveedor.modal')	
