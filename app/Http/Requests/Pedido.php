@@ -3,10 +3,8 @@
 namespace sisventas\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Articulo;
 
-
-class ArticuloFormRequest extends FormRequest
+class Pedido extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,7 +13,7 @@ class ArticuloFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -26,13 +24,7 @@ class ArticuloFormRequest extends FormRequest
     public function rules()
     {
         return [
-             'idcategoria' =>'required',
-             'impuesto' =>'required',
-             'codigo' =>'required |max:50|unique:articulo',
-             'nombre'=>'required |max:60',
-             'stock'=>'required |numeric',
-             'descripccion'=>'max:500',
-             'imagen'=>'mimes:jpeg,jpg,bmp,png'
+            //
         ];
     }
 }

@@ -18,6 +18,10 @@
 </div>
 {!! Form::model($articulo,['method'=>'PATCH','route'=>['articulo.update',$articulo->idarticulo],'files'=>'true']) !!}
 {{Form::token()}}
+
+<?php 
+echo Form::open(['url'=>'articulo.update']);
+ ?>
 <input type="hidden" name="_token" value="{{ csrf_token() }}">
 <div class="row">	
 <div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
@@ -43,7 +47,7 @@
 <div class="col-lg-4 col-md-4 col-dm-4 col-xs-12">
 	<div class="form-group">
 			<label for="codigo">codigo</label>
-			<input type="text" name="codigo" required value="{{$articulo->codigo}}" class="form-control">
+			<input type="text" name="codigo" value="{{$articulo->codigo}}" class="form-control">
 	</div>
 </div>
 

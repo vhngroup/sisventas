@@ -1,24 +1,23 @@
-<?php 
+<?php
 
 namespace sisventas\Http\Controllers;
-
+ 
 use Illuminate\Http\Request;
 use sisventas\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
-use sisventas\Http\Requests\VentaFormRequest;
-use sisventas\venta;
-use sisventas\detalledeventa; 
+use sisventas\Http\Requests\PedidoFormRequest;
+use sisventas\Pedido;
+use sisventas\detalledepedido; 
 use sisventas\articulo;
-
 use DB;
 use Carbon\Carbon;
 use Response;
 use Illuminate\Support\Collection; 
 
-class VentaController extends Controller
+class PedidoController extends Controller
 {
-   public function __construct()
+    public function __construct()
     {
 
         $this->middleware('auth');
@@ -30,61 +29,60 @@ class VentaController extends Controller
     	{
     		$query=trim($request->GET('searchText'));
 
-        $ventas=DB::table('venta as v')
-         ->join('persona as p','v.idcliente','=','p.idpersona')
-        ->join('detalledeventa as dv','v.idventa','=','dv.idventa')
-    		->select('v.idventa','v.fecha_hora','p.nombre','v.tipo_comprobante','v.serie_comprobante','v.num_comprobante','v.impuesto','v.estado','v.anticipo','v.total_venta')
-    		->where('v.num_comprobante','LIKE','%'.$query.'%')
-    		->orderBy('v.idventa','desc')
-    		->groupBy('v.idventa','v.fecha_hora','p.nombre','v.tipo_comprobante','v.serie_comprobante','v.num_comprobante','v.impuesto','v.estado')
+        $pedido=DB::table('pedido as pe')
+         ->join('persona as p','pe.idproveedor','=','p.idpersona')
+        ->join('detalledepedido as dp','pe.idpedido','=','dp.idpedido')
+    		->select('pe.idpedido','pe.fecha_hora','p.nombre','pe.num_comprobante','v.anticipo','v.total_venta')
+    		->where('pe.num_comprobante','LIKE','%'.$query.'%')
+    		->orderBy('pe.idpedido','desc')
+    		->groupBy('pe.idpedido','pe.fecha_hora','p.nombre','pe.num_comprobante')
     		->paginate(7);
-    		return view('ventas.venta.index',["ventas"=>$ventas,"searchText"=>$query]);
+    		return view('pedidos.index',["pedido"=>$pedido,"searchText"=>$query]);
     	}
     }
 
     	public function create()
     	{
-            $idventa=DB::table('venta')->max('idventa')+1; //as incredible
-    		$impuestos1=DB::table('impuesto')->where('Estado','=','A')->get(); 
-            $personas=DB::table('persona')->where('tipo_persona','!=','Proveedor')->get(); //si el provedor tambien es cliente, retirara el where
+            $ipedido=DB::table('pedido')->max('idpedido')+1; //as incredible
+            $personas=DB::table('persona')->where('tipo_persona','!=','Cliente')->get(); //si el provedor tambien es cliente, retirara el where
             $articulos=DB::table('articulo as art')
             ->join('detalle_ingreso as di','art.idarticulo','=','di.idarticulo')
-            ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'art.idarticulo','art.stock','art.impuesto', DB::raw('avg(di.precio_venta) as precio_promedio')) //esta consulta extrae el promdio del valor de venta del producto
+            ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'art.idarticulo','art.stock', 'art.descripccion', 'di.precio_compra') //esta consulta extrae el promdio del valor de venta del producto
             ->where('art.estado','=','Activo')
-            ->where('art.stock','>','0') // solo muestra articulos con stock en positivo
-            ->groupBy('articulo','art.idarticulo','art.stock')
+             // solo muestra articulos con stock en positivo
+            ->groupBy('articulo','art.idarticulo')
     		->get();
-			return view('ventas.venta.create',["personas"=>$personas,"articulos"=>$articulos,"impuestos1"=>$impuestos1, "idventa"=>$idventa]);
+			return view('pedidos.create',["personas"=>$personas,"articulos"=>$articulos, "ipedido"=>$ipedido]);
        	}
             public function show($id)
         {
-            $venta=DB::table('venta as v')
-            ->join('persona as p','v.idcliente','=','p.idpersona')
-            ->join('detalledeventa as dv','v.idventa','=','dv.idventa')
-            ->select('v.idventa','v.fecha_hora','p.nombre','v.tipo_comprobante','v.serie_comprobante','v.num_comprobante','v.impuesto','v.anticipo','v.estado','v.total_venta','v.condiciones')
-            ->where('v.idventa','=',$id)
+            $venta=DB::table('pedido as pe')
+            ->join('persona as p','pe.idproveedor','=','p.idpersona')
+            ->join('detalledepedido as dp','pe.idpedido','=','dp.idpedido')
+            ->select('pe.idpedido','pe.fecha_hora','p.nombre','pe.num_comprobante','v.anticipo','v.total_venta','v.condiciones')
+            ->where('pe.idpedido','=',$id)
             ->first();    
 
-            $detalles=DB::table('detalledeventa as dv')
-            ->join('articulo as a','dv.idarticulo','=','a.idarticulo')
-            ->select('a.nombre as articulo','dv.cantidad','dv.descuento','dv.precio_venta')
-            ->where('dv.idventa',$id)
+            $detalles=DB::table('detalledepedido as dp')
+            ->join('articulo as a','dp.idarticulo','=','a.idarticulo')
+            ->select('a.nombre as articulo','dp.cantidad','dp.descuento','dp.precio_venta')
+            ->where('dp.idpedido',$id)
             ->get();
-        return view('ventas.venta.show',["venta"=>$venta,"detalles"=>$detalles]);
+        return view('pedido.show',["venta"=>$venta,"detalles"=>$detalles]);
         }
 
     public function edit($id)
     {
-            $venta=DB::table('venta as v')
-            ->join('detalledeventa as dv','v.idventa','=','dv.idventa')
-            ->select('v.total_venta','v.idventa','dv.iddetalledeventa')
-            ->where('v.idventa','=',$id)
+            $venta=DB::table('pedido as pe')
+            ->join('detalledepedido as dp','pe.idpedido','=','dp.idpedido')
+            ->select('v.total_venta','pe.idpedido','dp.iddetalledeventa')
+            ->where('pe.idpedido','=',$id)
             ->first();
 
-            $detalles=DB::table('detalledeventa as dv')     
-            ->join('articulo as art','art.idarticulo','=','dv.idarticulo')
-            ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'dv.idarticulo','dv.cantidad','dv.descuento','dv.iddetalledeventa as id' ,'dv.precio_venta')
-            ->where('dv.idventa',$id)
+            $detalles=DB::table('detalledepedido as dp')     
+            ->join('articulo as art','art.idarticulo','=','dp.idarticulo')
+            ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'dp.idarticulo','dp.cantidad','dp.descuento','dp.iddetalledeventa as id' ,'dp.precio_venta')
+            ->where('dp.idpedido',$id)
             ->get();
 
             $articulos=DB::table('articulo as art')
@@ -95,7 +93,7 @@ class VentaController extends Controller
             ->groupBy('articulo','art.idarticulo','art.stock')
             ->get();
 
-    return view("ventas.venta.edit", ["venta"=>$venta,"articulos"=>$articulos,"detalles"=>$detalles]);
+    return view("pedido.edit", ["venta"=>$venta,"articulos"=>$articulos,"detalles"=>$detalles]);
             
     }
    public function destroy($id)
@@ -154,7 +152,7 @@ class VentaController extends Controller
     			While($cont < count($idarticulo))
                 {
     				$detalles=new detalledeventa();
-    				$detalles->idventa=$venta->idventa;
+    				$detalles->idpedido=$venta->idpedido;
     				$detalles->idarticulo=$idarticulo[$cont];
     				$detalles ->cantidad=$cantidad[$cont];
     				$detalles ->descuento=$descuento[$cont];
@@ -174,22 +172,22 @@ class VentaController extends Controller
 
         public function crear_pdf($id)
      {
-            $venta=DB::table('venta as v')
-            ->join('persona as p','v.idcliente','=','p.idpersona')
-            ->join('detalledeventa as dv','v.idventa','=','dv.idventa')
-            ->select('v.idventa','v.fecha_hora','p.nombre','p.idpersona','p.nombrecontacto','p.telefono','p.direccion','p.email', 'p.tipo_documento','p.num_documento','v.serie_comprobante','v.num_comprobante','v.descripccion','v.estado','v.total_venta','v.condiciones','dv.iddetalledeventa')
-            ->where('v.idventa','=',$id)
+            $venta=DB::table('pedido as pe')
+            ->join('persona as p','pe.idproveedor','=','p.idpersona')
+            ->join('detalledepedido as dp','pe.idpedido','=','dp.idpedido')
+            ->select('pe.idpedido','pe.fecha_hora','p.nombre','p.idpersona','p.nombrecontacto','p.telefono','p.direccion','p.email', 'p.tipo_documento','p.num_documento','pe.num_comprobante','v.descripccion','v.total_venta','v.condiciones','dp.iddetalledeventa')
+            ->where('pe.idpedido','=',$id)
             ->first(); 
 
-            $detalle=DB::table('detalledeventa as dv')
-            ->join('articulo as a','dv.idarticulo','=','a.idarticulo')
-            ->select('a.nombre as articulo','a.codigo','a.imagen', 'a.descripccion','dv.cantidad','dv.descuento','dv.precio_venta')
-            ->where('idventa',$id)
+            $detalle=DB::table('detalledepedido as dp')
+            ->join('articulo as a','dp.idarticulo','=','a.idarticulo')
+            ->select('a.nombre as articulo','a.codigo','a.imagen', 'a.descripccion','dp.cantidad','dp.descuento','dp.precio_venta')
+            ->where('idpedido',$id)
             ->get();
 
              $date = date('Y-m-d');
-             $pdf=  \PDF::loadview('ventas.venta.reporte',["detalle"=>$detalle, "venta"=>$venta]) ->setPaper('letter', 'portrait');
-           return $pdf->stream("Factura de Venta # $id-$date-$id.pdf");
+             $pdf=  \PDF::loadview('pedido.reporte',["detalle"=>$detalle, "venta"=>$venta]) ->setPaper('letter', 'portrait');
+           return $pdf->stream('reporte.pdf');
         }
-    
-}  
+  
+}

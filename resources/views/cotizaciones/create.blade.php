@@ -178,7 +178,7 @@ function evaluar()
 		var indice = document.getElementById('idcliente').selectedIndex
 		if(total>0)
 	 {		
-		if(indice=0)
+		if(indice<=0)
 			{
 				alert("Debe seleccionar un cliente")
 			}
@@ -209,7 +209,7 @@ function agregar()
 			subtotal[cont]=((cantidad*precio_venta)/100*impuesto)+(cantidad*precio_venta)-descuento;
 			total=total+subtotal[cont];
 
-			var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"></td><td><input name="impuesto[]" value="'+impuesto+'"></td><td><input type="number" name="precio_venta[]" value="'+precio_venta+'"></td><td><input type="number"name="descuento[]" value="'+descuento+'"></td><td>'+subtotal[cont]+'</td></tr>';
+			var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" readonly value="'+cantidad+'"></td><td><input name="impuesto[]" value="'+impuesto+'"></td><td><input type="number" name="precio_venta[]" readonly value="'+precio_venta+'"></td><td><input type="number"name="descuento[]" value="'+descuento+'"></td><td>'+subtotal[cont]+'</td></tr>';
 			cont++;
 		    $('#total').html("$/ " + total);
 		    $('#total_venta').val(total);

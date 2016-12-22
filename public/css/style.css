@@ -28,12 +28,12 @@ header {
 
 #logo {
   text-align: left;
-  margin-bottom: 5px; /*margen debajo del logo*/
-  font-size: 1.3em;
+  margin-bottom: 2px; /*margen debajo del logo*/
+  font-size: 10px;
 }
 
 #logo img {
-  width: 700px; height: 110px;
+  width: 700px; height: 90px;
   /*float:left; ubica la imagen, con texto al rededor*/
 }
 
@@ -45,7 +45,7 @@ h1 {
   line-height: 1.0em;
   font-weight: normal;
   text-align: center;
-  margin: 0 0 10px 0;
+  margin: 0 0 8px 0;
   background: url(\imagenes\dimension.png);
 }
 h3 {
@@ -53,37 +53,14 @@ h3 {
   border-bottom: 1px solid  #5D6975;
   color: #5D6975;
   font-size: 2.4em;
-  line-height: 1.4em;
-}
-
-#project {
-  float: left;
-}
-
-#project span {
-  color: #5D6975;
-  text-align: right;
-  width: 52px;
-  margin-right: 10px;
-  display: inline-block;
-  font-size: 0.8em;
-}
-
-#company {
-  float: right;
-  text-align: right;
-}
-
-#project div,
-#company div {
-  white-space: nowrap;        
+  line-height: 1.0em;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
 }
 
 /*table tr:nth-child(2n-1) td {

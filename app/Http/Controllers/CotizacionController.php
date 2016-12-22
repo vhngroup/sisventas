@@ -11,7 +11,6 @@ use sisventas\detalledecotizacion;
 use DB;
 use Carbon\Carbon;
 use Response;
-use Illuminate\Support\Collection;
 use PDF;
 
 class CotizacionController extends Controller
@@ -105,7 +104,7 @@ class CotizacionController extends Controller
     		$cotizacion=DB::table('cotizacion as c')
     		->join('persona as p','c.idcliente','=','p.idpersona')
     		->join('detallecotizacion as dc','c.idcotizacion','=','dc.idcotizacion')
-    		->select('c.idcotizacion','c.fecha_hora','c.descripccion','c.fecha_hora','p.nombre','c.serie_comprobante','c.num_comprobante','c.descripccion','c.estado','c.total_venta')
+    		->select('c.idcotizacion','c.fecha_hora','c.fecha_hora','p.nombre','c.serie_comprobante','c.num_comprobante','c.descripccion','c.condiciones','c.estado','c.total_venta')
     		->where('c.idcotizacion','=',$id)
             ->first();    
 
@@ -136,15 +135,13 @@ class CotizacionController extends Controller
 
              $date = date('Y-m-d');
              $pdf=  \PDF::loadview('cotizaciones.reporte',["detalle"=>$detalle, "cotizacion"=>$cotizacion]) ->setPaper('letter', 'portrait');
-           return $pdf->stream('reporte.pdf');
+           return $pdf->stream("cotizacion # $id-$date-$id.pdf");
     }
-               
-
 	   	public function destroy($id)
     	{
     		$cotizacion=cotizacion::findOrFail($id);
 			$cotizacion->Estado='C';
-			$cotizacion>update();
+			$cotizacion->update();
 			return Redirect::to('cotizaciones');
     	}
 

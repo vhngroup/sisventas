@@ -20,13 +20,20 @@
 		{{Form::token()}}
 		<input type="hidden" name="_token" value="{{ csrf_token() }}">
 <div class="row">	
+<div class="col-lg-6 col-md-6 col-dm-12 col-xs-12">
+	<div class="form-group">
+			<label for="codigo">codigo</label>
+			<input type="text" name="codigo" required value="{{old('codigo')}}" class="form-control" placeholder="Codigo del articulo...">
+		</div>
+</div>
 <div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
 			<label for="nombre">Nombre</label>
 			<input type="text" name="nombre" required value="{{old('nombre')}}" class="form-control" placeholder="Nombre...">
 		</div>
 </div>
-<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
+
+<div class="col-lg-4 col-md-4 col-dm-4 col-xs-12">
 	<div class="form-group">
 			<label>Categoria</label>
 			<select name="idcategoria" class="form-control">
@@ -34,12 +41,6 @@
 				<option value="{{$cat->idcategoria}}"> {{$cat->Nombre}} </option>
 				@endforeach
 			</select>
-		</div>
-</div>
-<div class="col-lg-4 col-md-4 col-dm-4 col-xs-12">
-	<div class="form-group">
-			<label for="codigo">codigo</label>
-			<input type="text" name="codigo" required value="{{old('codigo')}}" class="form-control" placeholder="Codigo del articulo...">
 		</div>
 </div>
 <div class="col-lg-4 col-md-4 col-dm-4 col-xs-12">

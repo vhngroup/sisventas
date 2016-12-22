@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Propuesta de cotización # $cotizacion->idcotizacion</title>
+    <title>Propuesta de cotización # {{$cotizacion->idcotizacion}}</title>
     <link rel="stylesheet" href="css\style.css" media="all" />
   </head>
   <body>

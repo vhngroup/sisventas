@@ -60,11 +60,15 @@
             
             <tr>
             <td colspan="5" class="descripccion">Subtotal</td>
-            <td class="descripccion"> ${{$venta->total_venta}}</td>
+            <td class="descripccion"> $130000.00</td>
           </tr>
           <tr>
             <td colspan="5" class="descripccion">Impuestos</td>
             <td class="descripccion">$0</td>
+          </tr>
+          <tr>
+            <td colspan="5" class="descripccion">Descuento</td>
+            <td class="descripccion">$10000</td>
           </tr>
           <tr>
             <td colspan="5" class="descripccion">Valor Total</td>

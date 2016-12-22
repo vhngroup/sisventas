@@ -23,7 +23,7 @@
 		<td>{{$ven->fecha_hora}}</td>
 		<td>{{$ven->nombre}}</td>
 		<td>{{$ven->descripccion}}</td>
-		<td>{{$ven->serie_comprobante.'-'.$ven->num_comprobante}}</td>
+		<td>{{$ven->serie_comprobante.'-'.$ven->num_comprobante.'-'.$ven->estado}}</td>
 		<td>{{$ven->total_venta}}</td>
 		<td>
 			<a href="{{URL::action('CotizacionController@show',$ven->idcotizacion)}}"><button class="btn btn-primary btn-xs">Detalles</button></a>

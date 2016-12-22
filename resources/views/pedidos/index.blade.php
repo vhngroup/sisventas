@@ -2,8 +2,8 @@
 @section ('contenido')
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-dm-8 col-xs-12">
-	<h3> Listado de cotizaciones <a href="cotizaciones/create"><button class="btn btn-success">Nuevo</button></a></h3>
-	@include('cotizaciones.search')
+	<h3> Listado de pedidos <a href="pedidos/create"><button class="btn btn-success">Nuevo</button></a></h3>
+	@include('pedidos.search')
 	</div>
 </div>
 <div class="row">
@@ -13,31 +13,28 @@
 	<thead>
 		<th>Fecha</th>
 		<th>Cliente</th>
-		<th>Alcance</th>
 		<th>Comprobante</th>
 		<th>Total</th>
 		<th>Estado</th>
 		<th>Opcciones</th>
 	</thead>
-	@foreach($cotizacion as $ven)
+	@foreach($pedido as $ped)
 	<tr>
-		<td>{{$ven->fecha_hora}}</td>
-		<td>{{$ven->nombre}}</td>
-		<td>{{$ven->descripccion}}</td>
-		<td>{{$ven->serie_comprobante.'-'.$ven->num_comprobante}}</td>
-		<td>{{$ven->total_venta}}</td>
-		<td>{{$ven->estado}}</td>
+		<td>{{$ped->fecha_hora}}</td>
+		<td>{{$ped->nombre}}</td>
+		<td>{{$ped->num_comprobante}}</td>
+		<td>{{$ped->total_venta}}</td>
 		<td>
-			<a href="{{URL::action('CotizacionController@show',$ven->idcotizacion)}}"><button class="btn btn-primary">Detalles</button></a>
-			<a href="" data-target="#modal-delete-{{$ven->idcotizacion}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a>
-		   	<a href="{{URL::action('CotizacionController@crear_pdf',$ven->idcotizacion)}}" target=newtab "><button class="btn btn-primary">Imprimir</button></a>
+			<a href="{{URL::action('PedidoController@show',$ped->idpedido)}}"><button class="btn btn-primary">Detalles</button></a>
+			<a href="" data-target="#modal-delete-{{$ped->idpedido}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a>
+		   	<a href="{{URL::action('PedidoController@crear_pdf',$ped->idpedido)}}" target=newtab "><button class="btn btn-primary">Imprimir</button></a>
 		</td>
 	</tr>
-	@include('cotizaciones.modal')		
+	@include('pedidos.modal')		
 	@endforeach
 	</table>
 	</div>
-	{{$cotizacion->render()}}
+	{{$pedido->render()}}
 	</div>	
 </div>
  {!!Form::close()!!}  

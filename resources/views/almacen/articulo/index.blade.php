@@ -2,8 +2,8 @@
 @section ('contenido')
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-dm-8 col-xs-12">
-	<h3> Listado de Articulos <a href="articulo/create"><button class="btn btn-success">Nuevo</button></a>
-	<a href="#"><button class="btn btn-info">Imprimir Listado</button></a></h3>
+	<h3> Listado de Articulos <a href="articulo/create"><button class="btn btn-success btn-xs" >Nuevo</button></a>
+	<a href="#"><button class="btn btn-info btn-xs">Imprimir Listado</button></a></h3>
 	@include('almacen.articulo.search')
 	</div>
 </div>
@@ -31,9 +31,9 @@
 		<td> <img src="{{asset('imagenes/articulos/'.$art->imagen)}}"alt="{{$art->nombre}}",height="100px" width="100px", class="img-thumbnail"></td>
 		<td>{{$art->estado}}</td>
 		<td>
-			<a href="{{URL::action('ArticuloController@edit',$art->idarticulo)}}"><button class="btn btn-info">Editar</button></a>
-			<a href="" data-target="#modal-delete-{{$art->idarticulo}}" data-toggle="modal"><button class="btn btn-danger">Eliminar </button></a>
-			<a href="{{URL::action('ArticuloController@edit',$art->idarticulo)}}"><button class="btn btn-info">Imprimir</button></a>
+			<a href="{{URL::action('ArticuloController@edit',$art->idarticulo)}}"><button class="btn btn-info btn-xs">Editar</button></a>
+			<a href="" data-target="#modal-delete-{{$art->idarticulo}}" data-toggle="modal"><button class="btn btn-danger btn-xs">Eliminar </button></a>
+			<a href="{{URL::action('ArticuloController@edit',$art->idarticulo)}}"><button class="btn btn-info btn-xs">Imprimir</button></a>
 		</td>
 	</tr>
 	@include('almacen.articulo.modal')

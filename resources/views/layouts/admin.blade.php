@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Seneca Sistema de Ventas | www.vhngroup.com</title>
@@ -106,6 +107,7 @@
               <ul class="treeview-menu">
                 <li><a href="{{URL::to('compras/ingreso')}}"><i class="fa fa-circle-o"></i> Ingresos</a></li>
                 <li><a href="{{URL::to('compras/proveedor')}}"><i class="fa fa-circle-o"></i> Proveedores</a></li>
+                <li><a href="{{URL::to('pedidos')}}"><i class="fa fa-circle-o"></i> Pedidos</a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -115,9 +117,9 @@
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
+                <li><a href="{{URL::to('ventas/cliente')}}"><i class="fa fa-circle-o"></i> Clientes</a></li>
                 <li><a href="{{URL::to('cotizaciones')}}"><i class="fa fa-circle-o"></i>Cotizaciones</a></li>
                 <li><a href="{{URL::to('ventas/venta')}}"><i class="fa fa-circle-o"></i> Ventas</a></li>
-                <li><a href="{{URL::to('ventas/cliente')}}"><i class="fa fa-circle-o"></i> Clientes</a></li>
               </ul>
             </li>
                        

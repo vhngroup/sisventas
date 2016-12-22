@@ -46,7 +46,8 @@
 		  <div class="table-responsive">
 			<table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
 				<thead style="background-color:#caf5a9">
-					<th>Articulo</th>
+				<th>Codigo</th>
+					<th>Articulo</th>	
 					<th>Cantidad</th>
 					<th>Precio Compra</th>
 					<th>Precio Venta</th>
@@ -63,6 +64,7 @@
 		<tbody>
 			@foreach($detalles as $det)
 			<tr>
+			<td>{{$det->codigo}}</td>
 				<td>{{$det->articulo}}</td>
 				<td>{{$det->cantidad}}</td>
 				<td>{{$det->precio_compra}}</td>

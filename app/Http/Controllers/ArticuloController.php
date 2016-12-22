@@ -46,16 +46,6 @@ class ArticuloController extends Controller
     {
 
 		$articulo=new articulo;
-		//$v = \Validator::make($request->all(), [
-          //  'codigo' => 'required|codigo|unique:articulo,codigo',
-            //]);
-		   //if ($v->fails())
-        //{
-          //  return redirect()->back()->withInput()->withErrors($v->errors());
-        //}
-        //else
-        //{
-        
 		$articulo->idcategoria=$request->get('idcategoria');
 		$articulo->codigo=$request->get('codigo');
 		$articulo->nombre=$request->get('nombre');
@@ -77,21 +67,9 @@ class ArticuloController extends Controller
   public function update(ArticuloFormRequest $request, $id)
 	{
 		$articulo =Articulo::findOrFail($id);
-	
-		$v = \Validator::make($request->all(), [
-            'codigo' => 'required|codigo|unique:articulo,codigo',
-            ]);
-
-            if ($v->fails())
-        {
-            return redirect()->back()->withInput()->withErrors($v->errors());
-        }
-        else
-        {
-
 		$articulo->idcategoria=$request->get('idcategoria');
-		$articulo->codigo=$request->get('codigo');
 		$articulo->nombre=$request->get('nombre');
+		$articulo->codigo=$request->get('codigo');
 		$articulo->impuesto=(float)$request->get('impuesto'); 
 		$articulo->stock=$request->get('stock');
 		$articulo->descripccion=$request->get('descripccion');
@@ -105,8 +83,16 @@ class ArticuloController extends Controller
 		}
 		$articulo->update();
 		return Redirect::to('almacen/articulo');
-	}
 }
+
+	public function ValidateForm(Request $request)
+	{
+
+	print_r($request->all());
+	$this->validate($request,[
+		'codigo'=>'required|codigo|unique:articulo'
+		]);
+	}
 
 
     public function show($id)

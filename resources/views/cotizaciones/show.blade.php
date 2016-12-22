@@ -71,6 +71,12 @@
 			@endforeach
 		</tbody>
 		</table>
+		<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
+		<div class="form-group">
+				<label for="condiciones">Condiciones del Servicio</label>
+				<p>{{$cotizacion->condiciones}}</p>
+		</div>
+	</div>
 		</div>
 		 <a href="{{URL::action('CotizacionController@crear_pdf',$cotizacion->idcotizacion)}}"><button class="btn btn-primary">Imprimir</button></a>
 		 <a class="btn btn-default" href="/cotizaciones" role="button">Cancelar</a>
