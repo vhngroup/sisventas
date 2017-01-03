@@ -11,7 +11,7 @@
         <img src="imagenes\logo.png">
       </div>
       <div>
-      <h1>Factura # {{$venta->num_comprobante}}{{$venta->serie_comprobante}}-{{$venta->idventa}}</h1>
+      <h1>Factura de Venta # {{$venta->num_comprobante}}{{$venta->serie_comprobante}}-{{$venta->idventa}}</h1>
       <div id="logo">Alcance: {{$venta->descripccion}}</div>
       <table>
         <tr>
@@ -60,7 +60,7 @@
             
             <tr>
             <td colspan="5" class="descripccion">Subtotal</td>
-            <td class="descripccion"> $130000.00</td>
+            <td class="descripccion">${{$venta->total_venta}}</td>
           </tr>
           <tr>
             <td colspan="5" class="descripccion">Impuestos</td>
@@ -68,11 +68,15 @@
           </tr>
           <tr>
             <td colspan="5" class="descripccion">Descuento</td>
-            <td class="descripccion">$10000</td>
+            <td class="descripccion">$0</td>
+          </tr>
+          <tr>
+            <td colspan="5" class="descripccion">Anticipo</td>
+            <td class="descripccion">${{$venta->anticipo}}</td>
           </tr>
           <tr>
             <td colspan="5" class="descripccion">Valor Total</td>
-            <td class="descripccion">${{$venta->total_venta}}</td>
+            <td class="descripccion">{{$venta->total_venta}}</td>
       </tr>
      </tbody>
 </table>

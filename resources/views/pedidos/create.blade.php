@@ -1,4 +1,4 @@
-@extends('layouts.admin') 
+@extends('layouts.admin')  
 @section('contenido')
 <div class="row">
 	<div class="col-lg-6 col-md-6 col-dm-12 col-xs-12">
@@ -35,8 +35,6 @@
 			<input type="text" name="serie_comprobante" readonly value= "<?php echo date("Y-m-d");?>{{$ipedido}}" class="form-control" placeholder="Serie de comprobante...">
 	</div>
 </div>
-
-
 </div>
 
 <div class="row">
@@ -161,7 +159,7 @@ function evaluar()
 		var indice = document.getElementById('idproveedor').selectedIndex
 		if(total>0)
 	 {		
-		if(indice=0)
+		if(indice<=0)
 			{
 				alert("Debe seleccionar un cliente")
 			}
@@ -185,9 +183,9 @@ function agregar()
 			cantidad=$("#pcantidad").val();
 			precio_compra=$("#pprecio_compra").val();
 			
-			  if (idarticulo!="" && cantidad!="" && cantidad>0 && descuento!="" && precio_compra!="")
+			  if (idarticulo!="" && cantidad!="" && cantidad>0 && precio_compra!="")
 		{
-			subtotal[cont]=(((cantidad*precio_compra)/100*impuesto)+(cantidad*precio_compra)-descuento);
+			subtotal[cont]=(cantidad*precio_compra);
 			total=total+subtotal[cont];
 
 			var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"><td><input type="number" name="precio_compra[]" value="'+precio_compra+'"></td><td>'+subtotal[cont]+'</td></tr>';
@@ -211,7 +209,6 @@ function agregar()
 	function limpiar()
 			 {
 			    $("#pcantidad").val("");
-				$("#pdescuento").val("");
 				$("#pprecio_compra").val("");
 				$("#pstock").val("");
 			 }

@@ -62,10 +62,13 @@
 	</div>
 <div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
 	<div class="form-group"> 
-			<label for="descripccion">Descripcción</label>
-			<textarea type="text" name="descripccion" value="{{old('descripccion')}}" class="form-control" placeholder="Descripccion del articulo..."></textarea>
-		</div>
-		
+			<label for="descripccion">Descripcción </label>
+  			<textarea name=descripccion wrap=physical class="form-control"
+ onKeyDown="textCounter(this.form.descripccion,this.form.remLen,200);" 
+ onKeyUp="textCounter(this.form.descripccion,this.form.remLen,200);"
+    ></textarea>
+<br>
+<input readonly type=text name=remLen size=3 maxlength=3 value="0"> Total Caracteres - Maximo 200 caracteres</div>
 </div>
 
 <div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
@@ -77,9 +80,23 @@
 <div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
 	<div class="form-group">
 			<button class="btn btn-primary" type="submit">Guardar</button>
-			<button class="btn btn-danger" type="reset">Cancelar</button>
+			<a class="btn btn-danger" href="/almacen/articulo" role="button">Cancelar</a>
 	</div>
 </div>
 </div>
-		{!!Form::close()!!}
+{!!Form::close()!!}  
+         @push ('scripts')
+<script>
+
+	function textCounter (field, countfield, maxlimit) {
+    if (field.value.length > maxlimit) {
+        field.value = field.value.substring(0, maxlimit);
+        countfield.value = 'max characters';
+    } else { // otherwise, update 'characters left' counter
+        countfield.value = field.value.length;
+    }
+}
+
+</script>
+@endpush
 @endsection

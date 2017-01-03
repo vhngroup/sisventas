@@ -37,7 +37,7 @@ class VentaController extends Controller
     		->where('v.num_comprobante','LIKE','%'.$query.'%')
     		->orderBy('v.idventa','desc')
     		->groupBy('v.idventa','v.fecha_hora','p.nombre','v.tipo_comprobante','v.serie_comprobante','v.num_comprobante','v.impuesto','v.estado')
-    		->paginate(7);
+    		->paginate(15);
     		return view('ventas.venta.index',["ventas"=>$ventas,"searchText"=>$query]);
     	}
     }
@@ -98,13 +98,18 @@ class VentaController extends Controller
     return view("ventas.venta.edit", ["venta"=>$venta,"articulos"=>$articulos,"detalles"=>$detalles]);
             
     }
+
+    public function cancelar($id)    
+    {
+    $venta=venta::findOrFail($id);
+    $venta->Estado='C';
+    $venta->update();
+    return Redirect::to('venta');
+   }
+
    public function destroy($id)
         
-        {   
-            //$sumar = articulo::findOrFail($articulo);
-            //$sumar->stock = + $cantidad;
-            //$sumar->update();
-            
+        {               
            $consulta = detalledeventa::find($id);
             if (is_null ($consulta))
            {
@@ -177,7 +182,7 @@ class VentaController extends Controller
             $venta=DB::table('venta as v')
             ->join('persona as p','v.idcliente','=','p.idpersona')
             ->join('detalledeventa as dv','v.idventa','=','dv.idventa')
-            ->select('v.idventa','v.fecha_hora','p.nombre','p.idpersona','p.nombrecontacto','p.telefono','p.direccion','p.email', 'p.tipo_documento','p.num_documento','v.serie_comprobante','v.num_comprobante','v.descripccion','v.estado','v.total_venta','v.condiciones','dv.iddetalledeventa')
+            ->select('v.idventa','v.fecha_hora','p.nombre','p.idpersona','p.nombrecontacto','p.telefono','p.direccion','p.email', 'p.tipo_documento','p.num_documento','v.serie_comprobante','v.anticipo','v.num_comprobante','v.descripccion','v.estado','v.total_venta','v.condiciones','dv.iddetalledeventa')
             ->where('v.idventa','=',$id)
             ->first(); 
 

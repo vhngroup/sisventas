@@ -99,50 +99,24 @@ class PedidoController extends Controller
    public function destroy($id)
         
         {   
-            //$sumar = articulo::findOrFail($articulo);
-            //$sumar->stock = + $cantidad;
-            //$sumar->update();
-            
-           $consulta = detalledeventa::find($id);
-            if (is_null ($consulta))
-           {
-            App::abort(404);
-           }
-           $consulta->delete();
-           if (Request::ajax())
-             {
-                      return Response::json(array (
-                       'success' => true,
-                       'msg'     => 'Producto ' . $consulta->idarticulo . ' eliminado',
-                             'id'      => $consulta->id
-                       ));
-                }
-                  else
-                {
-                   return back();
-                }
+   
         }
 
-       		public function store(VentaFormRequest $request)
-    	{
+       		public function store(Pedido $request) {
+                
     		try{
     			DB::beginTransaction();
-    			$venta=new venta();
-    			$venta->idcliente=$request->get('idcliente');
-    			$venta->tipo_comprobante=$request->get('tipo_comprobante');
-    			$venta->serie_comprobante=$request->get('serie_comprobante');
-    			$venta->num_comprobante=$request->get('num_comprobante');
-                $venta->total_venta=$request->get('total_venta');
+    			$pedido=new pedido();
+    			$pedido->idcliente=$request->get('idproveedor');
+    			$pedido->num_comprobante=$request->get('num_comprobante');
+                $pedido->total_compra=$request->get('total_venta');
     			$mytime = Carbon::now('America/Bogota');
-    			$venta->fecha_hora=$mytime->toDateTimeString();
+    			$pedido->fecha_hora=$mytime->toDateTimeString();
     			//$ingreso->impuesto='16';//$request->get('impuesto');//16%
-                $venta->impuesto=(float)$request->get('impuesto');//16%
-                $venta->descripccion=$request->get('descripccion');
-                $venta->estado='A';
-                $venta->anticipo=$request->get('anticipo');
-                $venta->condiciones=$request->get('condiciones');
+                $pedido->estado='A';
+                $pedido->condiciones=$request->get('condiciones');
                 //$venta->idproyecto=$request->get('idproyecto');
-    		       $venta->save();
+    		       $pedido->save();
     			$idarticulo=$request->get('idarticulo');
     			$cantidad=$request->get('cantidad');
     			$descuento=$request->get('descuento');
@@ -151,11 +125,10 @@ class PedidoController extends Controller
                    
     			While($cont < count($idarticulo))
                 {
-    				$detalles=new detalledeventa();
-    				$detalles->idpedido=$venta->idpedido;
+    				$detalles=new detalledepedido();
+    				$detalles->idpedido=$pedido->idpedido;
     				$detalles->idarticulo=$idarticulo[$cont];
     				$detalles ->cantidad=$cantidad[$cont];
-    				$detalles ->descuento=$descuento[$cont];
     				$detalles->precio_venta=$precio_venta[$cont];
     				$detalles->save();
     				$cont=$cont+1;

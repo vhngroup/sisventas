@@ -59,19 +59,19 @@
             </tr>
             <tr>
             <td colspan="5" class="descripccion">Subtotal</td>
-            <td class="descripccion"> ${{$cotizacion->total_venta}}</td>
+            <td class="descripccion"> $ {{$cotizacion->total_venta}}</td>
           </tr>
           <tr>
             <td colspan="5" class="descripccion">Impuestos</td>
-            <td class="descripccion">$0</td>
+            <td class="descripccion">$ 0</td>
           </tr>
           <tr>
             <td colspan="5" class="descripccion">Descuento</td>
-            <td class="descripccion">$0</td>
+            <td class="descripccion">$ 0</td>
           </tr>
           <tr>
             <td colspan="5" class="descripccion">Valor Total</td>
-            <td class="descripccion">${{$cotizacion->total_venta}}</td>
+            <td class="descripccion">$ {{$cotizacion->total_venta}}</td>
       </tr>
      </tbody>
 </table>
