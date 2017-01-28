@@ -59,25 +59,21 @@
             </tr>
             <tr>
             <td colspan="5" class="descripccion">Subtotal</td>
-            <td class="descripccion"> $ {{$cotizacion->total_venta}}</td>
+            <td class="descripccion">${{$cotizacion->total_venta}}</td>
           </tr>
           <tr>
             <td colspan="5" class="descripccion">Impuestos</td>
-            <td class="descripccion">$ 0</td>
-          </tr>
-          <tr>
-            <td colspan="5" class="descripccion">Descuento</td>
-            <td class="descripccion">$ 0</td>
+            <td class="descripccion">$0</td>
           </tr>
           <tr>
             <td colspan="5" class="descripccion">Valor Total</td>
-            <td class="descripccion">$ {{$cotizacion->total_venta}}</td>
+            <td class="descripccion">${{$cotizacion->total_venta}}</td>
       </tr>
      </tbody>
 </table>
 <div id="notices">
         <div>Condiciones del servicio:</div>
-        <div><textarea cols="26" rows="8">{{$cotizacion->condiciones}}</textarea></div>
+        <div><textarea cols="26" rows="8" >{{$cotizacion->condiciones}}</textarea></div>
       </div>
     <footer>
       <div>VHNGROUP: Tecnologia Automatizando su Hogar. - Factura creada en fisico y digital por SisventasVHNGroup</div>

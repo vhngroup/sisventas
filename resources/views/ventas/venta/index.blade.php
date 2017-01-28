@@ -29,9 +29,9 @@
 		<td>{{$ven->total_venta}}</td>
 		<td>{{$ven->estado}}</td>
 		<td>
-			<a href="{{URL::action('VentaController@show',$ven->idventa)}}"><button class="btn btn-primary">Detalles</button></a>
-			<a href="{{URL::action('VentaController@edit',$ven->idventa)}}"><button class="btn btn-danger">Editar</button></a>
-		    <a href="{{URL::action('VentaController@crear_pdf',$ven->idventa)}}" target=newtab "><button class="btn btn-primary">Imprimir</button></a>
+			<a href="{{URL::action('VentaController@show',$ven->idventa)}}"><button class="btn btn-primary btn-xs">Detalles</button></a>
+			<a href="{{URL::action('VentaController@edit',$ven->idventa)}}"><button class="btn btn-danger btn-xs">Editar</button></a>
+		    <a href="{{URL::action('VentaController@crear_pdf',$ven->idventa)}}" target=newtab "><button class="btn btn-primary btn-xs">Imprimir</button></a>
 		</td>
 	</tr>
 	@include('ventas.venta.modal')	

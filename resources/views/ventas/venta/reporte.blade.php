@@ -11,6 +11,7 @@
         <img src="imagenes\logo.png">
       </div>
       <div>
+      <h4>Informaciòn de pago:Consignaciòn Bancaria: Bancolombia, cuenta de ahorros # 122-978169-59 a nombre de Victor Hugo Noguera</h4>
       <h1>Factura de Venta # {{$venta->num_comprobante}}{{$venta->serie_comprobante}}-{{$venta->idventa}}</h1>
       <div id="logo">Alcance: {{$venta->descripccion}}</div>
       <table>
@@ -73,18 +74,17 @@
           <tr>
             <td colspan="5" class="descripccion">Anticipo</td>
             <td class="descripccion">${{$venta->anticipo}}</td>
-          </tr>
+          </tr>s
           <tr>
             <td colspan="5" class="descripccion">Valor Total</td>
             <td class="descripccion">{{$venta->total_venta}}</td>
       </tr>
      </tbody>
-</table>
+</table>    
 <div id="notices">
         <div>Condiciones del servicio:</div>
-        <div><textarea cols="26" rows="8">{{$venta->condiciones}}</textarea></div>
+        <div><textarea cols="40" rows="60">{{$venta->condiciones}}</textarea></div>
       </div>
-    
     <footer>
       <div>VHNGROUP: Tecnologia Automatizando su Hogar. - Factura creada en fisico y digital por SisventasVHNGroup</div>
     <div id="footer">
