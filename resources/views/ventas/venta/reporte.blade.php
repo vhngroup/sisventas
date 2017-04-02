@@ -1,98 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Factura de Venta # {{$venta->idventa}}</title>
     <link rel="stylesheet" href="css\style.css" media="all" />
-  </head>
+   </head>
   <body>
     <header class="clearfix">
       <div id="logo">
         <img src="imagenes\logo.png">
       </div>
       <div>
-      <h4>Informaciòn de pago:Consignaciòn Bancaria: Bancolombia, cuenta de ahorros # 122-978169-59 a nombre de Victor Hugo Noguera</h4>
       <h1>Factura de Venta # {{$venta->num_comprobante}}{{$venta->serie_comprobante}}-{{$venta->idventa}}</h1>
-      <div id="logo">Alcance: {{$venta->descripccion}}</div>
-      <table>
-        <tr>
-        <th class="cliente"></th>
-        <th class="cliente"></th>
-        <th class="cliente"></th>
-        </tr>
-         <tr>
-          <td class="cliente">{{$venta->nombre}}</td>
-          <td class="cliente">{{$venta->tipo_documento}} {{$venta->num_documento}} </td>
-          <td class="cliente">{{$venta->telefono}}</td>
-        </tr>
-        <tr>
-          <td class="cliente">{{$venta->nombrecontacto}}</td>
-          <td class="cliente">{{$venta->email}}</td>
-          <td class="cliente">{{$venta->direccion}}</td>
-        </tr>
-      </table>
+      <div id="pago">
+      <p><h3>Informaciòn de pago: Consignaciòn Bancaria: Bancolombia, cuenta de ahorros # 122-978169-59 a nombre de Victor Hugo Noguera</h3>
+      <h3>Regimen simplificado a Nombre de Victor Hugo Noguera Lievano Nit: 1121859274-9</h3></p>
+      </div>
+      <div id="alcance"><b>Alcance: </b>{{$venta->descripccion}}
+      </div>
+        <div id="DatosCliente">
+        <p><b>Cliente:</b> {{$venta->nombre}} <b>Identificación:</b> {{$venta->tipo_documento}} <b>Numero:</b> {{$venta->num_documento}} <b>Nombre del Cliente:</b> {{$venta->nombrecontacto}}</p>
+            <p><b>Telefono:</b> {{$venta->telefono}} <b>Correo:</b> {{$venta->email}} <b>Dirección:</b>
+        {{$venta->direccion}}</p>
       </div>
      </header>
 <table>
    <thead>
        <tr>
-            <th class="unit">Codigo</th>
-            <th class="unit">Imagen</th>
-            <th class="unit">Descripcción</th>
-            <th class="unit">Cantidad</th>
-            <th class="unit">Precio</th>
-            <th class="unit">TOTAL</th>
+            <th>Codigo</th>
+            <th>Imagen</th>
+            <th>Descripcción</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Total</th>
           </tr>
         </thead>
    <tbody>
 @foreach($detalle as $det)
       <tr>
-        <td class="service">{{$det->codigo}}</td>
+        <td class="item">{{$det->codigo}}</td>
         <td> <img src="imagenes\articulos\{{$det->imagen}}"> </td>
-        <td class="service">{{$det->descripccion}}</td>
-        <td class="unit">{{$det->cantidad}}</td>
-        <td class="qty">{{$det->precio_venta}}</td>
-        <td class="qty">{{($det->cantidad*$det->precio_venta)}}</td>
+        <td class="item">{{$det->descripccion}}</td>
+        <td class="number">{{$det->cantidad}}</td>
+        <td class="item"><output>{{$det->precio_venta}}</output></td>
+        <td class="item"><output>{{($det->cantidad*$det->precio_venta)}}</output></td>
       </tr>
          @endforeach
-         <tr>
-              <td colspan="6" class="grand"></td>
-            </tr>
-            
+     </tbody>
+</table>    
+    <footer>
+    <table> 
+    <thead>
+       <tr>
+            <th>---------------------------------</th>
+            <th>-------------------------------------------------------</th>
+            <th>-----------------------------------------------------</th>
+            <th>----------------------------------------------------</th>
+            <th>---------------------------------------------------</th>
+            <th>---------------------------------------------------</th>
+          </tr>
+        </thead>
+   
+        <tbody>
             <tr>
-            <td colspan="5" class="descripccion">Subtotal</td>
+            <td colspan="6" class="descripccion"> Subtotal </td>
             <td class="descripccion">${{$venta->total_venta}}</td>
           </tr>
           <tr>
-            <td colspan="5" class="descripccion">Impuestos</td>
+            <td colspan="6" class="descripccion">Impuestos</td>
             <td class="descripccion">$0</td>
           </tr>
           <tr>
-            <td colspan="5" class="descripccion">Descuento</td>
+            <td colspan="6" class="descripccion">Descuento</td>
             <td class="descripccion">$0</td>
           </tr>
           <tr>
-            <td colspan="5" class="descripccion">Anticipo</td>
+            <td colspan="6" class="descripccion">Anticipo</td>
             <td class="descripccion">${{$venta->anticipo}}</td>
           </tr>s
           <tr>
-            <td colspan="5" class="descripccion">Valor Total</td>
-            <td class="descripccion">{{$venta->total_venta}}</td>
-      </tr>
-     </tbody>
-</table>    
-<div id="notices">
-        <div>Condiciones del servicio:</div>
-        <div><textarea cols="40" rows="60">{{$venta->condiciones}}</textarea></div>
-      </div>
-    <footer>
-      <div>VHNGROUP: Tecnologia Automatizando su Hogar. - Factura creada en fisico y digital por SisventasVHNGroup</div>
-    <div id="footer">
-        <img src="imagenes\footer.png">
+            <td colspan="6" class="descripccion">Valor Total</td>
+            <td class="descripccion" id="ptotal">{{$venta->total_venta}}</td>
+          </tr>
+          </tbody>
+    </table>
+      <div>Condiciones del servicio:</div>
+      <textarea cols="30" rows="5" id="comment">{{$venta->condiciones}}</textarea>
+      <div>VHNGROUP: Tecnologia Automatizando su Hogar. - Factura creada en fisico y digital por SisventasVHNGroup
+      <figure id="imagenfooter"> 
+            <img src="imagenes\footer.png">
+      </figure>
       </div>
     </footer>
 </body>
 </html>
-
-  
-

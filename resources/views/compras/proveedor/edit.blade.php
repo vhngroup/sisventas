@@ -30,25 +30,16 @@
 	<div class="form-group">
 			<label>Documentos</label>
 			<select name="tipo_documento" class="form-control">
-			@if($persona->tipo_documento=='DNI')
-				<option value="Cc" selected> Cedula </option>
+			@if($persona->tipo_documento=='Cc')
 				<option value="NIT"> NIT </option>
-				<option value="PASSP"> PASSPORT </option>
-				<option value="Registmerca"> Registro Mercantil </option>
+				<option value="Registro Mercantil"> Registro Mercantil </option>
 			@elseif($persona->tipo_documento=='NIT')
 			   <option value="Cc"> Cedula </option>
 				<option value="NIT" selected> NIT </option>
-				<option value="PASSP"> PASSPORT </option>
-				<option value="Registmerca"> Registro Mercantil </option>
-				@elseif($persona->tipo_documento=='PASSP')
+				<option value="Registro Mercantil"> Registro Mercantil </option>
+				@else($persona->tipo_documento=='Registro Mercantil')
 			   <option value="Cc"> Cedula </option>
 				<option value="NIT"> NIT </option>
-				<option value="PASSP" selected> PASSPORT </option>
-				<option value="Registmerca"> Registro Mercantil </option>
-				@else($persona->tipo_documento=='Registmerca')
-			   <option value="Cc"> Cedula </option>
-				<option value="NIT"> NIT </option>
-				<option value="PASSP"> PASSPORT </option>
 				<option value="Registmerca" selected> Registro Mercantil </option>
 			@endif
 			</select>

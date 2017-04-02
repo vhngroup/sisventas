@@ -73,7 +73,7 @@
 </table>
 <div id="notices">
         <div>Condiciones del servicio:</div>
-        <div><textarea cols="26" rows="8" >{{$cotizacion->condiciones}}</textarea></div>
+        <div><textarea cols="26" rows="8" >{{$cotizacion->condiciones}}</textarea></div> 
       </div>
     <footer>
       <div>VHNGROUP: Tecnologia Automatizando su Hogar. - Factura creada en fisico y digital por SisventasVHNGroup</div>

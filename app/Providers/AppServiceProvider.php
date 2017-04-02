@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+       $this->app->bind('patch.public', function()
+       {
+            return base_patch().'/sisventas';
+       });
     }
 }

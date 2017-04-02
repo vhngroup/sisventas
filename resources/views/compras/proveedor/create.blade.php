@@ -40,8 +40,7 @@
 				<option value=""> Seleccione Opcción </option>
 				<option value="Cc"> Cedula </option>
 				<option value="NIT"> NIT </option>
-				<option value="PASSP"> PAS </option>
-				<option value="Registmerca"> Registro Mercantil </option>
+				<option value="Registro Mercantil"> Registro Mercantil </option>
 			</select>
 		</div>
 </div>

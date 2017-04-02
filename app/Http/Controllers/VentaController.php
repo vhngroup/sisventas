@@ -193,7 +193,7 @@ class VentaController extends Controller
             ->get();
 
              $date = date('Y-m-d');
-             $pdf=  \PDF::loadview('ventas.venta.reporte',["detalle"=>$detalle, "venta"=>$venta]) ->setPaper('letter', 'portrait');
+             $pdf=  \PDF::loadview('ventas.venta.reporte',["detalle"=>$detalle, "venta"=>$venta]) ->setPaper('letter', 'portrait'); 
            return $pdf->stream("Factura de Venta # $id-$date-$id.pdf");
         }
     

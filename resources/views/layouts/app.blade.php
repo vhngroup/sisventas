@@ -12,8 +12,8 @@
     <title>{{ config('app.name', 'Seneca Sistema de Ventas | www.vhngroup.com') }}</title>
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{asset('css/normalize.css')}}">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
@@ -81,6 +81,8 @@
     @yield('content')
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src="{{asset('js/modernizr-custom.js')}}"></script>
+    <script src="{{asset('js/app.js')}}"></script>
+    
 </body>
 </html>

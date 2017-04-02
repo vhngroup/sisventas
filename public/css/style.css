@@ -1,154 +1,140 @@
-.clearfix:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-a {
-  color: #5D6975;
-  text-decoration: underline;
-}
-
-body {
-  position: relative;
-  width: 19.5cm;  
-  height: 27.7cm; 
-  margin: 0 auto; 
-  color: #001028;
-  background: #FFFFFF; 
-  font-family: Arial, sans-serif; 
-  font-size: 10px; 
-  font-family: Arial;
-}
-
-header {
-  padding: 10px 0;
-  margin-bottom: 0px;
-}
-
-#logo {
-  text-align: left;
-  margin-bottom: 1px; /*margen debajo del logo*/
-  font-size: 10px;
-}
-
-#logo img {
-  width: 700px; height: 90px;
-  /*float:left; ubica la imagen, con texto al rededor*/
-}
-
-h1 {
-  border-top: 1px solid  #5D6975;
-  border-bottom: 1px solid  #5D6975;
-  color: #5D6975;
-  font-size: 1.7em;
-  line-height: 1.0em;
-  font-weight: normal;
-  text-align: center;
-  margin: 0 0 08px 0;
-  background: url(\imagenes\dimension.png);
-}
-h3 {
-  border-top: 1px solid  #5D6975;
-  border-bottom: 1px solid  #5D6975;
-  color: #5D6975;
-  font-size: 2.4em;
-  line-height: 1.0em;
-}
-
-h4 {
-  margin: 0 0 8px 0;
- text-align:  center;
-  font-size: 9px;
-  color: RED; 
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border-spacing: 0;
-  margin-bottom: 2px;
-}
-
-/*table tr:nth-child(2n-1) td {
-  background: #F5F5F5;
-}-->*/
-
-table th,
-table td {
-  text-align: justify-all;
-  border-spacing: 0;
-   border-spacing: 0;
-}
-
-table img {
-  width: 40px; height: 40px;
-}
-
-table th {
-  padding: 2px 2px;
-  color: #5D6975;
-  border-bottom: 1px solid #C1CED9;
-  white-space: nowrap;        
-  font-weight: normal;
-}
-
-table .service,
-table .desc {
-  text-align:  justify;
-  font-size: 9px; 
-}
-
-table td {
-  padding: 10px;
-  text-align: right;
-}
-
-table td.service,
-table td.desc {
-  vertical-align: top;
-}
-
-table td.descripccion
-{
- font-size: 11px; 
-   text-align:  right;
-}
-
-table td.cliente
-{
- font-size: 10px; 
-   text-align:  left;
-}
-
-table td.unit,
-table td.qty,
-table td.total {
- font-size: 10px; 
-text-align:  center;
-}
-
-table td.grand {
-  border-top: 1px solid #C1CED9;
+  html
+  {
+    margin: 10px,10px,10px,30px;
+  }
   
+  header 
+  {
+    margin-bottom: 3px;
+    font-size: 12px; 
+  }
+  body
+   {
+    position: relative;
+    font-family: Arial, sans-serif; 
+  }
+
+  #pago
+   {
+    text-align: center;
+    font-size: 10px;
+    background-color: #f0f5f5;
+    }
+
+  #logo
+   {
+    text-align: left;
+    font-size: 12px;
+    }
+
+  #logo img
+   {
+    width: 700px; height: 90px;
+    /*float:left; ubica la imagen, con texto al rededor*/
+  }
+  #alcance
+  {
+        background-color: #e0ebeb;
+         text-align: left;
+        font-size: 16px;     
+  }
+  #DatosCliente
+  {
+    background-color: #d1e0e0;
+  }
+
+  h1 
+  {
+    border-top: 2px solid  #5D6975;
+    border-bottom: 2px solid  #5D6975;
+    color: #5D6975;
+    font-size: 1.7em;
+    line-height: 1.0em;
+    font-weight: normal;
+    text-align: center;
+    background: url(\imagenes\dimension.png);
+  }
+
+  h3 {
+   text-align:  center;
+    color: #5D6975;
+    color: red;
+  }
+
+  h4 {
+   text-align:  center;
+    font-size: 9px;
+    color: red; 
+  }
+
+  table 
+  {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+
+  table, td, th{
+    border: 1px solid black;
+    text-align: left;
+ 
 }
 
-#notices .notice {
-  color: #5D6975;
-  font-size: 1.2em;
-}
+  /*table tr:nth-child(2n-1) td {
+    background: #F5F5F5;
+  }-->*/
 
-footer {
-  color: #5D6975;
-  width: 100%;
-  height: 20px;
-  position: absolute;
-  bottom: 0;
-  border-top: 1px solid #C1CED9;
-  padding: 8px 0;
-  text-align: center;
-}
-#footer img {
-  width: 750px; height: 30px;
-  /*float:left; ubica la imagen, con texto al rededor*/
-}
+  table img {
+    width: 40px; height: 40px;
+    align-content: left;
+  }
+
+  table .item {
+    text-align:  left;
+    font-size: 12px; 
+  }
+
+  tr:hover {background-color: #f5f5f5}
+
+  table .number 
+  {
+    text-align: center;
+    font-size: 12px; 
+  }
+
+  table td.descripccion
+  {
+      font-size: 13px; 
+     text-align: right;
+     border: 1px solid white;
+    border-color: black white black white;
+  }
+    table td.total 
+    {
+    font-size: 11px; 
+    text-align:  center;
+    }
+  
+
+    #notices .notice {
+      color: #5D6975;
+      font-size: 1.2em;
+    }
+
+      textarea {
+        text-align: justify;
+        white-space: normal;
+    }
+
+  footer {
+    color: #5D6975;
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    text-align: left;
+    bottom: 4%;
+  }
+    footer img{
+      width: 100%; height: 30px;
+      position: absolute;
+    }

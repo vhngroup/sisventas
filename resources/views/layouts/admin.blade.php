@@ -8,6 +8,7 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="{{asset('css/normalize.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap-select.min.css')}}">
      <!--<link rel="stylesheet" href="{{asset('css/select2-bootstrap.css')}}"> -->
@@ -181,15 +182,15 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                  	<div class="row">
-	                  	<div class="col-md-12">
-		                          <!--Contenido-->
+                    <div class="row">
+                      <div class="col-md-12">
+                              <!--Contenido-->
                               @yield('contenido') 
                               <!--Fin Contenido-->
                            </div>
                         </div>
-                  		</div>
-                  	</div><!-- /.row -->
+                      </div>
+                    </div><!-- /.row -->
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col -->
@@ -204,13 +205,15 @@
         <strong>Copyright &copy; 2015-2020 <a href="www.vhngroup.com">VHNGROUP</a>.</strong> All rights reserved.
       </footer>
     <!-- jQuery 2.1.4 -->
+    <script src="\js\numeral.js"></script>
+    
+    <script src="{{asset('js/modernizr-custom.js')}}"></script>
     <script src="{{asset('js/jQuery-2.1.4.min.js')}}"></script>
         @stack('scripts')
     <!--<script src="{{asset('js/table.js')}}"></script>-->
     <!-- Bootstrap 3.3.5 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
-     <script src="{{asset('js/numeral.js')}}"></script>
     <script src="{{asset('js/bootstrap-select.min.js')}}"></script>
     <script src="{{asset('js/app.min.js')}}"></script>      
 
