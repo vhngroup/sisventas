@@ -1,7 +1,7 @@
 # SISVENTAS (Sistema POS de Compras y ventas web) 
 > SISVENTAS esta basado en el curso de laravel con Mysql dado por Juan Carlos Arcila Diaz en Youtube.
-
-Link:[![Alt text](https://img.youtube.com/vi/Zj0pshSSlEo/0.jpg)](https://www.youtube.com/watch?v=Zj0pshSSlEo)
+Link:
+[![Sistema POS de compras y ventas](https://img.youtube.com/vi/Zj0pshSSlEo/0.jpg)](https://www.youtube.com/watch?v=Zj0pshSSlEo)
 
 Tiene modulos de:
 <ul style="list-style-tipe:square;">
@@ -11,4 +11,3 @@ Tiene modulos de:
   <li>Accesos: Permite gestionar los usuarios del sistema y sus roles.</li>
   <li>Reportes: Cada uno de los modulos, genera sus reportes, de acuerdo a la sección donde se este trabajando.</li>
   
-![Panel de Acceso Login](https://github.com/vhngroup/Admincco/blob/master/Images/Captura_1_Admincco.png)
