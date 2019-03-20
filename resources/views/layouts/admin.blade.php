@@ -112,15 +112,18 @@
               </ul>
             </li>
             <li class="treeview">
-              <a href="#">
+              <a href="{{URL::to('proyectos')}}">
                 <i class="fa fa-shopping-cart"></i>
-                <span>Cotización - Ventas</span>
+                <span>Proyectos</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="{{URL::to('ventas/cliente')}}"><i class="fa fa-circle-o"></i> Clientes</a></li>
-                <li><a href="{{URL::to('cotizaciones')}}"><i class="fa fa-circle-o"></i>Cotizaciones</a></li>
-                <li><a href="{{URL::to('ventas/venta')}}"><i class="fa fa-circle-o"></i> Ventas</a></li>
+                <li><a href="{{URL::to('proyectos')}}"><i class="fa fa-circle-o"></i>Crear Proyecto</a></li>
+                <ul id="proyectos">
+                  <li><a href="{{URL::to('ventas/cliente')}}"><i class="fa fa-circle-o"></i>Clientes</a></li>
+                  <li><a href="{{URL::to('cotizaciones')}}"><i class="fa fa-circle-o"></i>Cotizaciones</a></li>
+                  <li><a href="{{URL::to('ventas/venta')}}"><i class="fa fa-circle-o"></i> Ventas</a></li>
+                </ul>
               </ul>
             </li>
                        
@@ -182,15 +185,15 @@
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                    <div class="row">
-                      <div class="col-md-12">
-                              <!--Contenido-->
+                  	<div class="row">
+	                  	<div class="col-md-12">
+		                          <!--Contenido-->
                               @yield('contenido') 
                               <!--Fin Contenido-->
                            </div>
                         </div>
-                      </div>
-                    </div><!-- /.row -->
+                  		</div>
+                  	</div><!-- /.row -->
                 </div><!-- /.box-body -->
               </div><!-- /.box -->
             </div><!-- /.col -->
@@ -205,8 +208,6 @@
         <strong>Copyright &copy; 2015-2020 <a href="www.vhngroup.com">VHNGROUP</a>.</strong> All rights reserved.
       </footer>
     <!-- jQuery 2.1.4 -->
-    <script src="\js\numeral.js"></script>
-    
     <script src="{{asset('js/modernizr-custom.js')}}"></script>
     <script src="{{asset('js/jQuery-2.1.4.min.js')}}"></script>
         @stack('scripts')

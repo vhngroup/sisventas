@@ -11,13 +11,13 @@
 	<div class="table-responsive">
 	<table class="table table-striped table-bordered table-condensed table-hover">
 	<thead>
-		<th>Id</th>
-		<th>Nombre</th>
-		<th>Tipo Doc</th>
-		<th>Documento</th>
-		<th>Telefono</th>
-		<th>Email</th>
-		<th>Opcciones</th>
+		<th class="col-sm-1">Id</th>
+		<th class="col-sm-3">Nombre</th>
+		<th class="col-sm-1">Tipo Doc</th>
+		<th class="col-sm-1">Documento</th>
+		<th class="col-sm-1">Telefono</th>
+		<th class="col-sm-2">Email</th>
+		<th class="col-sm-2">Opcciones</th>
 	</thead>
 	@foreach($personas as $per)
 	<tr>
@@ -29,8 +29,8 @@
 		<td>{{$per->email}}</td>
 		</td>
 		<td>
-			<a href="{{URL::action('ClienteController@edit',$per->idpersona)}}"><button class="btn btn-info">Editar </button></a>
-			<a href="" data-target="#modal-delete-{{$per->idpersona}}" data-toggle="modal"><button class="btn btn-danger">Eliminar </button></a>
+			<a href="{{URL::action('ClienteController@edit',$per->idpersona)}}"><button class="btn-xs btn-info">Editar </button></a>
+			<a href="" data-target="#modal-delete-{{$per->idpersona}}" data-toggle="modal"><button class="btn-xs btn-danger">Eliminar </button></a>
 		</td>
 	</tr>
 	@include('ventas.cliente.modal')	

@@ -23,16 +23,23 @@ class CotizacionFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+     return [
     'idcliente'=>'required',
     'serie_comprobante' =>'max:12',
     'num_comprobante' =>'required|max:10',
     'idarticulo'=>'required',
     'cantidad'=>'required',
-    'precio_venta'=>'required',
-    'descuento'=>'required',
-    'total_venta'=>'required',  
-    'descripccion'=>'required'  
+    'acm_Totalgeneral'=>'required',
+    'acm_Descuento'=>'required',
+    'acm_Subtotal'=>'required',
+    'acm_Iva'=>'required',
+    'acm_Total'=>'required',
+    'totalgeneral'=>'required',
+    'totaldescuento'=>'required',
+    'subtotal'=>'required',
+    'valoriva'=>'required',
+    'totalventa'=>'required',
+    'idproyecto'=>'required'
         ];
     }
 }

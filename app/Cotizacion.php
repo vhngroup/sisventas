@@ -13,17 +13,20 @@ class Cotizacion extends Model
     public $timestamps=false;
 
     protected $fillable =[
+    'fecha_hora',	
 	'idcliente',
-	'tipo_comprobante',
 	'serie_comprobante',
 	'num_comprobante',
-	'fecha_hora',
+	'descripcion',
 	'impuesto',
+	'total_general',
+	'total_descuento',
+	'subtotal',
+	'valoriva',
 	'total_venta',
 	'estado',
 	'idproyecto',
-	'anticipo',
-	'descripccion',
+	'condiciones'	
     ];
 
     protected $guarded = [

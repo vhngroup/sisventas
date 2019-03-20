@@ -14,10 +14,12 @@ class Pedido extends Model
 
     protected $fillable =[
 	'idproveedor',
+    'idproyecto',
 	'fecha_hora',
 	'total_venta',
-	'idproyecto',
+    'estado',
 	'condiciones',
+    'fecha_hora',
     ];
 
     protected $guarded = [

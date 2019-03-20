@@ -2,7 +2,7 @@
 @section ('contenido')
 <div class="row">
 	<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
-	<h3>Editar Articulo: {{$articulo->Nombre}}</h3>
+	<h3>Editar Articulo: {{$articulo->nombre}}</h3>
 	@if(count($errors)>0)
 		<div class="alert alert-danger">
 			<ul>
@@ -36,9 +36,9 @@ echo Form::open(['url'=>'articulo.update']);
 			<select name="idcategoria" class="form-control">
 			@foreach($categoria as $cat)
 				@if ($cat->idcategoria==$articulo->idcategoria)
-				<option value="{{$cat->idcategoria}}"selected> {{$cat->Nombre}} </option>
+				<option value="{{$cat->idcategoria}}"selected> {{$cat->nombre}} </option>
 				@else
-				<option value="{{$cat->idcategoria}}"> {{$cat->Nombre}} </option>
+				<option value="{{$cat->idcategoria}}"> {{$cat->nombre}} </option>
 				@endif
 			@endforeach
 			</select>
@@ -69,8 +69,8 @@ echo Form::open(['url'=>'articulo.update']);
 </div>
 <div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
 	<div class="form-group">
-			<label for="descripccion">Descripcción</label>
-			<textarea type="text" id="descripccion" name="descripccion" class="form-control" placeholder="Descripccion del articulo" rows="2">{{$articulo->descripccion}}</textarea>
+			<label for="descripcion">Descripcción</label>
+			<textarea type="text" id="descripcion" name="descripcion" class="form-control" placeholder="descripcion del articulo" rows="2">{{$articulo->descripcion}}</textarea>
 		</div>
 </div>
 <div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">

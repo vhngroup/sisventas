@@ -19,8 +19,7 @@ class Ingreso extends Model
 	'numero_comprobante',
 	'fecha_hora',
 	'impuesto',
-	'estado',
-	'anticipo'
+	'estado'
 
     ];
 

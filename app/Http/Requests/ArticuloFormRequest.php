@@ -2,12 +2,20 @@
 
 namespace sisventas\Http\Requests;
 
+
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Routing\Route;
 use Articulo;
 
 
 class ArticuloFormRequest extends FormRequest
 {
+
+    private $route;
+    public function __construct(Route $route)
+    {
+        $this->route=$route;
+    }
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,14 +33,16 @@ class ArticuloFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-             'idcategoria' =>'required',
-             'impuesto' =>'required',
-             'codigo' =>'required |max:50|unique:articulo',
-             'nombre'=>'required |max:60',
+       
+            return [
+            'idcategoria' =>'required',
+            'impuesto' =>'required',
+             'codigo' =>'required|max:26|unique:articulo,codigo,'.$this->segment('3').',idarticulo',
+             'nombre'=>'required |max:85',
              'stock'=>'required |numeric',
-             'descripccion'=>'max:500',
+             'descripcion'=>'required | max:410',
              'imagen'=>'mimes:jpeg,jpg,bmp,png'
-        ];
+            ];
+        }
+       
     }
-}

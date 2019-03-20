@@ -1,97 +1,126 @@
   html
   {
-    margin: 10px,10px,10px,30px;
+    margin: 10px,10px,10px,10px;
   }
   
-  header 
-  {
-    margin-bottom: 3px;
-    font-size: 12px; 
-  }
   body
-   {
-    position: relative;
-    font-family: Arial, sans-serif; 
-  }
-
-  #pago
-   {
-    text-align: center;
-    font-size: 10px;
-    background-color: #f0f5f5;
+    {
+      font-family: Arial, sans-serif; 
+      position: relative;
     }
 
+  header 
+    {
+        font-size: 12px; 
+        position:  fixed;
+    }
+  
   #logo
    {
-    text-align: left;
-    font-size: 12px;
+      text-align: center;
     }
 
-  #logo img
+  .header img
    {
-    width: 700px; height: 90px;
-    /*float:left; ubica la imagen, con texto al rededor*/
+      width: 700px; height: 100px;
+      /*float:left; ubica la imagen, con texto al rededor*/
   }
-  #alcance
-  {
-        background-color: #e0ebeb;
-         text-align: left;
-        font-size: 16px;     
-  }
-  #DatosCliente
-  {
-    background-color: #d1e0e0;
-  }
+      #DatosCliente
+      {
+        margin:0;
+        line-height: 0.3;
+      }
 
-  h1 
-  {
-    border-top: 2px solid  #5D6975;
-    border-bottom: 2px solid  #5D6975;
-    color: #5D6975;
-    font-size: 1.7em;
-    line-height: 1.0em;
-    font-weight: normal;
-    text-align: center;
-    background: url(\imagenes\dimension.png);
-  }
+#alcance
+    {
+      background-color: #e0ebeb;
+      text-align: left;
+      font-size: 13px;     
+    }
 
-  h3 {
-   text-align:  center;
-    color: #5D6975;
-    color: red;
-  }
-
-  h4 {
-   text-align:  center;
+    #resolucion
+    {
     font-size: 9px;
-    color: red; 
-  }
+    text-align: center;
+    }    
 
-  table 
+
+    #consignacion
+    {
+      background-color: #dcff84;
+      margin:0;
+     border-top: 2px solid  #5D6975; 
+     text-align: center;
+    }
+  
+    #consignacion p
+    {
+      margin:0;
+     text-align: center;
+    }
+
+    h1 
+    {
+      border-top: 2px solid  #5D6975;
+      border-bottom: 2px solid  #5D6975;
+      color: #5D6975;
+      font-size: 1.2em;
+      font-weight: normal;
+      text-align: center;
+      margin-top: 2px;
+      margin-bottom: 2px;
+    }
+
+    h3 {
+      text-align:  center;
+      color: #5D6975;
+    }
+
+h4 
+   {
+     text-align:  center;
+      color: red; 
+    }
+
+table 
   {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    position: relative;
+    top: 240px;
+    margin-bottom: 75px;
+    
+    
   }
+    table, td, th
+    {
+      border: 1px solid black;
+      font-size: 11px;
+    }
 
-  table, td, th{
-    border: 1px solid black;
-    text-align: left;
- 
-}
+    table td.descripccion
+    {
+    font-size: 12px; 
+    text-align: right;
+    border: 1px solid white;
+    border-color: white white white white;
+    color: black;
+     }
 
-  /*table tr:nth-child(2n-1) td {
-    background: #F5F5F5;
-  }-->*/
+  table td:nth-child(3) 
+   {
+        width: 210px;
+   }
 
   table img {
     width: 40px; height: 40px;
-    align-content: left;
+
   }
 
   table .item {
-    text-align:  left;
-    font-size: 12px; 
+        text-align: justify;
+        font-size: 10px; 
+        word-wrap: break-word;
   }
 
   tr:hover {background-color: #f5f5f5}
@@ -99,42 +128,54 @@
   table .number 
   {
     text-align: center;
-    font-size: 12px; 
-  }
-
-  table td.descripccion
-  {
-      font-size: 13px; 
-     text-align: right;
-     border: 1px solid white;
-    border-color: black white black white;
-  }
-    table td.total 
-    {
     font-size: 11px; 
-    text-align:  center;
-    }
-  
 
-    #notices .notice {
-      color: #5D6975;
-      font-size: 1.2em;
-    }
+  }
 
-      textarea {
+  #tabletotal
+  {
+    position: absolute; 
+    bottom: 15px;
+  }
+
+
+ #titulodescripccion
+  {
+    font-size: 10px;
+    position: absolute;
+    bottom: 95px;
+  }
+
+textarea
+  {
+        width: 100%;
+        height: 50px;
         text-align: justify;
         white-space: normal;
-    }
-
-  footer {
+        font-size: 10px;
+        position: absolute; 
+        bottom: 35px;
+   }
+  
+  footer
+  {
     color: #5D6975;
-    width: 100%;
-    height: 20%;
-    position: absolute;
     text-align: left;
-    bottom: 4%;
+    position: fixed;
   }
-    footer img{
-      width: 100%; height: 30px;
-      position: absolute;
-    }
+
+  #textfooter
+  {
+    font-size: 7px;
+    text-align: center;
+    position: fixed;
+    bottom: 38px;
+  }
+
+  footer img
+  {
+    position: fixed;
+      width: 100%; height: 32px;
+      bottom: 0px;
+  }
+  

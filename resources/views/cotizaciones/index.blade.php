@@ -11,20 +11,21 @@
 	<div class="table-responsive">
 	<table class="table table-striped table-bordered table-condensed table-hover">
 	<thead>
-		<th>Fecha</th>
-		<th>Cliente</th>
-		<th>Alcance</th>
-		<th>Comprobante</th>
-		<th>Total</th>
-		<th>Opcciones</th>
+		<th class="col-sm-1">Fecha</th>
+		<th class="col-sm-2">Cliente</th>
+		<th class="col-sm-3">Alcance</th>
+		<th class="col-sm-1">Comprobante</th>
+		<th class="col-sm-1">Total</th>
+		<th class="col-sm-2">Opcciones</th>
 	</thead>
 	@foreach($cotizacion as $ven)
+
 	<tr>
 		<td>{{$ven->fecha_hora}}</td>
 		<td>{{$ven->nombre}}</td>
-		<td>{{$ven->descripccion}}</td>
+		<td>{{$ven->descripcion}}</td>
 		<td>{{$ven->serie_comprobante.'-'.$ven->num_comprobante.'-'.$ven->estado}}</td>
-		<td>{{$ven->total_venta}}</td>
+		<td>$ <?php echo number_format($ven->total_venta ,1,".",",");?></td>
 		<td>
 			<a href="{{URL::action('CotizacionController@show',$ven->idcotizacion)}}"><button class="btn btn-primary btn-xs">Detalles</button></a>
 			<a href="" data-target="#modal-delete-{{$ven->idcotizacion}}" data-toggle="modal"><button class="btn btn-danger btn-xs">Anular</button></a>

@@ -18,11 +18,11 @@
 		{{Form::token()}}
 		<div class="form-group">
 			<label for="Nombre">Nombre</label>
-			<input type="text" name="nombre" class="form-control" value="{{$categoria->Nombre}}" placeholder="Nombre...">
+			<input type="text" name="nombre" class="form-control" value="{{$categoria->nombre}}" placeholder="Nombre...">
 		</div>
 		<div class="form-group">
-			<label for="Descripccion">Descripccion</label>
-			<input type="text" name="descripccion" class="form-control"  value="{{$categoria->Descripccion}}" placeholder="Descripccion...">
+			<label for="descripcion">descripcion</label>
+			<input type="text" name="descripcion" class="form-control"  value="{{$categoria->descripcion}}" placeholder="descripcion...">
 		</div>
 		<div class="form-group">
 			<button class="btn btn-primary" type="submit">Guardar</button>

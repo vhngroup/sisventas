@@ -38,7 +38,7 @@ class CategoriaController extends Controller
     {
 		$categoria =new Categoria;
 		$categoria ->nombre=$request->get('nombre');
-		$categoria ->descripccion=$request->get('descripccion');
+		$categoria ->descripcion=$request->get('descripcion');
 		$categoria ->condicion='1';
 		$categoria ->save();
 		return Redirect::to('almacen/categoria');
@@ -58,7 +58,7 @@ class CategoriaController extends Controller
 	{
 		$categoria =Categoria::findOrFail($id);
 		$categoria ->Nombre=$request->get('nombre');
-		$categoria ->Descripccion=$request->get('descripccion');
+		$categoria ->descripcion=$request->get('descripcion');
 		$categoria ->update();
 		return Redirect::to('almacen/categoria');
 	}

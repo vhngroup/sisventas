@@ -9,7 +9,7 @@
 			<h4 class="modal-title">Eliminar Categoria</h4>
 		</div>
 		<div class="modal-body">
-			<p>Corfirme Elimnar Categoria {{$cat->Nombre}}</p>
+			<p>Corfirme Elimnar Categoria {{$cat->nombre}}</p>
 		</div>
 		<div class="modal-footer">
 			<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 use sisventas\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
-use sisventas\Http\Requests\IngresoformRequest;
+use sisventas\Http\Requests\IngresoFormRequest;
 use sisventas\ingreso;
-use sisventas\Detalledeingreso; 
+use sisventas\DetalledeIngreso; 
 
 use DB;
 use Carbon\Carbon; 
@@ -31,7 +31,7 @@ class IngresoController extends Controller
 
         $ingreso=DB::table('ingreso as i')
          ->join('persona as p','i.idproveedor','=','p.idpersona')
-        ->join('detalle_ingreso as di','i.idingreso','=','di.idingreso')
+         ->join('detalle_ingreso as di','i.idingreso','=','di.idingreso')
             ->select('i.idingreso','i.fecha_hora','p.nombre','i.tipo_comprobante','i.serie_comprobante','i.numero_comprobante','i.impuesto','i.estado',DB::raw('sum(di.cantidad*precio_compra) as total'))
             ->where('i.numero_comprobante','LIKE','%'.$query.'%')
             ->orderBy('i.idingreso','desc')
@@ -43,11 +43,12 @@ class IngresoController extends Controller
 
         public function create()
         {   $iingreso=DB::table('ingreso')->max('idingreso')+1;
-            $impuestos=DB::table('impuesto')->where('Estado','=','A')->get();
+            $impuestos=DB::table('iva')->where('Estado','=','A')->get();
             $personas=DB::table('persona')->where('tipo_persona','!=','Cliente')->get();
             $articulos=DB::table('articulo as art')
             ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'art.idarticulo')
             ->where('art.estado','=','Activo')
+            ->orderBy('art.idarticulo', 'desc')
             ->get();
             return view('compras.ingreso.create',["personas"=>$personas,"articulos"=>$articulos,"impuestos"=>$impuestos, "iingreso"=>$iingreso]);
         }
@@ -63,7 +64,6 @@ class IngresoController extends Controller
                 $ingreso->numero_comprobante=$request->get('numero_comprobante');
                 $mytime = Carbon::now('America/Bogota');
                 $ingreso->fecha_hora=$mytime->toDateTimeString();
-                //$ingreso->impuesto='16';//$request->get('impuesto');//16%
                 $ingreso->impuesto=(float)$request->get('impuesto');//16%
                 $ingreso->estado='A';
                 $ingreso->anticipo=$request->get('anticipo');
@@ -116,7 +116,7 @@ class IngresoController extends Controller
         {
             $ingreso=ingreso::findOrFail($id);
             $ingreso->Estado='C';
-            $ingreso>update();
+            $ingreso->update();
             return Redirect::to('compras/ingreso');
     }
 }

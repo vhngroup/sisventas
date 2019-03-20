@@ -13,9 +13,9 @@ class Categoria extends Model
     public $timestamps=false;
 
     protected $fillable =[
-	'Nombre',
-	'Descripccion',
-	'Condicion'
+	'nombre',
+	'descripcion',
+	'condicion'
     ];
 
     protected $guarded = [

@@ -12,12 +12,12 @@
 	<table class="table table-striped table-bordered table-condensed table-hover">
 	<thead>
 		<th>Id</th>
-		<th>Nombre</th>
-		<th>Tipo Doc</th>
-		<th>Documento</th>
-		<th>Telefono</th>
-		<th>Email</th>
-		<th>Opcciones</th>
+		<th class="col-sm-3">Nombre</th>
+		<th class="col-sm-1">Tipo Doc</th>
+		<th class="col-sm-2">Documento</th>
+		<th class="col-sm-2">Telefono</th>
+		<th class="col-sm-2">Email</th>
+		<th class="col-sm-2">Opcciones</th>
 	</thead>
 	@foreach($personas as $per)
 	<tr>

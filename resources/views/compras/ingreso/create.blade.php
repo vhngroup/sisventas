@@ -1,3 +1,4 @@
+<!--ingreso-->
 @extends('layouts.admin')
 @section('contenido')
 <div class="row">
@@ -22,7 +23,7 @@
 <div class="col-lg-12 col-md-6 col-dm-12 col-xs-12">
 	<div class="form-group">
 			  <label for="nombre">Proveedor</label>
-             <select name="idproveedor" id="idproveedor" class="form-control selectpicker" data-live-search="true">
+             <select name="idproveedor" id="idproveedor" class="form-control selectpicker" data-size="5" data-live-search="true">
               @foreach($personas as $persona)
               <option value="{{$persona->idpersona}}">{{$persona->nombre}}</option>
               @endforeach
@@ -48,19 +49,12 @@
 	</div>
 </div>
 
-	<div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
+<div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
 		<div class="form-group">
 				<label for="numero_comprobante">Numero de Comprobante</label>
 				<input type="text" name="numero_comprobante" required readonly value= "{{$iingreso}}" class="form-control" placeholder="Numero de comprobante...">
 		</div>
 	</div>	
-
-<div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
-		<div class="form-group">
-				<label for="anticipo">Anticipo</label>
-				<input type="text" name="anticipo" required value="{{old('anticipo')}}" class="form-control" placeholder="Valor anticipo...">
-		</div>
-	</div>
 </div>	
 
 <div class="row">
@@ -70,7 +64,7 @@
 <div class="col-lg-2 col-md-2 col-dm-12 col-xs-12">
 	<div class="form-group">	
 	<label>Articulo</label>
-	<select name="pidaarticulo" id="pidaarticulo" class="form-control selectpicker"  data-live-search="true">
+	<select name="pidaarticulo" id="pidaarticulo" class="form-control selectpicker"  data-size="5" data-live-search="true">
 		@foreach($articulos as $articulo)
 		<option value="{{$articulo->idarticulo}}">{{$articulo->articulo}}</option>
 		@endforeach
@@ -100,16 +94,16 @@
 	<div class="col-lg-2 col-md-2 col-dm-12 col-xs-12">
 	<div class="form-group">
 		<label for="impuesto">impuesto</label>
-			<select name="impuesto" id="piimpuesto" class="form-control">
+			<select name="pimpuesto" id="piimpuesto" class="form-control selectpicker">
 			@foreach($impuestos as $impuesto)
-			<option value= "{{$impuesto->porcentaje}}">{{$impuesto->descripccion}}</option>
+			<option value="{{$impuesto->porcentaje}}">{{$impuesto->descripcion}}</option>
 			@endforeach
 			</select>
 		</div>
 	</div>
 	<div class="col-lg-2 col-md-2 col-dm-12 col-xs-12">
 		<div class="form-group">
-		<button class="btn btn-primary" type="button"  id="bt_agregar" onclick="agregar()">Agregar</button>
+		<button class="btn btn-primary" type="button"  id="bt_agregar" onclick="evaluar()">Agregar</button>
 		</div>
 	</div>
 	<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
@@ -155,7 +149,10 @@
 		total=0;
 		subtotal=[];
 		$("#guardar").hide();
-
+					$(document).on('ready',function(){		
+						document.getElementById('piimpuesto').selectedIndex=1;
+					});
+			
 function agregar()
 		{
 			idarticulo=$("#pidaarticulo").val();
@@ -170,10 +167,10 @@ function agregar()
 		total=total+subtotal[cont];
 		var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idarticulo[]"  value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" readonly value="'+cantidad+'"></td><td><input name="impuesto[]" readonly value="'+impuesto+'"></td><td><input type="number" name="precio_compra[]" readonly value="'+precio_compra+'"></td><td><input type="number"name="precio_venta[]" readonly value="'+precio_venta+'"></td><td>'+subtotal[cont]+'</td></tr>';
 		cont++;
-		evaluar();
 		limpiar();
 		    $('#total').html("$/ " + total);
 		  $('#detalles').append(fila);
+		  $("#guardar").show();
 		
 		}
 	else
@@ -190,25 +187,21 @@ function agregar()
 				$("#pprecio_venta").val("");
 			 }
 
-			function evaluar()
-				{
-				var indice = document.getElementById('idproveedor').selectedIndex
-					if(total>0)
-					{
-						if(indice=0)
-						{
-							alert("Debe seleccionar un cliente")
-						}
-						else
-						{
-							$("#guardar").show();
-						}
-					}
-					else
-					{
-						$("#guardar").hide();
-					}	
-				}
+	function evaluar()
+	{
+		var indice = document.getElementById('idproveedor').selectedIndex
+		 if(indice<=0)
+	 
+			{
+				alert("Debe seleccionar un cliente")
+				$("#guardar").hide();
+			}
+			else
+			{
+				agregar();
+			}
+		}
+			
 
 	function eliminar(index){
 	total=total-subtotal[index];

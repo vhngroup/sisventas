@@ -25,7 +25,7 @@ class AppServiceProvider extends ServiceProvider
     {
        $this->app->bind('patch.public', function()
        {
-            return base_patch().'/sisventas';
+            return base_patch().'vhngroup/sisventas';
        });
     }
 }

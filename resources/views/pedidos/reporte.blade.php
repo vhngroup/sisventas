@@ -1,72 +1,126 @@
 <!DOCTYPE html> 
-<html lang="en">
+<html lang="es">
   <head>
-    <meta charset="utf-8">
-    <title>Propuesta de cotización # $cotizacion->idcotizacion</title>
-    <link rel="stylesheet" href="css\style.css" media="all" />  
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <title>Orden de Compra # {{$pedido->idpedido}}</title>
+    <link rel="stylesheet" href="{{asset('css/style.css')}}" media="all" />
   </head>
   <body>
-    <header class="clearfix">
+    <header>
+      <div class="header">
       <div id="logo">
-        <img src="imagenes\logo.png">
+              <img src="{{asset('imagenes/Logo.png')}}">
       </div>
       <div>
-      <h1>Cotización # {{$cotizacion->num_comprobante}}{{$cotizacion->serie_comprobante}}-{{$cotizacion->idcotizacion}}</h1>
-      <p> <b>Nombre del cliente:</b> {{$cotizacion->nombre}} <b>Identificación: </b> {{$cotizacion->tipo_documento}} - {{$cotizacion->num_documento}} <b>Telefono:</b> {{$cotizacion->telefono}}</p> 
-      <p><b>Email:</b> {{$cotizacion->email}} <b>Dirección:</b> {{$cotizacion->direccion}}</p>
-      <h4><b>Alcance:</b> {{$cotizacion->descripccion}}</h4>
+      <h1>Orden de Compra # {{$pedido->num_comprobante}}-{{$pedido->idpedido}} del <?php $fecha_det= substr($pedido->fecha_hora, -24,10); echo $fecha_det; ?></h1>
+       <div id="pago">
       </div>
-     </header>
-<table>
+    <div id="DatosCliente">
+        <p><b>Proveedor: </b> {{$pedido->nombre}} <b>Identificación: </b> {{$pedido->tipo_documento}} <b>Numero: </b> {{$pedido->num_documento}}</p>
+        <p><b>Nombre de la persona de contacto: </b>{{$pedido->nombrecontacto}}</p>
+            <p><b>Telefono: </b> {{$pedido->telefono}} <b>Correo: </b> {{$pedido->email}} <b>Dirección: </b>
+        {{$pedido->direccion}}</p>
+      </div>
+  </div>
+  </div>
+    </header>
+    <section>
+<table style="table 
+  {
+    width: 100%;
+    border-collapse: collapse;
+    position: relative;
+    top: 19%;
+    margin-bottom: 80px;
+    
+  }">
    <thead>
        <tr>
             <th>Codigo</th>
             <th>Imagen</th>
-            <th class="service">Descripcción</th>
-            <th class="desc">Cantidad</th>
+            <th">Descripcción</th>
+            <th>Cantidad</th>
             <th>Precio</th>
-            <th>TOTAL</th>
-          </tr>
-        </thead>
+            <th>Total</th>
+        </tr>
+      </thead>
    <tbody>
 @foreach($detalle as $det)
       <tr>
-        <td class="service">{{$det->codigo}}</td>
-        <td> <img src="imagenes\articulos\{{$det->imagen}}"> </td>
-        <td class="service">{{$det->descripccion}}</td>
-        <td class="unit">{{$det->precio_venta}}</td>
-        <td class="qty">{{$det->cantidad}}</td>
-        <td class="total">{{($det->cantidad*$det->precio_venta)}}</td>
+        <td class="item">{{$det->codigo}}</td>
+        <td class=""> <img src="{{asset('imagenes/articulos/'.$det->imagen)}}"></td>
+        <td class="item">{{$det->descripcion}}</td>
+        <td class="number">{{$det->cantidad}}</td>
+        <td class="item">$ <?php echo number_format($det->precio_venta ,1,".",",");?></td>
+        <td class="item">$ <?php echo number_format($det->cantidad*$det->precio_venta ,1,".",",");?></td>
       </tr>
          @endforeach
-      <tr>
-            <td colspan="5">Subtotal</td>
-            <td class="total"> ${{$cotizacion->total_venta}}</td>
-          </tr>
-          <tr>
-            <td colspan="5">Impuestos</td>
-            <td class="total">$0</td>
-          </tr>
-          <tr>
-            <td colspan="5" class="grand total">Valor Total</td>
-            <td class="grand total">${{$cotizacion->total_venta}}</td>
-      </tr>
      </tbody>
 </table>
-<div id="notices">
-        <div>Condiciones del servicio:</div>
-        <div><textarea cols="26" rows="8">{{$cotizacion->condiciones}}</textarea></div>
+</section>
+<br><table style='page-break-after:auto;'></br></table><br> 
+<section>
+  <div id="tabletotal">
+    <table id="tableinterna" style="position: static;">   
+        <tbody>
+            <tr> 
+            <td class="descripccion">Resumen orden de compra</td>
+            <td class="descripccion"></td>
+            <td class="descripccion"></td> 
+            <td class="descripccion"></td> 
+            <td class="descripccion"></td> 
+            <td class="descripccion">Subtotal</td>
+            <td class="descripccion">$ <?php echo number_format(ceil($pedido->total_venta) ,2,".",",");?></td>
+          </tr>
+          <tr>
+            <td class="descripccion"></td>
+            <td class="descripccion"></td>
+            <td class="descripccion"></td> 
+            <td class="descripccion"></td> 
+            <td class="descripccion"></td> 
+            <td class="descripccion">Descuento</td>
+            <td class="descripccion">$ 0</td>
+          </tr>
+          <tr>
+             <td class="descripccion"></td>
+            <td class="descripccion"></td>
+            <td class="descripccion"></td> 
+            <td class="descripccion"></td> 
+            <td class="descripccion"></td> 
+            <td class="descripccion">Iva 19%</td>
+            <td class="descripccion">$ <?php echo number_format((($pedido->total_venta)*1.19)-($pedido->total_venta) ,2,".",",");?></td>
+          </tr>
+          <tr>
+          <td class="descripccion"></td>
+            <td class="descripccion"></td>
+            <td class="descripccion"></td> 
+            <td class="descripccion"></td> 
+            <td class="descripccion"></td> 
+            <td class="descripccion">Anticipo</td>
+            <td class="descripccion">$ 0</td>
+          </tr>
+            <tr>
+            <td class="descripccion"></td>
+            <td class="descripccion"></td>
+            <td class="descripccion"></td> 
+            <td class="descripccion"></td> 
+            <td class="descripccion"></td> 
+            <td class="descripccion">Valor Total</td>
+            <td class="descripccion" id="ptotal">$ <?php echo number_format(($pedido->total_venta * 1.19),2,".",",");?></td>
+          </tr>
+          </tbody>
+    </table>
+  </div>
+</section>
+<section>
+      <div id="titulodescripccion">Condiciones del servicio:</div>
+     <textarea>{{$pedido->condiciones}}</textarea>
+</section>
+<footer>
+            <img src="{{asset('imagenes/Footer.png')}}">
+      <div id="textfooter">VHNGROUP: Tecnologia Automatizando su Hogar. - Factura creada en fisico y digital - Desarrollador VNOGUERA
       </div>
-    <footer>
-      <div>VHNGROUP: Tecnologia Automatizando su Hogar. - Factura creada en fisico y digital por SisventasVHNGroup</div>
-    <div id="footer">
-        <img src="imagenes\footer.png">
-      </div>
-    </footer>
+</footer>
 </body>
 </html>
-
-
-
-  
-

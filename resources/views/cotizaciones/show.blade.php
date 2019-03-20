@@ -11,7 +11,7 @@
 	<div class="col-lg-6 col-md-6 col-dm-12 col-xs-12">
 		<div class="form-group">
 			  <label for="nombre">Alcance</label>
-            <p>{{$cotizacion->descripccion}}</p>
+            <p>{{$cotizacion->descripcion}}</p>
 			</select>
 		</div>
 	</div>
@@ -34,6 +34,12 @@
 		<div class="form-group">
 				<label for="anticipo">Fecha de realizacion</label>
 				<p>{{$cotizacion->fecha_hora}}</p>
+		</div>
+	</div>
+	<div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
+		<div class="form-group">
+				<label for="anticipo">Proyecto</label>
+				<p>{{$cotizacion->idproyecto}}</p>
 		</div>
 	</div>
 </div>	

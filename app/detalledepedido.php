@@ -19,7 +19,4 @@ class detalledepedido extends Model
 	'precio_venta',
 	'descuento'
     ];
-
-    protected $guarded = [
-    ];
 }

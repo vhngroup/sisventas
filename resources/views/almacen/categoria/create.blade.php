@@ -21,8 +21,8 @@
 			<input type="text" name="nombre" class="form-control" placeholder="Nombre...">
 		</div>
 		<div class="form-group">
-			<label for="descripccion">Descripccion</label>
-			<input type="text" name="descripccion" class="form-control" placeholder="Descripccion...">
+			<label for="descripcion">descripcion</label>
+			<input type="text" name="descripcion" class="form-control" placeholder="descripcion...">
 		</div>
 		<div class="form-group">
 			<button class="btn btn-primary" type="submit">Guardar</button>

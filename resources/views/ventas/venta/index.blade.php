@@ -1,9 +1,8 @@
-
 @extends ('layouts.admin')
 @section ('contenido')
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-dm-8 col-xs-12">
-	<h3> Listado de ventas <a href="/ventas/venta/create"><button class="btn btn-success">Nuevo</button></a></h3>
+	<h3> Listado de ventas <a href="venta/create"><button class="btn btn-success">Nuevo</button></a></h3>
 	@include('ventas.venta.search')
 	</div>
 </div>
@@ -12,21 +11,19 @@
 	<div class="table-responsive">
 	<table class="table table-striped table-bordered table-condensed table-hover">
 	<thead>
-		<th>Fecha</th>
-		<th>Cliente</th>
-		<th>Comprobante</th>
-		<th>Impuesto</th>
-		<th>Total</th>
-		<th>Estado</th>
-		<th>Opcciones</th>
+		<th class="col-sm-1">Fecha</th>
+		<th class="col-sm-4">Cliente</th>
+		<th class="col-sm-2">Comprobante</th>
+		<th class="col-sm-2">Total</th>
+		<th class="col-sm-1">Estado</th>
+		<th class="col-sm-2">Opcciones</th>
 	</thead>
 	@foreach($ventas as $ven)
 	<tr>
 		<td>{{$ven->fecha_hora}}</td>
 		<td>{{$ven->nombre}}</td>
 		<td>{{$ven->tipo_comprobante.': '.$ven->serie_comprobante.'-'.$ven->num_comprobante}}</td>
-		<td>{{$ven->impuesto}}</td>
-		<td>{{$ven->total_venta}}</td>
+		<td>$ <?php echo number_format($ven->total_venta ,1,".",",");?></td>
 		<td>{{$ven->estado}}</td>
 		<td>
 			<a href="{{URL::action('VentaController@show',$ven->idventa)}}"><button class="btn btn-primary btn-xs">Detalles</button></a>

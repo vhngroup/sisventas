@@ -116,7 +116,7 @@
 <div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
 	<div class="form-group">
 			<label for="notas">Datos relevantes del ciente</label>
-			<input type="notas" name="notas" value="{{old('notas')}}" class="form-control" placeholder="Apuntes">
+			<input type="notas" name="notas" value="{{$persona->notas}}" placeholder="Informacioón del cliente" class="form-control">
 		</div>
 </div>
 

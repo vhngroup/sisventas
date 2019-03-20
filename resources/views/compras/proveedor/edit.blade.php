@@ -30,16 +30,25 @@
 	<div class="form-group">
 			<label>Documentos</label>
 			<select name="tipo_documento" class="form-control">
-			@if($persona->tipo_documento=='Cc')
+			@if($persona->tipo_documento=='DNI')
+				<option value="Cc" selected> Cedula </option>
 				<option value="NIT"> NIT </option>
-				<option value="Registro Mercantil"> Registro Mercantil </option>
+				<option value="PASSP"> PASSPORT </option>
+				<option value="Registmerca"> Registro Mercantil </option>
 			@elseif($persona->tipo_documento=='NIT')
 			   <option value="Cc"> Cedula </option>
 				<option value="NIT" selected> NIT </option>
-				<option value="Registro Mercantil"> Registro Mercantil </option>
-				@else($persona->tipo_documento=='Registro Mercantil')
+				<option value="PASSP"> PASSPORT </option>
+				<option value="Registmerca"> Registro Mercantil </option>
+				@elseif($persona->tipo_documento=='PASSP')
 			   <option value="Cc"> Cedula </option>
 				<option value="NIT"> NIT </option>
+				<option value="PASSP" selected> PASSPORT </option>
+				<option value="Registmerca"> Registro Mercantil </option>
+				@else($persona->tipo_documento=='Registmerca')
+			   <option value="Cc"> Cedula </option>
+				<option value="NIT"> NIT </option>
+				<option value="PASSP"> PASSPORT </option>
 				<option value="Registmerca" selected> Registro Mercantil </option>
 			@endif
 			</select>
@@ -105,7 +114,7 @@
 <div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
 	<div class="form-group">
 			<label for="notas">Notas</label>
-			<input type="notas" name="notas" value="{{$persona->Notas}}" class="form-control" placeholder="Notas...">
+			<input type="notas" name="notas" value="{{$persona->notas}}" class="form-control" placeholder="Notas...">
 		</div>
 </div>
 

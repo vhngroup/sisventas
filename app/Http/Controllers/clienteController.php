@@ -51,9 +51,10 @@ class clienteController extends Controller
 		$persona ->direccion=$request->get('direccion');
 		$persona ->telefono=$request->get('telefono');
 		$persona ->email=$request->get('email');
-		$persona ->tipocuenta=$request->get('tipocuenta');;
-		$persona ->banco=$request->get('banco');;
-		$persona ->numerodecuenta=$request->get('numerodecuenta');;
+		$persona ->notas=$request->get('notas');
+		$persona ->tipocuenta=$request->get('tipocuenta');
+		$persona ->banco=$request->get('banco');
+		$persona ->numerodecuenta=$request->get('numerodecuenta');
 		$persona ->save();
 		return Redirect::to('ventas/cliente');
     }
@@ -78,6 +79,7 @@ class clienteController extends Controller
 		$persona ->direccion=$request->get('direccion');
 		$persona ->telefono=$request->get('telefono');
 		$persona ->email=$request->get('email');
+		$persona ->notas=$request->get('notas');
 		$persona ->tipocuenta=$request->get('tipocuenta');;
 		$persona ->banco=$request->get('banco');;
 		$persona ->numerodecuenta=$request->get('numerodecuenta');;

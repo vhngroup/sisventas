@@ -22,7 +22,7 @@
 <div class="col-lg-6 col-md-6 col-dm-12 col-xs-12">
 	<div class="form-group">
 			  <label for="nombre">Proveedor</label>
-             <select name="idproveedor" id="idproveedor" class="form-control selectpicker" data-live-search="true">
+             <select name="idproveedor" id="idproveedor" class="form-control selectpicker" data-size="5" data-live-search="true">
               @foreach($personas as $persona)
               <option value="{{$persona->idpersona}}">{{$persona->nombre}}</option>
               @endforeach
@@ -31,8 +31,8 @@
 </div>
 <div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
 	<div class="form-group">
-			<label for="serie_comprobante">Serie Comprobante</label>
-			<input type="text" name="serie_comprobante" readonly value= "<?php echo date("Y-m-d");?>{{$ipedido}}" class="form-control" placeholder="Serie de comprobante...">
+			<label for="num_comprobante">Comprobante Numero</label>
+			<input type="text" name="num_comprobante" readonly value= "<?php echo date("Y-m-d");?>{{$ipedido}}" class="form-control" placeholder="Serie de comprobante...">
 	</div>
 </div>
 </div>
@@ -43,9 +43,9 @@
 <div class="col-lg-2 col-md-2 col-dm-12 col-xs-12">
 	<div class="form-group">	
 	<label>Articulo</label>
-	<select name="pidarticulo" id="pidarticulo" class="form-control selectpicker"  data-live-search="true">
+	<select name="pidarticulo" id="pidarticulo" class="form-control selectpicker" data-size="5" data-live-search="true">
 		@foreach($articulos as $articulo)
-		<option value="{{$articulo->idarticulo}}_{{$articulo->precio_compra}}_{{$articulo->descripccion}}_{{$articulo->stock}}">{{$articulo->articulo}}</option>
+		<option value="{{$articulo->idarticulo}}_{{$articulo->precio_compra}}_{{$articulo->descripcion}}_{{$articulo->stock}}">{{$articulo->articulo}}</option>
 		@endforeach
 	</select>
 	</div>
@@ -69,20 +69,27 @@
 	<div class="col-lg-2 col-md-2 col-dm-12 col-xs-12">
 		<div class="form-group">
 		<label for="stock">Stock</label>
-		<input type="number" name="pstoc" id="pstock" readonly class="form-control" placeholder="en bodega">
+		<input type="number" name="pstock" id="pstock" readonly class="form-control" placeholder="en bodega">
 		</div>
 	</div>
 
 	<div class="col-lg-2 col-md-2 col-dm-12 col-xs-12">
 		<div class="form-group">
-		<label for="precio_compra">Precio de compra</label>
-		<input type="number" readonly name="pprecio_compra" id="pprecio_compra" class="form-control" placeholder="precio de compra">
+		<label for="precio_venta">Precio de Compra</label>
+		<input type="number" readonly name="precio_venta" id="pprecio_venta" class="form-control" placeholder="0">
 		</div>
+	</div>
+
+	<div class="col-lg-2 col-md-2 col-dm-12 col-xs-12">
+		<div class="form-group">
+		<label for="descuento">Descuento</label>
+		<input type="number" name="pdescuento" id="pdescuento" value="0" class="form-control" placeholder="Descuento">
+			</div>
 	</div>
 
 	<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
 		<div class="form-group">
-		<button class="btn btn-primary" type="button"  id="bt_agregar" onclick="agregar()">Agregar</button>
+		<button class="btn btn-primary" type="button"  id="bt_agregar" onclick="evaluar()">Agregar</button>
 		</div>
 	</div>
 
@@ -94,6 +101,7 @@
 			<th>Articulo</th>
 			<th>Cantidad</th>
 			<th>Precio Venta</th>
+			<th>Descuento</th>
 			<th>Subtotal</th>
 		</thead>
 			<tfoot>
@@ -137,7 +145,6 @@
 		subtotal=[];
 		$("#pidarticulo").change(mostrarValores);
 		$("#guardar").hide();
-
 		$(document).on('ready',function(){
 		$('select[name=idproveedor]').val(1);	
 		$('select[name=pidarticulo]').val(1);
@@ -148,31 +155,26 @@
 		function mostrarValores()
 		{
 			datosArticulo=document.getElementById('pidarticulo').value.split('_');
-			$("#pprecio_compra").val(datosArticulo[1]);
+			$("#pprecio_venta").val(datosArticulo[1]);
 			$("#pdescripccion").val(datosArticulo[2]);
 			$("#pstock").val(datosArticulo[3]);
-
 		}
+
 
 function evaluar()
 	{
 		var indice = document.getElementById('idproveedor').selectedIndex
-		if(total>0)
-	 {		
-		if(indice<=0)
+		 if(indice<=0)
+	 
 			{
 				alert("Debe seleccionar un cliente")
+				$("#guardar").hide();
 			}
 			else
 			{
-				$("#guardar").show();
+				agregar();
 			}
 		}
-		else
-		{
-			$("#guardar").hide();
-		}	
-	}	
 
 function agregar()
 		{
@@ -181,27 +183,28 @@ function agregar()
 			articulo=$("#pidarticulo option:selected").text();
 			stock=$("#pstock").val();
 			cantidad=$("#pcantidad").val();
-			precio_compra=$("#pprecio_compra").val();
+			descuento=$("#pdescuento").val();
+			precio_compra=$("#pprecio_venta").val();
 			
 			  if (idarticulo!="" && cantidad!="" && cantidad>0 && precio_compra!="")
 		{
-			subtotal[cont]=(cantidad*precio_compra);
+			subtotal[cont]=(cantidad*precio_compra)-descuento;
 			total=total+subtotal[cont];
 
-			var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"><td><input type="number" name="precio_compra[]" value="'+precio_compra+'"></td><td>'+subtotal[cont]+'</td></tr>';
+			var fila='<tr class="selected" id="fila'+cont+'"><td><button type="button" class="btn btn-warning" onclick="eliminar('+cont+');">X</button></td><td><input type="hidden" name="idarticulo[]" value="'+idarticulo+'">'+articulo+'</td><td><input type="number" name="cantidad[]" value="'+cantidad+'"><td><input type="number" name="precio_venta[]" value="'+precio_compra+'"></td><td><input type="number"name="descuento[]" value="'+descuento+'"></td><td>'+subtotal[cont]+'</td></tr>';
 			cont++;
 		    $('#total').html("$/ " + total);
 		    $('#total_venta').val(total);
-			evaluar();
 		  	$('#detalles').append(fila);
 		  	limpiar();
 		  	$('select[name=pidarticulo]').val(1);
 			$('.selectpicker').selectpicker('refresh')
 			mostrarValores();
+			$("#guardar").show();
 		}
 	else
 	{
-		alert("Error al ingresar el detalle de la venta, revise los datos del articulo");
+		alert("Error al ingresar el detalle del pedido, revise los datos del articulo");
 	}
 		}
 
@@ -209,8 +212,9 @@ function agregar()
 	function limpiar()
 			 {
 			    $("#pcantidad").val("");
-				$("#pprecio_compra").val("");
+				$("#pprecio_venta").val("");
 				$("#pstock").val("");
+				$("#pdescuento").val(0);
 			 }
 
 

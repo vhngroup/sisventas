@@ -24,6 +24,7 @@
 		<td>{{$ped->nombre}}</td>
 		<td>{{$ped->num_comprobante}}</td>
 		<td>{{$ped->total_venta}}</td>
+		<td>{{$ped->estado}}</td>
 		<td>
 			<a href="{{URL::action('PedidoController@show',$ped->idpedido)}}"><button class="btn btn-primary">Detalles</button></a>
 			<a href="" data-target="#modal-delete-{{$ped->idpedido}}" data-toggle="modal"><button class="btn btn-danger">Anular</button></a>
