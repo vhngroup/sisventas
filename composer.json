@@ -15,7 +15,6 @@
         "barryvdh/laravel-dompdf": "^0.8",
         "h4cc/wkhtmltopdf-amd64": "0.12.x",
         "h4cc/wkhtmltoimage-amd64": "0.12.x",
-        "fishmad/wkhtmltopdf-windows": " dev-master",
         "arielcr/numero-a-letras": "dev-master",
         "almasaeed2010/adminlte": "~2.4",
         "rap2hpoutre/laravel-log-viewer": "^0.19.1"
