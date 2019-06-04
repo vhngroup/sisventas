@@ -4,7 +4,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}" />
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Seneca Sistema de Ventas | www.vhngroup.com</title>
+    <title>Local Seneca Sistema de Ventas | www.vhngroup.com</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -28,7 +28,7 @@
       <header class="main-header">
 
         <!-- Logo -->
-        <a href={{'/ventas/venta'}} class="logo">
+        <a href={{'/proyectos'}} class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>VH</b>V</span>
           <!-- logo for regular state and mobile devices -->
