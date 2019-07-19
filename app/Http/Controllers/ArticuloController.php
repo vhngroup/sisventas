@@ -52,7 +52,7 @@ class ArticuloController extends Controller
 
     public function store (ArticuloFormRequest $request)
     {
-    	try{
+        try{
              DB::beginTransaction();
 		$articulo=new articulo;
 		$articulo->idcategoria=$request->get('idcategoria');
@@ -98,11 +98,11 @@ class ArticuloController extends Controller
         $detalles->save();
 
 				DB::commit();
-           }
+         }
     	catch(\Exception $e)
-    	  	 {
-            DB::rollback();
-        	}
+    	 {
+         DB::rollback();
+        }
 
         return Redirect::to('almacen/articulo');
        }

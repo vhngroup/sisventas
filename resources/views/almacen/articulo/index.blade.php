@@ -26,9 +26,8 @@
 		<td>{{$art->nombre}}</td>
 		<td>{{$art->codigo}}</td> 
 		<td>{{$art->stock}}</td>
-		<td>$ <? echo number_format($art->precio_compra ,1,".",",");?></td>
-		<td>$ <? echo number_format($art->precio_venta ,1,".",",");?></td>
-		<!--<td> <img src="{{asset('imagenes/articulos/'.$art->imagen)}}"alt="{{$art->nombre}}",height="100px" width="100px", class="img-thumbnail"></td>-->
+		<td>$ <?php echo number_format($art->precio_compra ,1,".",",");?></td>
+		<td>$ <?php echo number_format($art->precio_venta ,1,".",",");?></td>
 		<td>
 			<a href="{{URL::action('ArticuloController@edit',$art->idarticulo)}}"><button class="btn btn-info btn-xs">Editar</button></a>
 			<a href="" data-target="#modal-delete-{{$art->idarticulo}}" data-toggle="modal"><button class="btn btn-danger btn-xs">Eliminar </button></a>

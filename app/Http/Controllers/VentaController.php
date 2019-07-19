@@ -26,13 +26,15 @@ class VentaController extends Controller
     {
     	if($request)
     	{
-    		$query=trim($request->GET('searchText'));
+    	$query=trim($request->GET('searchText'));
         $ventas=DB::table('venta as v')
-         ->join('persona as p','v.idcliente','=','p.idpersona')
+        ->join('persona as p','v.idcliente','=','p.idpersona')
         ->join('detalledeventa as dv','v.idventa','=','dv.idventa')
-    		->select('v.idventa','v.fecha_hora','p.nombre','v.tipo_comprobante','v.serie_comprobante','v.num_comprobante','v.impuesto','v.estado','v.anticipo','v.total_venta')
+        ->join('articulo as ac','dv.idarticulo','=','ac.idarticulo')
+    	->select('v.idventa','v.fecha_hora','p.nombre','v.tipo_comprobante','v.serie_comprobante','v.num_comprobante','v.impuesto','v.estado','v.anticipo','v.total_venta')
     		->where('v.num_comprobante','LIKE','%'.$query.'%')
             ->orwhere('v.descripcion','LIKE','%'.$query.'%')
+            ->orwhere('ac.codigo','LIKE','%'.$query.'%')
             ->orwhere('p.nombre','LIKE','%'.$query.'%')
     		->orderBy('v.idventa','desc')
     		->groupBy('v.idventa','v.fecha_hora','p.nombre','v.tipo_comprobante','v.serie_comprobante','v.num_comprobante','v.impuesto','v.estado')
@@ -51,6 +53,7 @@ class VentaController extends Controller
             ->join('persona as per', 'per.idpersona', '=', 'pro.idpersona')
             ->select('per.nombre','pro.descripcion','pro.idproyecto','pro.idpersona')
             ->where('pro.idestado','=','2')
+            ->orderBy('pro.idproyecto', 'desc')
             ->get();
             $articulos=DB::table('articulo as art')
             ->join('detalle_ingreso as di','art.idarticulo','=','di.idarticulo')

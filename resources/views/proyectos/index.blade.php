@@ -2,7 +2,11 @@
 @section ('contenido')
 <div class="row">
 	<div class="col-lg-8 col-md-8 col-dm-8 col-xs-12">
-	<h3> Listado de Proyectos <a href="proyectos/create"><button class="btn btn-success">Nuevo</button></a> <a href="cotizaciones/create"><button class="btn btn-primary">Cotizaciones</button></a></h3>
+	<h3> 
+		Listado de Proyectos <a href="proyectos/create"><button class="btn btn-primary">Nuevo</button></a> 
+		<a href="cotizaciones/create"><button class="btn btn-secondary">Cotizaciones</button></a>
+		<a href="ventas/venta/create"><button class="btn btn-secondary">Ventas</button></a>
+	</h3>
 	@include('proyectos.search')
 	</div>
 </div>
