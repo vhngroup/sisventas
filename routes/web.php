@@ -32,6 +32,11 @@ Route::get('/cotizacion/reporte/{id}', 'CotizacionController@crear_pdf');
 Route::get('/ventas/venta/reporte/{id}', 'VentaController@crear_pdf');
 Route::get('/pedidos/reporte/{id}', 'PedidoController@crear_pdf');
 Route::get('/logout', 'Auth\LoginController@logout');
+Route::get('/clear-cache', function() {
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    return "Cache is cleared";
+});
 
 Auth::routes();
 
