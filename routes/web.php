@@ -34,9 +34,12 @@ Route::get('/pedidos/reporte/{id}', 'PedidoController@crear_pdf');
 Route::get('/logout', 'Auth\LoginController@logout');
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
-    Artisan::call('config:cache');
+    Artisan::call('config:clear');
+    cache()->clear();
+    Artisan::call('view:clear');
     return "Cache is cleared";
 });
+
 
 Auth::routes();
 
