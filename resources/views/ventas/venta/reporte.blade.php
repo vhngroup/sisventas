@@ -168,18 +168,18 @@
 <section>
       <div id="titulodescripccion">Condiciones del servicio:</div>
       <?php 
-      		if($venta->anticipo > 0)
-      		{
-		?>
-      	<textarea id="descripccion"><br>Anticipo</br>El cliente entrego anticipo de $ : <?php echo number_format(($venta->anticipo),2,".",",");?> <p>{{$venta->condiciones}}</textarea></p>
-      	<?php
-      		}
-      		else
-      		{
-      			?>
+          if($venta->anticipo > 0)
+          {
+    ?>
+        <textarea id="descripccion"><strong>Anticipo: </strong>Se recibio anticipo por COP:<strong>$<?php echo number_format(($venta->anticipo),0,".",",");?></strong> pesos saldo por pagar en esta factura de:<strong>$<?php echo number_format(($venta->total_venta)-($venta->anticipo),0,".",",");?></strong> pesos iva incluido <p>{{$venta->condiciones}}</textarea></p>
+        <?php
+          }
+          else
+          {
+            ?>
       <textarea id="descripccion">{{$venta->condiciones}}</textarea>
       <?php
-      		}
+          }
        ?>
 </section>
     <footer>
