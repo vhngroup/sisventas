@@ -70,7 +70,7 @@
 	<label>Articulo</label>
 	<select name="pidarticulo" id="pidarticulo" class="form-control selectpicker" data-size="5" data-live-search="true">
 		@foreach($articulos as $articulo)
-		<option value="{{$articulo->idarticulo}}_{{$articulo->stock}}_{{$articulo->precio_promedio}}_{{$articulo->impuesto}}"">{{$articulo->articulo}}</option>
+		<option value="{{$articulo->idarticulo}}_{{$articulo->stock}}_{{$articulo->precio_promedio}}_{{$articulo->impuesto}}">{{$articulo->articulo}}</option>
 		@endforeach
 	</select>
 	</div>
@@ -170,6 +170,7 @@
 		acm_Iva=[];
 		acm_Descuento=[];
 		acm_Total=[];
+		var state =0;
 
 		$(document).on('ready',function()
 		 {	
@@ -182,6 +183,8 @@
 			 mostrarValores();
 
 		 });
+
+		
 		$("#pidarticulo").change(mostrarValores);
 		$("#idproyecto").change(mostrarproyecto);
 		$("#guardar").hide();
@@ -208,12 +211,14 @@
 				 if (pproyecto <= 0) //evalua si el proyecto esta seleccionado
 			 
 					{
+						state =0;
 						alert("Por favor seleccione un proyecto")
 								$("#guardar").hide();	
 					}
 				else { //si la respuesta es positiva evalua siguiente nivel
 					if (pdescripcion=="") //evalua si la descripcción es activa
 						{
+								state =0;
 								alert("Por favor ingrese una descripcion")
 								$("#guardar").hide();
 						}
@@ -221,11 +226,13 @@
 						{
 							if (indice<=0)	//evalua si hay cliente
 							{
+								state =0;
 								alert("Debe seleccionar un cliente")
 								$("#guardar").hide();	
 							}
 							else //pasa todo ok
 							{
+								state =1;
 								agregar();		
 							}
 						}
@@ -309,6 +316,18 @@
 		$('#fila'+index).remove();
 		evaluar();
 	}
+
+	window.addEventListener('beforeunload', function (e) {
+			if (state ===1)
+			{	
+
+			}
+				else
+			{
+				e.preventDefault();
+    			e.returnValue = '';
+			}
+			});
 </script>
 @endpush
 @endsection

@@ -83,6 +83,7 @@
     <!-- Scripts -->
     <script src="{{asset('js/modernizr-custom.js')}}"></script>
     <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('js/event.js')}}"></script>
     
 </body>
 </html>

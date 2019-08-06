@@ -188,6 +188,7 @@
 		acm_Iva=[];
 		acm_Descuento=[];
 		acm_Total=[];
+		var state = 0;
 
 	
 		$(document).on('ready',function(){
@@ -291,12 +292,14 @@ function agregar()
 		 if (pproyecto<=0) //evalua si el proyecto esta seleccionado
 	 
 			{
+				state =0;
 				alert("Por favor seleccione un proyecto")
 						$("#guardar").hide();	
 			}
 		else { //si la respuesta es positiva evalua siguiente nivel
 			if (descripcion=="") //evalua si la descripcción es activa
 				{
+					state =0;
 						alert("Por favor ingrese una descripcion")
 						$("#guardar").hide();
 				}
@@ -304,11 +307,13 @@ function agregar()
 				{
 					if (indice<=0)	//evalua si hay cliente
 					{
+						
+						state =0;
 						alert("Debe seleccionar un cliente")
 						$("#guardar").hide();	
 					}
 					else //pasa todo ok
-					{
+					{	state =1;
 						agregar();		
 					}
 				}
@@ -335,6 +340,18 @@ function agregar()
 	$('#fila'+index).remove();
 	evaluar();
 		}
+
+window.addEventListener('beforeunload', function (e) {
+			if (state ===1)
+			{	
+
+			}
+				else
+			{
+				e.preventDefault();
+    			e.returnValue = '';
+			}
+			});
 </script>
 @endpush
 @endsection

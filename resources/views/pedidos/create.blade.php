@@ -143,6 +143,7 @@
 		cont=0;
 		total=0;
 		subtotal=[];
+		var state =0;
 		$("#pidarticulo").change(mostrarValores);
 		$("#guardar").hide();
 		$(document).on('ready',function(){
@@ -167,11 +168,13 @@ function evaluar()
 		 if(indice<=0)
 	 
 			{
+				state =0;
 				alert("Debe seleccionar un cliente")
 				$("#guardar").hide();
 			}
 			else
-			{
+			{	
+				state =0;
 				agregar();
 			}
 		}
@@ -225,6 +228,18 @@ function agregar()
 	$('#fila'+index).remove();
 	evaluar();
 		}
+
+		window.addEventListener('beforeunload', function (e) {
+			if (state ===1)
+			{	
+
+			}
+				else
+			{
+				e.preventDefault();
+    			e.returnValue = '';
+			}
+			});
 </script>
 @endpush
 @endsection

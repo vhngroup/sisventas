@@ -114,6 +114,7 @@
 		{!!Form::close()!!}  	
 		 @push ('scripts')
 		 <script>
+		 	var state =0;
 	
 			$(document).on('ready',function() 
 			{
@@ -124,15 +125,29 @@
 				{
 					var indice = document.getElementById('idcliente').selectedIndex
 					 if(indice<=0)
-						{
+						{	state =0;
 							alert("Debe seleccionar un cliente")
 							$("#guardar").hide();
 						}
 					else
 						{
+							state =1;
 							agregar();
 						}
 				}
+			
+			window.addEventListener('beforeunload', function (e) {
+			if (state ===1)
+			{	
+
+			}
+				else
+			{
+				e.preventDefault();
+    			e.returnValue = '';
+			}
+			});
+
 		 	
 		 </script>
 		@endpush

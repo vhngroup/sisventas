@@ -148,6 +148,7 @@
 		cont=0;
 		total=0;
 		subtotal=[];
+		var state =0;
 		$("#guardar").hide();
 					$(document).on('ready',function(){		
 						document.getElementById('piimpuesto').selectedIndex=1;
@@ -193,12 +194,14 @@ function agregar()
 		 if(indice<=0)
 	 
 			{
+				var state =0;
 				alert("Debe seleccionar un cliente")
 				$("#guardar").hide();
 			}
 			else
 			{
 				agregar();
+				var state =1;
 			}
 		}
 			
@@ -209,7 +212,17 @@ function agregar()
 	$('#fila'+index).remove();
 	evaluar();
 		}
+window.addEventListener('beforeunload', function (e) {
+			if (state ===1)
+			{	
 
+			}
+				else
+			{
+				e.preventDefault();
+    			e.returnValue = '';
+			}
+			});
 
 </script>
 @endpush
