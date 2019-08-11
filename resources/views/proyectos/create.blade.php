@@ -114,15 +114,17 @@
 		{!!Form::close()!!}  	
 		 @push ('scripts')
 		 <script>
-		 	var state =0;
+		 	
 	
 			$(document).on('ready',function() 
 			{
 				$('select[name=estado]').val(2);
 				$('selectpicker').selectpicker('refresh')
 			});
+
 		 	function evaluar()
 				{
+					var state =0;
 					var indice = document.getElementById('idcliente').selectedIndex
 					 if(indice<=0)
 						{	state =0;
