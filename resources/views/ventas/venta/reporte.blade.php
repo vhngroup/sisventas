@@ -40,6 +40,7 @@
             <th>Descripción</th>
             <th>Cantidad</th>
             <th>Precio</th>
+            <th>Subtotal</th>
             <th>Descuento</th>
             <th>Iva</th>
             <th>Total</th>
@@ -52,10 +53,11 @@
         <td class=""> <img src="{{asset('imagenes/articulos/'.$det->imagen)}}"></td>
         <td class="item">{{$det->descripcion}}</td>
         <td class="number">{{$det->cantidad}}</td>
-        <td class="number">$ <?php echo number_format($det->totalgeneral ,1,".",",");?></td>
-        <td class="number">$ <?php echo number_format($det->descuento ,1,".",",");?></td>    
-        <td class="number">$ <?php echo number_format($det->iva ,1,".",",");?></td>
-       <td  class="number">$ <?php echo number_format($det->total ,1,".",",");?></td>
+        <td class="number">$ <?php echo number_format($det->precio_venta ,0,".",",");?></td>
+        <td class="number">$ <?php echo number_format($det->totalgeneral ,0,".",",");?></td>
+        <td class="number">$ <?php echo number_format($det->descuento ,0,".",",");?></td>   
+        <td class="number">$ <?php echo number_format($det->iva ,0,".",",");?></td>
+       <td  class="number">$ <?php echo number_format($det->total ,0,".",",");?></td>
       </tr>
          @endforeach
      </tbody>
@@ -78,7 +80,7 @@
             <td class="descripccion"></td> 
             <td class="descripccion"></td> 
             <td class="descripccion">Total General</td>
-            <td class="descripccion">$ <?php echo number_format($venta->total_general,2,".",",");?></td>td>
+            <td class="descripccion">$ <?php echo number_format($venta->total_general,0,".",",");?></td>td>
           </tr>
           <tr>
             <td class="descripccion"></td>
@@ -87,7 +89,7 @@
             <td class="descripccion"></td> 
             <td class="descripccion"></td> 
             <td class="descripccion">Descuento</td>
-            <td class="descripccion">$ <?php echo number_format($venta->total_descuento,2,".",",");?></td>
+            <td class="descripccion">$ <?php echo number_format($venta->total_descuento,0,".",",");?></td>
           </tr>
           <tr>
             <td class="descripccion"></td>
@@ -96,7 +98,7 @@
             <td class="descripccion"></td> 
             <td class="descripccion"></td> 
             <td class="descripccion">Subtotal</td>
-            <td class="descripccion">$ <?php echo number_format($venta->subtotal,2,".",",");?></td>
+            <td class="descripccion">$ <?php echo number_format($venta->subtotal,0,".",",");?></td>
           </tr>
           <tr>
             <td class="descripccion"></td>
@@ -105,7 +107,7 @@
             <td class="descripccion"></td> 
             <td class="descripccion"></td> 
             <td class="descripccion"> Iva 19% </td>
-            <td class="descripccion">$ <?php echo number_format($venta->valoriva,2,".",",");?></td>
+            <td class="descripccion">$ <?php echo number_format($venta->valoriva,0,".",",");?></td>
           </tr>
           <tr>
             <td class="descripccion"></td>
@@ -114,7 +116,7 @@
             <td class="descripccion"></td> 
             <td class="descripccion"></td> 
             <td class="descripccion">Valor Total a Pagar</td>
-            <td class="descripccion" id="ptotal">$ <?php echo number_format($venta->total_venta,2,".",",");?></td>
+            <td class="descripccion" id="ptotal">$ <?php echo number_format($venta->total_venta,0,".",",");?></td>
           </tr>
         <?php 
             }
@@ -129,7 +131,7 @@
             <td class="descripccion"></td> 
             <td class="descripccion"></td> 
             <td class="descripccion">Subtotal</td>
-            <td class="descripccion">$ <?php echo number_format(($venta->descuento+$venta->total_venta)/1.19,2,".",",");?></td>
+            <td class="descripccion">$ <?php echo number_format(($venta->descuento+$venta->total_venta)/1.19,0,".",",");?></td>
           </tr>
           <tr>
             <td class="descripccion"></td>
@@ -138,7 +140,7 @@
             <td class="descripccion"></td> 
             <td class="descripccion"></td> 
             <td class="descripccion">Descuento</td>
-            <td class="descripccion">$ <?php echo number_format($venta->descuento,2,".",",");?></td>
+            <td class="descripccion">$ <?php echo number_format($venta->descuento,0,".",",");?></td>
           </tr>
           <tr>
             <td class="descripccion"></td>
@@ -147,7 +149,7 @@
             <td class="descripccion"></td> 
             <td class="descripccion"></td> 
             <td class="descripccion">Iva 19%</td>
-            <td class="descripccion">$ <?php echo number_format( ($venta->total_venta/1.19) * 0.19,2,".",",");?></td>
+            <td class="descripccion">$ <?php echo number_format( ($venta->total_venta/1.19) * 0.19,0,".",",");?></td>
           </tr>
            <tr>
             <td class="descripccion"></td>
@@ -156,7 +158,7 @@
             <td class="descripccion"></td> 
             <td class="descripccion"></td> 
             <td class="descripccion">Valor Total</td>
-            <td class="descripccion" id="ptotal">$ <?php echo number_format($venta->total_venta,2,".",",");?></td>
+            <td class="descripccion" id="ptotal">$ <?php echo number_format($venta->total_venta,0,".",",");?></td>
           </tr>
           <?php
             }

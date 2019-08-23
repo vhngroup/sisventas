@@ -171,8 +171,8 @@
 </div>
 <div class="col-lg-6 col-md-6 col-dm-6 col-xs-12" id="guardar1">
 	<div class="form-group">
-	<input name="_token" value="{{ csrf_token() }}" type="hidden"></input>
-		<button id="guardar" class="btn btn-primary"  type="submit">Guardar</button>
+		<input name="_token" value="{{ csrf_token() }}" type="hidden"></input>
+		<button id="guardar" onclick="validastate()" class="btn btn-primary"  type="submit">Guardar</button>
 		<button class="btn btn-danger" type="reset">Restablecer</button>
 		<a class="btn btn-primary" href="/ventas/venta" role="button">Cancelar</a>
 			</div>
@@ -188,9 +188,6 @@
 		acm_Iva=[];
 		acm_Descuento=[];
 		acm_Total=[];
-		var state = 0;
-
-	
 		$(document).on('ready',function(){
 			 var x= document.getElementById('idproyecto');
 			 var option = document.createElement("option");
@@ -199,7 +196,7 @@
 			 document.getElementById('idproyecto').selectedIndex=0;
 			mostrarproyecto();
 			mostrarValores();
-		
+			state=1;
 		});
 		$("#pidarticulo").change(mostrarValores);
 		$("#idproyecto").change(mostrarproyecto);
@@ -207,6 +204,7 @@
 
 		function mostrarValores()
 		{
+			state=0;
 			datosArticulo=document.getElementById('pidarticulo').value.split('_');
 			$("#pprecio_venta").val(datosArticulo[2]);
 			$("#pstock").val(datosArticulo[1]);
@@ -215,10 +213,11 @@
 
 		function mostrarproyecto()
 		{
+			state=0;
 			datosProyecto=document.getElementById('idproyecto').value.split('_');
 			$("#descripcion").val(datosProyecto[2])
 			$('select[name=idcliente]').val(datosProyecto[3]);
-   			 $('select[name=idcliente]').change();
+   			$('select[name=idcliente]').change();
 		}
 
 function agregar()
@@ -268,16 +267,19 @@ function agregar()
 		else
 		{
 			alert('la cantidad a vender supera el stock');
+			state=0;
 		}
 		}
 	else
 	{
 		alert("Error al ingresar el detalle de la venta, revise los datos del articulo");
+		state=0;
 	}
 		}
 
 	function limpiar()
 			 {
+			 	state=0;
 			    $("#pcantidad").val("");
 				$("#pdescuento").val(0);
 				$("#pprecio_venta").val("");
@@ -286,20 +288,19 @@ function agregar()
 			 
 	function evaluar()
 	{
+		state =0;
 		var pproyecto = document.getElementById('idproyecto').selectedIndex;
 		var indice = document.getElementById('idcliente').selectedIndex;
 		var descripcion = document.getElementById('descripcion').value;
 		 if (pproyecto<=0) //evalua si el proyecto esta seleccionado
 	 
 			{
-				state =0;
 				alert("Por favor seleccione un proyecto")
 						$("#guardar").hide();	
 			}
 		else { //si la respuesta es positiva evalua siguiente nivel
 			if (descripcion=="") //evalua si la descripcción es activa
 				{
-					state =0;
 						alert("Por favor ingrese una descripcion")
 						$("#guardar").hide();
 				}
@@ -307,13 +308,11 @@ function agregar()
 				{
 					if (indice<=0)	//evalua si hay cliente
 					{
-						
-						state =0;
 						alert("Debe seleccionar un cliente")
 						$("#guardar").hide();	
 					}
 					else //pasa todo ok
-					{	state =1;
+					{	
 						agregar();		
 					}
 				}
@@ -321,6 +320,7 @@ function agregar()
 	}
 
 	function eliminar(index){
+		state=0;
 		totalGeneral=Math.round((totalGeneral-acm_Totalgeneral[index])*100)/100;
 		totalDescuento=Math.round((totalDescuento - acm_Descuento[index])*100)/100;
 		totalSubtotal=Math.round((totalSubtotal-acm_Subtotal[index])*100)/100;
@@ -348,10 +348,14 @@ window.addEventListener('beforeunload', function (e) {
 			}
 				else
 			{
-				e.preventDefault();
-    			e.returnValue = '';
+						e.preventDefault();
+		    			e.returnValue = '';
 			}
 			});
+	function validastate()	
+	{
+		state=1;
+	}
 </script>
 @endpush
 @endsection

@@ -216,7 +216,7 @@ class VentaController extends Controller
 
             $detalle=DB::table('detalledeventa as dv')
             ->join('articulo as a','dv.idarticulo','=','a.idarticulo')
-            ->select('a.nombre as articulo','a.codigo','a.imagen', 'a.descripcion','dv.cantidad','dv.totalgeneral', 'dv.descuento', 'dv.subtotal', 'dv.iva', 'dv.total')
+            ->select('a.nombre as articulo','a.codigo','a.imagen', 'a.descripcion','dv.cantidad','dv.precio_venta','dv.totalgeneral', 'dv.descuento', 'dv.subtotal', 'dv.iva', 'dv.total')
             ->where('idventa',$id)
             ->get();
 

@@ -153,7 +153,7 @@
 		<div class="col-lg-6 col-md-6 col-dm-6 col-xs-12" id="guardar1">
 					<div class="form-group">
 				<input name="_token" value="{{ csrf_token() }}" type="hidden"></input>
-						<button class="btn btn-primary" id="guardar"  type="submit">Guardar</button>
+						<button class="btn btn-primary" id="guardar"  onclick="validastate()" type="submit">Guardar</button>
 						<button class="btn btn-danger" type="reset">Restablecer</button>
 						<a class="btn btn-primary" href="/cotizaciones" role="button">Cancelar</a>
 		
@@ -170,7 +170,6 @@
 		acm_Iva=[];
 		acm_Descuento=[];
 		acm_Total=[];
-		var state =0;
 
 		$(document).on('ready',function()
 		 {	
@@ -181,6 +180,7 @@
 			 document.getElementById('idproyecto').selectedIndex=0;
 			 mostrarproyecto();
 			 mostrarValores();
+			 state=1;
 
 		 });
 
@@ -191,6 +191,7 @@
 		
 		function mostrarValores()
 			{
+			state=0;
 			datosArticulo=document.getElementById('pidarticulo').value.split('_');
 			$("#pprecio_venta").val(datosArticulo[2]);
 			$("#pstock").val(datosArticulo[1]);
@@ -198,48 +199,16 @@
 			}
 		function mostrarproyecto()
 		 {
+		 	state=0;
 			 datosProyecto=document.getElementById('idproyecto').value.split('_');
 			 $("#descripcion").val(datosProyecto[2]);
 			 $('select[name=idcliente]').val(datosProyecto[3]);
 	   		 $('select[name=idcliente]').change();
 		 }
-		function evaluar()
-			{
-				var pproyecto = document.getElementById('idproyecto').selectedIndex;
-				var indice = document.getElementById('idcliente').selectedIndex;
-				var pdescripcion = document.getElementById('descripcion').value;
-				 if (pproyecto <= 0) //evalua si el proyecto esta seleccionado
-			 
-					{
-						state =0;
-						alert("Por favor seleccione un proyecto")
-								$("#guardar").hide();	
-					}
-				else { //si la respuesta es positiva evalua siguiente nivel
-					if (pdescripcion=="") //evalua si la descripcción es activa
-						{
-								state =0;
-								alert("Por favor ingrese una descripcion")
-								$("#guardar").hide();
-						}
-						else
-						{
-							if (indice<=0)	//evalua si hay cliente
-							{
-								state =0;
-								alert("Debe seleccionar un cliente")
-								$("#guardar").hide();	
-							}
-							else //pasa todo ok
-							{
-								state =1;
-								agregar();		
-							}
-						}
-					}
-			}			
-		function agregar()
+
+function agregar()
 		{
+			state=0;
 			datosArticulo=document.getElementById('pidarticulo').value.split('_');
 			idarticulo=datosArticulo[0];
 			articulo=$("#pidarticulo option:selected").text();
@@ -288,15 +257,54 @@
 				}
 		}
 
+
+		function evaluar()
+			{
+				state =0;
+				var pproyecto = document.getElementById('idproyecto').selectedIndex;
+				var indice = document.getElementById('idcliente').selectedIndex;
+				var pdescripcion = document.getElementById('descripcion').value;
+				 if (pproyecto <= 0) //evalua si el proyecto esta seleccionado
+			 
+					{
+						state =0;
+						alert("Por favor seleccione un proyecto")
+								$("#guardar").hide();	
+					}
+				else { //si la respuesta es positiva evalua siguiente nivel
+					if (pdescripcion=="") //evalua si la descripcción es activa
+						{
+								state =0;
+								alert("Por favor ingrese una descripcion")
+								$("#guardar").hide();
+						}
+						else
+						{
+							if (indice<=0)	//evalua si hay cliente
+							{
+								state =0;
+								alert("Debe seleccionar un cliente")
+								$("#guardar").hide();	
+							}
+							else //pasa todo ok
+							{
+								state =1;
+								agregar();		
+							}
+						}
+					}
+			}			
+		
 	function limpiar()
 			 {
+			 		state=0;
 			    $("#pcantidad").val("");
 				$("#pdescuento").val(0);
 				$("#pprecio_venta").val("");
 				$("#pstock").val("");
 			 }
 	function eliminar(index)
-	{
+	{	state=0;
 		totalGeneral=Math.round((totalGeneral-acm_Totalgeneral[index])*100)/100;
 		totalDescuento=Math.round((totalDescuento - acm_Descuento[index])*100)/100;
 		totalSubtotal=Math.round((totalSubtotal-acm_Subtotal[index])*100)/100;
@@ -328,6 +336,10 @@
     			e.returnValue = '';
 			}
 			});
+	function validastate()	
+	{
+		state=1;
+	}
 </script>
 @endpush
 @endsection

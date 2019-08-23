@@ -114,40 +114,44 @@
 		{!!Form::close()!!}  	
 		 @push ('scripts')
 		 <script>
-		 	
-	
+		 let indice
 			$(document).on('ready',function() 
 			{
 				$('select[name=estado]').val(2);
+				$('select[name=idpersona]').val(1);
 				$('selectpicker').selectpicker('refresh')
+				 $('select.selectpicker').on('change', function(){
+					indice = document.getElementById('idpersona')[document.getElementById('idpersona').options.selectedIndex].value
+				});
+				 state =1;
 			});
 
 		 	function evaluar()
 				{
-					var state =0;
-					var indice = document.getElementById('idcliente').selectedIndex
-					 if(indice<=0)
+					state =0;
+					 if(indice<=1)
 						{	state =0;
 							alert("Debe seleccionar un cliente")
 							$("#guardar").hide();
 						}
 					else
 						{
-							state =1;
-							agregar();
+									state =1;
+									agregar();
+							
 						}
 				}
 			
 			window.addEventListener('beforeunload', function (e) {
 			if (state ===1)
-			{	
+				{	
 
-			}
-				else
-			{
-				e.preventDefault();
-    			e.returnValue = '';
-			}
+				}
+					else
+				{
+					e.preventDefault();
+	    			e.returnValue = '';
+				}
 			});
 
 		 	

@@ -49,7 +49,6 @@
     {
       background-color: #dcff84;
       margin:0;
-     border-top: 2px solid  #5D6975; 
      text-align: center;
     }
   
@@ -95,12 +94,12 @@ table
     table, td, th
     {
       border: 1px solid black;
-      font-size: 11px;
+      font-size: 10px;
     }
 
     table td.descripccion
     {
-    font-size: 12px; 
+    font-size: 11px; 
     text-align: right;
     border: 1px solid white;
     border-color: white white white white;
@@ -128,7 +127,7 @@ table
   table .number 
   {
     text-align: center;
-    font-size: 11px; 
+    font-size: 10px; 
 
   }
 
