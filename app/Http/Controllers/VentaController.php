@@ -226,7 +226,7 @@ class VentaController extends Controller
              $dom_pdf = $pdf->getDomPDF();
              $canvas = $dom_pdf ->get_canvas();
              $canvas->page_text(550, 87, "Pagina {PAGE_NUM} de {PAGE_COUNT}", null, 8, array(0, 0, 0));
-             return $pdf->stream("Factura de Venta # $num_comprobante- del -$id.pdf");
+             return $pdf->stream("Factura de Venta # {{$venta->num_comprobante}} - del -$id.pdf");
         }
     
 }  
