@@ -14,7 +14,7 @@
       </div>
       <div>
         <div id="pago">
-      <h1>Cotización # {{$cotizacion->num_comprobante}}{{$cotizacion->serie_comprobante}}-{{$cotizacion->idcotizacion}} del <?php $fecha_det= substr($cotizacion->fecha_hora, -24,10); echo $fecha_det; ?></h1></div>
+      <h1>Cotización # {{$cotizacion->num_comprobante}} del <?php $fecha_det= substr($cotizacion->fecha_hora, -24,10); echo $fecha_det; ?></h1></div>
       </div>
        <div id="alcance">Alcance: {{$cotizacion->descripcion}}</div>
     <div id="DatosCliente">
