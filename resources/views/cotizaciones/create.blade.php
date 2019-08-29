@@ -43,7 +43,7 @@
 <div class="col-lg-6 col-md-6 col-dm-12 col-xs-12">
 	<div class="form-group">
 		<label for="descripcion">Alcance del Servicio:</label>
-			<input type="text" name="descripcion" id="descripcion" required value="{{old('descripcion, descripcion')}}" class="form-control" placeholder="Describa el alcance del Servicio">
+			<input type="text" name="descripcion" id="descripcion" required value="{{old('descripcion, descripcion')}}" maxlength="100" class="form-control" placeholder="Describa el alcance del Servicio">
 		</div>
 	</div>
 

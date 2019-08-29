@@ -56,7 +56,7 @@
 		<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
 			<div class="form-group">
 					  <label for="nombre">Alcance del Servicio</label>
-		             <input type="text" name="descripcion" required id="descripcion" class="form-control" placeholder="Descripción">
+		             <input type="text" name="descripcion" required id="descripcion" class="form-control" maxlength="80" placeholder="Descripción">
 			</div>
 		</div>
 		<div class="col-lg-12 col-md-12 col-dm-12 col-xs-12">
