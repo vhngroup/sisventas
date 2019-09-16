@@ -24,8 +24,8 @@
 <div class="row">	
 <div class="col-lg-6 col-md-6 col-dm-12 col-xs-12">
 	<div class="form-group">
-			<label for="codigo">codigo - Maximo 25 Caracteres</label>
-			<input type="text" name="codigo" maxlength="25" required value="{{old('codigo')}}" class="form-control" placeholder="Codigo del articulo...">
+			<label for="codigo">codigo - Maximo 27 Caracteres</label>
+			<input type="text" name="codigo" maxlength="27" required value="{{old('codigo')}}" class="form-control" placeholder="Codigo del articulo...">
 		</div>
 </div>
 <div class="col-lg-6 col-md-6 col-dm-6 col-xs-12">
