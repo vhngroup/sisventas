@@ -37,7 +37,7 @@ class ArticuloFormRequest extends FormRequest
             return [
             'idcategoria' =>'required',
             'impuesto' =>'required',
-             'codigo' =>'required|max:26|unique:articulo,codigo,'.$this->segment('3').',idarticulo',
+             'codigo' =>'required|max:28|unique:articulo,codigo,'.$this->segment('3').',idarticulo',
              'nombre'=>'required |max:85',
              'stock'=>'required |numeric',
              'descripcion'=>'required | max:410',
