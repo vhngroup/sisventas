@@ -25,20 +25,19 @@ class CotizacionController extends Controller
     {
     	if($request)
     	{
-    		$query=trim($request->GET('searchText'));
-
+    	$query=trim($request->GET('searchText'));
         $cotizacion=DB::table('cotizacion as c')
          ->join('persona as p','c.idcliente','=','p.idpersona')
          ->join('detallecotizacion as dc','c.idcotizacion','=','dc.idcotizacion')
-         ->join('articulo as ac', 'dc.idarticulo', '=' , 'ac.idarticulo')
-    		->select('c.idcotizacion','c.fecha_hora','p.nombre','c.serie_comprobante','c.num_comprobante','c.descripcion','c.estado','c.total_venta','c.condiciones')
+         ->join('articulo as ac', 'dc.idarticulo','=','ac.idarticulo')
+    	 ->select('c.idcotizacion','c.fecha_hora','p.nombre','c.serie_comprobante','c.num_comprobante','c.descripcion','c.estado','c.total_venta','c.condiciones')
     		->where('c.num_comprobante','LIKE','%'.$query.'%')
     		->orwhere('c.descripcion','LIKE','%'.$query.'%')
-            ->orwhere('p.nombre','LIKE','%'.$query.'%')
             ->orwhere('ac.codigo','LIKE','%'.$query.'%')
+            ->orwhere('p.nombre','LIKE','%'.$query.'%')
             ->orderBy('c.idcotizacion','desc')
     		->groupBy('c.idcotizacion','c.fecha_hora','p.nombre','c.serie_comprobante','c.num_comprobante','c.estado')
-    		->paginate(10);
+    		->paginate(15);
     		return view('cotizaciones.index',["cotizacion"=>$cotizacion,"searchText"=>$query]);
     	}
     }
