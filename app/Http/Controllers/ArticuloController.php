@@ -29,10 +29,10 @@ class ArticuloController extends Controller
     		$articulos=DB::table('articulo as a')
     		->join ('categoria as c','a.idcategoria','=','c.idcategoria')
     		->leftjoin('detalle_ingreso as dt', 'a.idarticulo', '=', 'dt.idarticulo')
-			->select('a.idarticulo','a.nombre', 'a.codigo', 'a.stock', 'c.nombre as categoria','a.descripcion', 'a.imagen', 'a.estado', 'a.impuesto', 'dt.precio_compra', 'dt.precio_venta')
+			->select('a.idarticulo','a.nombre', 'a.codigo', 'a.stock', 'c.nombre as categoria','a.descripcion', 'a.imagen', 'a.estado', 'a.impuesto', 'dt.precio_compra', 'dt.precio_venta','dt.iddetalle_ingreso')
     		->where('a.codigo','LIKE','%'.$query.'%')
             ->orwhere('a.nombre','LIKE','%'.$query.'%')
-    		->orderBy('a.idarticulo','desc')
+    		->orderBy('a.idarticulo','desc')->take(1)
     		->paginate(10);
     		return view('almacen.articulo.index',["articulos"=>$articulos,"searchText"=>$query]);
     	}
