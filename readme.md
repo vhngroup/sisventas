@@ -1,27 +1,31 @@
-# Laravel PHP Framework
-
+# Sisventas - Entorno web de facturaciòn e inteligancia del negocio
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
 [![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
 [![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+Entorno Web que ofrece un entorno multiusuario para realizar registro de proveedores, clientes, cotizaciones, facturas, compras, reportes
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+![VHNGROUP](https://github.com/vhngroup/sisventas/blob/master/images/Logo.png)
+![VHNGROUP](https://github.com/vhngroup/sisventas/blob/master/images/Footer.png)
+![VHNGROUP](https://github.com/vhngroup/sisventas/blob/master/images/Sisventas.png)
 
-## Official Documentation
+## Datos tecnicos
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+* Framework: Laravel
+* Lenguajes usados: PHP, JavaScript, Ajax, CSS
+* Motor Base de Datos: Mysql
+* Tipo de aplicación: web multiusario
+* Entorno : Web
+* Licencia: Software MIT
+* Estado Actual: Activo
+* Idioma: Español
 
-## Contributing
+## Datos de Contacto
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+Victor Noguera – [Twitter @victor__noguera](https://twitter.com/victor__noguera) - [Perfil Platzi](https://platzi.com/@victor__noguera) – E-mail info@vhngroup.com
 
-## Security Vulnerabilities
+Distribuido bajo licencia MIT. Ver [MIT license](http://opensource.org/licenses/MIT). para mas información.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+[https://github.com/vhngroup/sisventas](https://github.com/vhngroup/sisventas)
