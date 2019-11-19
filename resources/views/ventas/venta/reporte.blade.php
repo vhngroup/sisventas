@@ -16,7 +16,7 @@
       <div id="pago">
         <h1>Factura de Venta # {{$venta->num_comprobante}} del <?php $fecha_det= substr($venta->fecha_hora, -24,10); echo $fecha_det; ?></h1>
       </div>
-      <div id="resolucion">Resolución de facturación 18762006566971 del 2018-02-02 del 0001 al 1000 Habilitada por 18 meses hasta 02/08/2019</div>
+      <div id="resolucion">Resolución de facturación 18763000813132 consecutivos del 1001 al 1150 Habilitada por 24 meses desde el 2019-10-02 hasta 02/10/2021</div>
       <div id="alcance"><b>Alcance: </b>{{$venta->descripcion}}</div>
         <div id="DatosCliente">
         <p><b>Cliente:</b> {{$venta->nombre}} <b>Identificación:</b> {{$venta->tipo_documento}} <b>Numero:</b> {{$venta->num_documento}}</p>
