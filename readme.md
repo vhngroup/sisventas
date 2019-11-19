@@ -7,9 +7,9 @@
 
 Entorno Web que ofrece un entorno multiusuario para realizar registro de proveedores, clientes, cotizaciones, facturas, compras, reportes
 
-![VHNGROUP](https://github.com/vhngroup/sisventas/blob/master/images/Logo.png)
-![VHNGROUP](https://github.com/vhngroup/sisventas/blob/master/images/Footer.png)
-![VHNGROUP](https://github.com/vhngroup/sisventas/blob/master/images/Sisventas.png)
+![VHNGROUP](https://github.com/vhngroup/sisventas/blob/master/public/imagenes/Logo.png)
+![VHNGROUP](https://github.com/vhngroup/sisventas/blob/master/public/imagenes/Footer.png)
+![VHNGROUP](https://github.com/vhngroup/sisventas/blob/master/public/imagenes/Sisventas.png)
 
 ## Datos tecnicos
 
