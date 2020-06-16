@@ -7,7 +7,7 @@
 		<div class="alert alert-danger">
 			<ul>
 				@foreach ($errors-> all() as $error)
-					<li>	
+					<li>
 					{{$error}}
 					</li>
 				@endforeach
@@ -25,7 +25,7 @@
 	             <select name="idproyecto" id="idproyecto" class="form-control selectpicker" data-size="5" data-live-search="true">
 	              @foreach($dataproyecto as $proyecto)
 	              <option value="{{$proyecto->idproyecto}}_{{$proyecto->nombre}}_{{$proyecto->descripcion}}_{{$proyecto->idpersona}}">{{$proyecto->descripcion}} |-| {{$proyecto->nombre}}</option>
-	              @endforeach              
+	              @endforeach
 				</select>
 			</div>
 		</div>
@@ -53,12 +53,11 @@
 			<select name="tipo_comprobante" class="form-control">
 				<option value="Factura"> Factura </option>
 				<option value="Boleta"> Boleta </option>
-				<option value="Ticket"> Ticket </option>
 			</select>
 		</div>
 </div>
 
-<div class="col-lg-3 col-md-4 col-dm-12 col-xs-12"> 
+<div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
 	<div class="form-group">
 			<label for="serie_comprobante">Serie Comprobante</label>
 			<input type="text" name="serie_comprobante" readonly value="<?php echo date("Y-m-d");?>" class="form-control" placeholder="Serie de comprobante...">
@@ -68,10 +67,9 @@
 	<div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
 		<div class="form-group">
 				<label for="num_comprobante">Numero de Factura</label>
-				<input type="text" name="num_comprobante" required readonly value= "{{$idventa}}" class="form-control" placeholder="Numero de factura">
+				<input type="text" name="num_comprobante" required readonly"  id="comprobante"  class="form-control" placeholder="Numero de factura">
 		</div>
 	</div>	
-
 <div class="col-lg-3 col-md-4 col-dm-12 col-xs-12">
 
 		<div class="form-group">
@@ -178,25 +176,38 @@
 			</div>
 		</div>
 	</div>
-   		{!!Form::close()!!}  
+   		{!!Form::close()!!}
          @push ('scripts')
 		<script>
 		var total=0, totalSubtotal=0, totalGeneral=0, totalIva=0, totalDescuento=0;
-		cont=0;
-		acm_Totalgeneral=[];
-		acm_Subtotal=[];
-		acm_Iva=[];
-		acm_Descuento=[];
-		acm_Total=[];
-		$(document).on('ready',function(){
-			 var x= document.getElementById('idproyecto');
-			 var option = document.createElement("option");
-			 option.text = "Por Favor seleccione Opccion";
-			 x.add(option, x[0]);
-			 document.getElementById('idproyecto').selectedIndex=0;
-			mostrarproyecto();
-			mostrarValores();
-			state=1;
+			cont=0;
+			acm_Totalgeneral=[];
+			acm_Subtotal=[];
+			acm_Iva=[];
+			acm_Descuento=[];
+			acm_Total=[];
+			$(document).on('ready',function(){
+				var x= document.getElementById('idproyecto');
+				var option = document.createElement("option");
+				option.text = "Por Favor seleccione Opccion";
+				x.add(option, x[0]);
+				document.getElementById('idproyecto').selectedIndex=0;
+				mostrarproyecto();
+				mostrarValores();
+				state=1;
+
+			if( "{{$idventa}}" <="{{$resol[0]->resolucion_Desde}}")
+				{
+						$("#comprobante").val("{{$resol[0]->resolucion_Desde}}");
+					}
+					else if("{{$idventa}}" >="{{$resol[0]->resolucion_Hasta}}")
+					{
+					alert("la resolución de facturación esta completa, no puede seguir facturando")
+						$("#guardar").hide();
+					}
+					$("#comprobante").val("{{$idventa}}");
+
+
 		});
 		$("#pidarticulo").change(mostrarValores);
 		$("#idproyecto").change(mostrarproyecto);
@@ -217,7 +228,8 @@
 			datosProyecto=document.getElementById('idproyecto').value.split('_');
 			$("#descripcion").val(datosProyecto[2])
 			$('select[name=idcliente]').val(datosProyecto[3]);
-   			$('select[name=idcliente]').change();
+   		$('select[name=idcliente]').change();
+
 		}
 
 function agregar()
@@ -227,7 +239,7 @@ function agregar()
 			articulo=$("#pidarticulo option:selected").text();
 			stock=$("#pstock").val();
 			cantidad=$("#pcantidad").val();
-			impuesto=$("#pimpuesto").val(); 
+			impuesto=$("#pimpuesto").val();
 			descuento=$("#pdescuento").val();
 			precio_venta=$("#pprecio_venta").val();
 			
@@ -296,7 +308,7 @@ function agregar()
 	 
 			{
 				alert("Por favor seleccione un proyecto")
-						$("#guardar").hide();	
+						$("#guardar").hide();
 			}
 		else { //si la respuesta es positiva evalua siguiente nivel
 			if (descripcion=="") //evalua si la descripcción es activa

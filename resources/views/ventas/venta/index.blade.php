@@ -28,7 +28,11 @@
 		<td>
 			<a href="{{URL::action('VentaController@show',$ven->idventa)}}"><button class="btn btn-primary btn-xs">Detalles</button></a>
 			<a href="{{URL::action('VentaController@edit',$ven->idventa)}}"><button class="btn btn-danger btn-xs">Editar</button></a>
-		    <a href="{{URL::action('VentaController@crear_pdf',$ven->idventa)}}" target=newtab "><button class="btn btn-primary btn-xs">Imprimir</button></a>
+			@if ($ven->idventa > 172)
+				<a href="{{URL::action('VentaController@crear_pdf',$ven->idventa)}}" target=newtab "><button class="btn btn-primary btn-xs">Imprimir</button></a>
+				@else
+				<a href="{{URL::action('VentaController@crear_pdf',$ven->idventa)}}" target=newtab "><button class="btn btn-primary btn-xs">Imprimir</button></a>
+				@endif
 		</td>
 	</tr>
 	@include('ventas.venta.modal')	

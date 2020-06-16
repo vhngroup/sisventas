@@ -26,8 +26,8 @@ Route::resource('compras/ingreso','IngresoController');
 Route::resource('seguridad/usuario','UsuarioController');
 Route::resource('cotizaciones','CotizacionController');
 Route::resource('pedidos','PedidoController');
-Route::resource('/pdf','PdfController'); 
-Route::get('crear_reporte_porventa/{tipo}','PdfController@crear_reporte_porventa'); 
+Route::resource('/pdf','PdfController');
+Route::get('crear_reporte_porventa/{tipo}','PdfController@crear_reporte_porventa');
 Route::get('/cotizacion/reporte/{id}', 'CotizacionController@crear_pdf');
 Route::get('/ventas/venta/reporte/{id}', 'VentaController@crear_pdf');
 Route::get('/pedidos/reporte/{id}', 'PedidoController@crear_pdf');
@@ -41,7 +41,7 @@ Route::get('/clear-cache', function() {
 });
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index');
 Route::get('/{slug?}', 'HomeController@index');

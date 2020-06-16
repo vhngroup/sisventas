@@ -33,7 +33,7 @@ class ProyectoController extends Controller
          ->leftjoin('venta as v','pro.idproyecto','=','v.idproyecto')
          ->leftjoin('cotizacion as c','pro.idproyecto','=','c.idproyecto')
          ->leftjoin('estado as e','pro.idestado','=','e.idestado')
-            ->select('v.idproyecto as vidproyecto','p.nombre','v.estado','v.anticipo','v.total_venta as vtotal_venta','pro.idproyecto','pro.descripcion','pro.fecha','c.total_venta AS ctotal_venta','c.idproyecto AS cidproyecto','e.estado')
+            ->select('v.idproyecto as vidproyecto','p.nombre','v.anticipo','v.total_venta as vtotal_venta','pro.idproyecto','pro.descripcion','pro.fecha','c.total_venta AS ctotal_venta','c.idproyecto AS cidproyecto','e.estado')
             ->where('pro.descripcion','LIKE','%'.$query.'%')
             ->orwhere('p.nombre','LIKE','%'.$query.'%')
     		->orderBy('pro.idproyecto','desc')
@@ -73,7 +73,7 @@ class ProyectoController extends Controller
                 catch(\Exception $e)
                 {
                 DB::rollback();
-                }   
+                }
                 return Redirect::to('/proyectos');
         }
 }

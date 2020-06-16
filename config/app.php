@@ -139,7 +139,7 @@ return [
 
 
         Barryvdh\DomPDF\ServiceProvider::class,
-        //Barryvdh\DomPDF\ServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -162,8 +162,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class,
-        'Artdarek\OAuth\OAuthServiceProvider',
 
         /*
          * Package Service Providers...
@@ -176,7 +174,6 @@ return [
          */
         sisventas\Providers\AppServiceProvider::class,
         sisventas\Providers\AuthServiceProvider::class,
-        // sisventas\Providers\BroadcastServiceProvider::class,
         sisventas\Providers\EventServiceProvider::class,
         sisventas\Providers\RouteServiceProvider::class,
 
@@ -194,12 +191,9 @@ return [
     */
 
     'aliases' => [
-
-
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
-        'OAuth' => 'Artdarek\OAuth\Facade\OAuth',
         'Auth' => Illuminate\Support\Facades\Auth::class,
         'Blade' => Illuminate\Support\Facades\Blade::class,
         'Bus' => Illuminate\Support\Facades\Bus::class,
@@ -232,7 +226,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-
     ],
 
 ];

@@ -66,11 +66,10 @@ class CotizacionController extends Controller
 			return view('cotizaciones.create',["personas"=>$personas,"articulos"=>$articulos,"impuestos"=>$impuestos,"icotizacion"=>$icotizacion,"proyecto"=>$proyecto, "dataproyecto"=>$dataproyecto]);
        	}
 
-       		public function store(CotizacionFormRequest $request)
+    public function store(CotizacionFormRequest $request)
     	{
     		           
             //  dd($request->all());
-
             try{
     			 DB::beginTransaction();
                 

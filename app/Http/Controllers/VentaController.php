@@ -7,12 +7,13 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Input;
 use sisventas\Http\Requests\VentaFormRequest;
 use sisventas\Venta;
-use sisventas\DetalledeVenta; 
+use sisventas\DetalledeVenta;
+use sisventas\relacion_Dian_Venta;
 use sisventas\articulo;
 use DB;
 use Carbon\Carbon;
 use Response;
-use Illuminate\Support\Collection; 
+use Illuminate\Support\Collection;
 
 class VentaController extends Controller
 {
@@ -46,13 +47,15 @@ class VentaController extends Controller
     	public function create()
     	{
             $idventa=DB::table('venta')->max('num_comprobante')+1; //as incredible
-    		$impuestos1=DB::table('iva')->where('Estado','=','A')->get(); 
+    		$impuestos1=DB::table('iva')->where('Estado','=','A')->get();
             $personas=DB::table('persona')->where('tipo_persona','!=','Proveedor')->get(); //si el provedor tambien es cliente, retirara el where
+            $resol=DB::table('resolucion_Dian')->where('resolucion_Estado','=','1')
+            ->select('resolucion_Desde','idresolucion_Dian','resolucion_Hasta')
+            ->get();
             $proyecto=DB::table('proyecto')->where('idestado','=','2')->get();
             $dataproyecto=db::table('proyecto as pro')
             ->join('persona as per', 'per.idpersona', '=', 'pro.idpersona')
             ->select('per.nombre','pro.descripcion','pro.idproyecto','pro.idpersona')
-            ->where('pro.idestado','=','2')
             ->orderBy('pro.idproyecto', 'desc')
             ->get();
             $articulos=DB::table('articulo as art')
@@ -60,15 +63,10 @@ class VentaController extends Controller
             ->join('categoria as cat', 'cat.idcategoria', '=', 'art.idcategoria')
             ->select(DB::raw('CONCAT(art.codigo, "| ",art.nombre,"|$ ", di.precio_venta) AS articulo'),'art.idarticulo','art.stock', 'art.idcategoria', 'art.impuesto', DB::raw('di.precio_venta as precio_promedio'),'cat.midestock') //esta consulta extrae el promdio del valor de venta del producto
             ->where('art.estado','=','Activo')
-            //->where('art.stock','>','0') // solo muestra articulos con stock en positivo
             ->groupBy('articulo','art.idarticulo','art.stock')
             ->orderBy('di.idingreso', 'desc')
     		->get();
-           // $tablecategoria=db::table('categoria as cat')
-            //->join('articulo as art2','art2.idcategoria', '=', 'cat.idcategoria')
-            //->select('cat.midestock')
-           // ->get();
-			return view('ventas.venta.create',["personas"=>$personas,"articulos"=>$articulos,"impuestos1"=>$impuestos1, "idventa"=>$idventa, "proyecto"=>$proyecto, "dataproyecto"=>$dataproyecto]);
+			return view('ventas.venta.create',["personas"=>$personas,"articulos"=>$articulos,"impuestos1"=>$impuestos1, "idventa"=>$idventa, "proyecto"=>$proyecto, "dataproyecto"=>$dataproyecto , "resol"=>$resol]);
        	}
             public function show($id)
         {
@@ -77,7 +75,7 @@ class VentaController extends Controller
             ->join('detalledeventa as dv','v.idventa','=','dv.idventa')
             ->select('v.idventa','v.fecha_hora','p.nombre','v.tipo_comprobante','v.serie_comprobante','v.num_comprobante','v.impuesto','v.anticipo','v.estado','v.total_venta','v.condiciones')
             ->where('v.idventa','=',$id)
-            ->first();    
+            ->first();
 
             $detalles=DB::table('detalledeventa as dv')
             ->join('articulo as a','dv.idarticulo','=','a.idarticulo')
@@ -95,7 +93,7 @@ class VentaController extends Controller
             ->where('v.idventa','=',$id)
             ->first();
 
-            $detalles=DB::table('detalledeventa as dv')     
+            $detalles=DB::table('detalledeventa as dv')
             ->join('articulo as art','art.idarticulo','=','dv.idarticulo')
             ->select(DB::raw('CONCAT(art.codigo, " ",art.nombre) AS articulo'),'dv.idarticulo','dv.cantidad','dv.descuento','dv.iddetalledeventa as id' ,'dv.precio_venta')
             ->where('dv.idventa',$id)
@@ -110,10 +108,10 @@ class VentaController extends Controller
             ->get();
 
     return view("ventas.venta.edit", ["venta"=>$venta,"articulos"=>$articulos,"detalles"=>$detalles]);
-            
+
     }
 
-    public function cancelar($id)    
+    public function cancelar($id)
     {
     $venta=venta::findOrFail($id);
     $venta->Estado='C';
@@ -122,8 +120,7 @@ class VentaController extends Controller
    }
 
    public function destroy($id)
-        
-        {               
+        {
            $consulta = detalledeventa::find($id);
             if (is_null ($consulta))
            {
@@ -135,7 +132,7 @@ class VentaController extends Controller
                       return Response::json(array (
                        'success' => true,
                        'msg'     => 'Producto ' . $consulta->idarticulo . ' eliminado',
-                             'id'      => $consulta->id
+                        'id'      => $consulta->id
                        ));
                 }
                   else
@@ -144,9 +141,9 @@ class VentaController extends Controller
                 }
         }
 
-       		public function store(VentaFormRequest $request)
+    public function store(VentaFormRequest $request)
     	{
-             //dd($request->all());
+          //dd($request->all());
     		try{
     			DB::beginTransaction();
     			$venta=new venta();
@@ -178,8 +175,8 @@ class VentaController extends Controller
                 $acm_Subtotal=$request->get('acm_Subtotal');
                 $acm_Iva=$request->get('acm_Iva');
                 $acm_Total=$request->get('acm_Total');
+                $resol=DB::table('resolucion_Dian')->where('resolucion_Estado','=','1')->value('idresolucion_Dian');
     			$cont=0;
-                   
     			While($cont < count($idarticulo))
                 {
     				$detalles=new detalledeventa();
@@ -194,39 +191,60 @@ class VentaController extends Controller
                     $detalles->total=$acm_Total[$cont];
     				$detalles->save();
     				$cont=$cont+1;
-    			}
-    			DB::commit();
+                }
+                $resolucion=new relacion_Dian_Venta();
+                $resolucion->relacion_Dian_Ventacol=$request->get('num_comprobante');
+                $resolucion->relacion_Dian_Resolucion=$resol;
+                $resolucion->save();
+    		DB::commit();
         		}
                 catch(\Exception $e)
                 {
-
 			    DB::rollback();
-                }   
-                return Redirect::to('ventas/venta');
-    	      }
+               }
+           return Redirect::to('ventas/venta');
+    	 }
 
         public function crear_pdf($id)
      {
+        if ($id>172)
+         {
+            // show companies menu or something
             $venta=DB::table('venta as v')
-            ->join('persona as p','v.idcliente','=','p.idpersona')
+             ->join('persona as p','v.idcliente','=','p.idpersona')
             ->join('detalledeventa as dv','v.idventa','=','dv.idventa')
-            ->select('v.idventa','v.fecha_hora','p.nombre','p.idpersona','p.nombrecontacto','p.telefono','p.direccion','p.email', 'p.tipo_documento','p.num_documento','v.serie_comprobante','v.anticipo','v.num_comprobante','v.descripcion','v.total_general','v.total_descuento','v.subtotal','v.valoriva','v.total_venta','v.estado','v.condiciones','dv.iddetalledeventa','dv.descuento')
+            ->join('relacion_Dian_Venta as R_Dian','v.num_comprobante','=','R_Dian.relacion_Dian_Ventacol')
+            ->join('resolucion_Dian as Res_Dian', 'R_Dian.relacion_Dian_Resolucion','=','Res_Dian.idresolucion_Dian')
+            ->select('v.idventa','v.fecha_hora','p.nombre','p.idpersona','p.nombrecontacto','p.telefono','p.direccion','p.email', 'p.tipo_documento','p.num_documento','v.serie_comprobante','v.anticipo','v.num_comprobante','v.descripcion','v.total_general','v.total_descuento','v.subtotal','v.valoriva','v.total_venta','v.estado','v.condiciones','dv.iddetalledeventa','dv.descuento','Res_Dian.resolucion_Facturacion','Res_Dian.resolucion_Desde','Res_Dian.resolucion_Hasta' ,'Res_Dian.resolucion_meses','Res_Dian.fecha_Inicio','Res_Dian.fecha_Fin')
             ->where('v.idventa','=',$id)
-            ->first(); 
-
+            ->first();
             $detalle=DB::table('detalledeventa as dv')
             ->join('articulo as a','dv.idarticulo','=','a.idarticulo')
             ->select('a.nombre as articulo','a.codigo','a.imagen', 'a.descripcion','dv.cantidad','dv.precio_venta','dv.totalgeneral', 'dv.descuento', 'dv.subtotal', 'dv.iva', 'dv.total')
             ->where('idventa',$id)
             ->get();
-
-             $date = date('Y-m-d');
-             $pdf=  \PDF::loadview('ventas.venta.reporte',["detalle"=>$detalle, "venta"=>$venta]) ->setPaper('letter', 'portrait');
-             $pdf->output();
-             $dom_pdf = $pdf->getDomPDF();
-             $canvas = $dom_pdf ->get_canvas();
-             $canvas->page_text(550, 87, "Pagina {PAGE_NUM} de {PAGE_COUNT}", null, 8, array(0, 0, 0));
-             return $pdf->stream("Factura de Venta # {$venta->num_comprobante} -del-$date.pdf");
         }
-    
+        else
+        {
+            $venta=DB::table('venta as v')
+            ->join('persona as p','v.idcliente','=','p.idpersona')
+           ->join('detalledeventa as dv','v.idventa','=','dv.idventa')
+           ->select('v.idventa','v.fecha_hora','p.nombre','p.idpersona','p.nombrecontacto','p.telefono','p.direccion','p.email', 'p.tipo_documento','p.num_documento','v.serie_comprobante','v.anticipo','v.num_comprobante','v.descripcion','v.total_general','v.total_descuento','v.subtotal','v.valoriva','v.total_venta','v.estado','v.condiciones','dv.iddetalledeventa','dv.descuento')
+           ->where('v.idventa','=',$id)
+           ->first();
+           $detalle=DB::table('detalledeventa as dv')
+           ->join('articulo as a','dv.idarticulo','=','a.idarticulo')
+           ->select('a.nombre as articulo','a.codigo','a.imagen', 'a.descripcion','dv.cantidad','dv.precio_venta','dv.totalgeneral', 'dv.descuento', 'dv.subtotal', 'dv.iva', 'dv.total')
+           ->where('idventa',$id)
+           ->get();
+        }
+        $date = date('Y-m-d');
+        $pdf=  \PDF::loadview('ventas.venta.reporte',["detalle"=>$detalle, "venta"=>$venta]) ->setPaper('letter', 'portrait');
+        $pdf->output();
+        $dom_pdf = $pdf->getDomPDF();
+        $canvas = $dom_pdf ->get_canvas();
+        $canvas->page_text(550, 118, "Pagina {PAGE_NUM} de {PAGE_COUNT}", null, 8, array(0, 0, 0));
+        return $pdf->stream("Factura de Venta # {$venta->num_comprobante} -del-$date.pdf");
+
+    }
 }  

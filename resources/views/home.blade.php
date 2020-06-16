@@ -1,1 +1,1 @@
-<meta http-equiv="refresh" content="0; /proyectos" />
+<meta http-equiv="refresh" content="0; proyectos" />
