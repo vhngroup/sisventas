@@ -1,12 +1,11 @@
 <?php
 namespace sisventas\Http\Controllers;
-use Illuminate\Http\Request;
-use sisventas\Http\Requests;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 use sisventas\Http\Requests\ArticuloFormRequest;
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\Input;
+use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use sisventas\Articulo;
 use sisventas\Http\Requests\IngresoFormRequest;
 use sisventas\ingreso;
@@ -63,9 +62,9 @@ class ArticuloController extends Controller
 		$articulo->descripcion=$request->get('descripcion');
 		$articulo->estado='Activo';
 
-		if(Input::hasFile('imagen'))
+		if($request->hasFile('imagen'))
 			{
-				$file=Input::file('imagen');
+				$file=$request->file('imagen');
 				$file->move(public_path().'/imagenes/articulos/',$file->getClientOriginalName());
 				$articulo->imagen=$file->getClientOriginalName();
 			}
@@ -117,9 +116,9 @@ class ArticuloController extends Controller
 		$articulo->stock=$request->get('stock');
 		$articulo->descripcion=$request->get('descripcion');
 
-		if(Input::hasFile('imagen'))
+		if($request->hasFile('imagen'))
 		{
-		$file=Input::file('imagen');
+		$file=$request->file('imagen');
 		$file->move(public_path().'/imagenes/articulos/',$file->getClientOriginalName());
 		
 		$articulo->imagen=$file->getClientOriginalName();
@@ -148,5 +147,4 @@ class ArticuloController extends Controller
 	$articulo->update();
 	return Redirect::to('almacen/articulo');
 	}
-	
 }
